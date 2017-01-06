@@ -13,7 +13,7 @@ body{
     background-color:  rgb(148,49,93);
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 90%;
-    /*background-image: url(background.jpg);*/
+    background-image: url(background.jpg);
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
