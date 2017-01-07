@@ -1,19 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './user.interface';
+﻿import { Component } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
-  selector: 'my-app',
-  template: '<h1><img src="images/Tazuzu logo.jpg" alt="logo" /></h1><login></login>',
+    moduleId: module.id,
+    selector: 'app',
+    templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
-  public user: User;
 
-  ngOnInit() {
-    this.user = {
-      username: '',
-      password: '',
-      
-    }
-  }
-}
+export class AppComponent { }
