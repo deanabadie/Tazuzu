@@ -92,7 +92,7 @@ CREATE TABLE `tazuzu`.`teacher_trans` (
   PRIMARY KEY (`teacher_id`, `language`));
 
 CREATE TABLE `tazuzu`.`group` (
-  `group_id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '	',
+  `group_id` BIGINT NOT NULL AUTO_INCREMENT,
   `group_type_id` BIGINT NOT NULL,
   `parent_group_id` BIGINT NULL,
   `time_of_creation` TIMESTAMP NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `tazuzu`.`group_trans` (
   PRIMARY KEY (`group_id`, `language`));
 
 CREATE TABLE `tazuzu`.`group_type` (
-  `group_type_id` BIGINT NOT NULL,
+  `group_type_id` BIGINT NOT NULL AUTO_INCREMENT,
   `time_of_creation` TIMESTAMP NOT NULL,
   `time_of_last_edit` TIMESTAMP NOT NULL,
   `last_edited_by` BIGINT NOT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `tazuzu`.`group_type_trans` (
   PRIMARY KEY (`group_type_id`, `language`));
 
 CREATE TABLE `tazuzu`.`user` (
-  `user_id` BIGINT NOT NULL,
+  `user_id` BIGINT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(254) NOT NULL,
   `registration_date` DATETIME NOT NULL,
