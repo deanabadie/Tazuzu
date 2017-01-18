@@ -8,7 +8,7 @@ import { AlertService, UserService } from '../_services/index';
     templateUrl: 'registerTeacher.component.html'
 })
 
-export class RegisterComponent {
+export class RegisterTeacherComponent {
     model: any = {};
     loading = false;
 
