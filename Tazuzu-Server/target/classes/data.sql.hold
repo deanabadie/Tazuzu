@@ -1,8 +1,0 @@
--- Init tables
-DELETE TABLE tazuzu.user;
-
-DELETE FROM tazuzu.user;
-
-insert into tazuzu.user (user_name, password, email, first_name, last_name)
-value ("demouser", "", "demouser@gmail.com", "Demo", "User");
-
