@@ -135,7 +135,7 @@ CREATE TABLE `tazuzu`.`user` (
   `photo_path` VARCHAR(255) NOT NULL,
   `time_of_creation` TIMESTAMP NOT NULL,
   `time_of_last_edit` TIMESTAMP NOT NULL,
-  `last_edited_by` BIGINT,
+  `last_edited_by` BIGINT NOT NULL,
   PRIMARY KEY (`user_id`));
 
 CREATE TABLE `tazuzu`.`time_test` (
