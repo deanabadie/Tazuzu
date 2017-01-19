@@ -5,14 +5,14 @@ import { UserService, TeacherService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html'
+    templateUrl: 'homeTeacher.component.html'
 })
 
-export class HomeComponent implements OnInit {
+export class HomeTeacherComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 
-    constructor(private userService: UserService) {
+    constructor(private teacherService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -21,10 +21,10 @@ export class HomeComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
+        this.teacherService.delete(id).subscribe(() => { this.loadAllUsers() });
     }
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.teacherService.getAll().subscribe(users => { this.users = users; });
     }
 }
