@@ -4,8 +4,13 @@ export class Teacher {
     password: string;
     firstName: string;
     lastName: string;
-    gender: string;
+    gender: Gender;
     dateOfBirth: Date;
     email: string;
     school: string;
 }
+
+ enum Gender{
+       male,
+       female,
+   };

@@ -13,7 +13,7 @@ import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, TeacherService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -39,6 +39,7 @@ import { RegisterTeacherComponent } from './registerTeacher/index';
         AlertService,
         AuthenticationService,
         UserService,
+        TeacherService,
 
         // providers used to create fake backend
         fakeBackendProvider,

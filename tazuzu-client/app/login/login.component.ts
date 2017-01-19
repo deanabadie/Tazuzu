@@ -9,6 +9,10 @@ import { AlertService, AuthenticationService } from '../_services/index';
 })
 
 export class LoginComponent implements OnInit {
+    
+    languages = ['English', 'Hebrew','Arabic'];  
+    userTypes = ['Student','Teacher'];  
+
     model: any = {};
     loading = false;
     returnUrl: string;
