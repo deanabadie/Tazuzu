@@ -1,10 +1,14 @@
 package com.tazuzu.services.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+//import java.security.Timestamp;
 import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by nati1 on 3/25/15.
@@ -19,34 +23,48 @@ public class User {
     @Column(unique = true, nullable = false)
     @NotNull
     private String userName;
-/*    @NotNull
+    @NotNull
     private String firstName;
     @NotNull
     private String lastName;
-*/
+
     @Column(unique = true, nullable = true)
     private String email;
     @JsonIgnore
     private String Password;
-    @Version
     @NotNull
     private Date registrationDate;
-
-
-
-    @Version
-    private Date timestamp;
+    @NotNull
+    private boolean isActivated;
+    @NotNull
+    private boolean isAdmin;
+    @NotNull
+    private String photoPath;
+    @NotNull
+    private Timestamp timeOfCreation;
+    @NotNull
+    private Timestamp timeOfLastEdit;
+    @NotNull
+    private Long LastEditBy;
 
     public User(User user) {
-        this.userId     = user.userId;
- /*       this.firstName  = user.firstName;
-        this.lastName   = user.lastName;*/
+        this.userName = user.userName;
+        this.firstName  = user.firstName;
+        this.lastName   = user.lastName;
         this.email      = user.email;
+        this.Password = user.Password;
+        this.registrationDate = new Timestamp(System.currentTimeMillis());
+        this.isActivated = true;
+        this.isAdmin = false;
+        this.photoPath = user.photoPath;
+        this.timeOfCreation = new Timestamp(System.currentTimeMillis());
+        this.timeOfLastEdit = this.timeOfCreation;
+        this.LastEditBy = user.userId;
     }
 
     public User(String firstName, String lastName, String email) {
- /*       this.firstName  = firstName;
-        this.lastName   = lastName;*/
+        this.firstName  = firstName;
+        this.lastName   = lastName;
         this.email      = email;
     }
 
@@ -54,7 +72,7 @@ public class User {
 
     }
 
-    public Long getUserId() {
+    public Long getUserId() throws Exception {
         return userId;
     }
 
@@ -65,7 +83,7 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-/*
+
     public String getFirstName() {return firstName;}
 
     public void setFirstName(String firstName) {
@@ -79,7 +97,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    */
 
     public String getEmail() {
         return email;
@@ -87,6 +104,33 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public boolean getIsActivated() {
+        return isActivated;
+    }
+
+    public void setIsActiveted(boolean isActivated) {
+        this.isActivated = isActivated;
+    }
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public Timestamp getTimeOfCreation() {
+        return timeOfCreation;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
     }
 
     public String getPassword() {
@@ -97,16 +141,33 @@ public class User {
         Password = password;
     }
 
+    public Timestamp getTimeOfLastEdit() {
+        return timeOfLastEdit;
+    }
+
+    public void setTimeOfLastEdit(Timestamp timeOfLastEdit) {
+        this.timeOfLastEdit = timeOfLastEdit;
+    }
+
+    public Long getLastEditBy() {
+        return LastEditBy;
+    }
+
+    public void setLastEditBy(Long lastEditBy) {
+        this.LastEditBy = lastEditBy;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "timestamp=" + timestamp +
-                ", userId=" + userId +
-                ", userName='" + userName + '\'' +
-             /*   ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +*/
-                ", email='" + email + '\'' +
-                ", Password='" + Password + '\'' +
-                '}';
+        ObjectMapper mapper = new ObjectMapper();
+        User obj = this;
+        String jsonInString = "";
+        //Object to JSON in String
+        try {
+            jsonInString = mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return  jsonInString;
     }
 }

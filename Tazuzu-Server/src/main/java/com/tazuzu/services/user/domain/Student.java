@@ -1,10 +1,11 @@
 package com.tazuzu.services.user.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -32,11 +33,13 @@ public class Student extends User {
     @NotNull
     private double weight;
     @Version
-    private Date timeOfCreation;
+    private Timestamp timeOfCreation;
     @Version
-    private Date timeOfLastEdit;
+    private Timestamp timeOfLastEdit;
     @NotNull
     private Long lastEditBy;
+    @NotNull
+    private Long language;
 
     public Student(Student student) {
         this.studentId = student.studentId;
@@ -47,35 +50,30 @@ public class Student extends User {
         this.groupId = student.groupId;
         this.height = student.height;
         this.weight = student.weight;
-        this.lastEditBy = this.id;
-
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = new Date();
-        try {
-            this.timeOfCreation = formatter.parse(formatter.format(date1));
-            this.timeOfLastEdit = formatter.parse(formatter.format(date1));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.lastEditBy = this.userId;
+        this.timeOfCreation = new Timestamp(System.currentTimeMillis());
+        this.timeOfLastEdit = new Timestamp(System.currentTimeMillis());
+        this.language = student.language;
     }
 
-    public Student(Long id, char gender, Date dateOfBirth, double height, double weight) {
+    public Student(Long id, char gender, Date dateOfBirth, double height, double weight, Long language) {
         this.id = id;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.height = height;
         this.weight = weight;
+        this.language = language;
     }
 
     Student() {
 
     }
 
-    public Long getUserId() {
+    public Long getUserId() throws Exception {
         return userId;
     }
 
-    public Long getStudentId() {
+    public Long getStudentId() throws Exception {
         return studentId;
     }
 
@@ -83,7 +81,7 @@ public class Student extends User {
         this.studentId = studentId;
     }
 
-    public Long getId() {
+    public Long getId() throws Exception {
         return id;
     }
 
@@ -127,19 +125,15 @@ public class Student extends User {
         height = Height;
     }
 
-    public Date getTimeOfCreation() {
-        return timeOfCreation;
-    }
-
-    public void setTimeOfCreation(Date TimeOfCreation) {
+    public void setTimeOfCreation(Timestamp TimeOfCreation) {
         this.timeOfCreation = TimeOfCreation;
     }
 
-    public Date getTimeOfLastEdit() {
+    public Timestamp getTimeOfLastEdit() {
         return timeOfLastEdit;
     }
 
-    public void setTimeOfLastEdit(Date TimeOfLastEdit) {
+    public void setTimeOfLastEdit(Timestamp TimeOfLastEdit) {
         this.timeOfLastEdit = TimeOfLastEdit;
     }
 
@@ -149,18 +143,24 @@ public class Student extends User {
 
     public void setLastEditBy(Long LastEditBy) {this.lastEditBy = LastEditBy; }
 
+    public Long getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Long language) {this.language = language; }
+
     @Override
     public String toString() {
-        return "Student{" +
-                "timeOfCreation=" + timeOfCreation +
-                ", studentId=" + studentId +
-                ", id='" + id + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", height='" + height + '\'' +
-                ", weight='" + weight + '\'' +
-                '}';
+        ObjectMapper mapper = new ObjectMapper();
+        Student obj = this;
+        String jsonInString = "";
+        //Object to JSON in String
+        try {
+            jsonInString = mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return  jsonInString;
     }
 
 }

@@ -1,16 +1,17 @@
 package com.tazuzu.services.user.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * Created by noy on 13/01/2017.
  */
-public class Teacher {
+public class Teacher extends User{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -28,11 +29,13 @@ public class Teacher {
     @NotNull
     private Long groupId;
     @Version
-    private Date timeOfCreation;
+    private Timestamp timeOfCreation;
     @Version
-    private Date timeOfLastEdit;
+    private Timestamp timeOfLastEdit;
     @NotNull
     private Long lastEditBy;
+    @NotNull
+    private Long language;
 
     public Teacher(Teacher teacher) {
         this.teacherId = teacher.teacherId;
@@ -42,25 +45,16 @@ public class Teacher {
         this.dateOfBirth = teacher.dateOfBirth;
         this.groupId = teacher.groupId;
         this.lastEditBy = this.id;
-
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = new Date();
-        try {
-            this.timeOfCreation = formatter.parse(formatter.format(date1));
-            this.timeOfLastEdit = formatter.parse(formatter.format(date1));
-        } catch (ParseException e) {
-            Date date2;
-            date2 = new Date(2000,01,01);
-            this.timeOfCreation = date2;
-            this.timeOfLastEdit = date2;
-            e.printStackTrace();
-        }
+        this.timeOfCreation = new Timestamp(System.currentTimeMillis());
+        this.timeOfLastEdit = new Timestamp(System.currentTimeMillis());
+        this.language = teacher.language;
     }
 
-    public Teacher(Long id, char gender, Date dateOfBirth) {
+    public Teacher(Long id, char gender, Date dateOfBirth, Long language) {
         this.id = id;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+        this.language = language;
     }
 
     Teacher() {
@@ -107,38 +101,44 @@ public class Teacher {
 
     public void setGroupId(Long GroupId) {this.groupId = GroupId; }
 
-    public Date getTimeOfCreation() {
+    public Timestamp getTimeOfCreation() {
         return timeOfCreation;
     }
 
-    public void setTimeOfCreation(Date TimeOfCreation) {
+    public void setTimeOfCreation(Timestamp TimeOfCreation) {
         this.timeOfCreation = TimeOfCreation;
     }
 
-    public Date getTimeOfLastEdit() {
+    public Timestamp getTimeOfLastEdit() {
         return timeOfLastEdit;
     }
 
-    public void setTimeOfLastEdit(Date TimeOfLastEdit) {
+    public void setTimeOfLastEdit(Timestamp TimeOfLastEdit) {
         this.timeOfLastEdit = TimeOfLastEdit;
     }
 
-    public Long getLastEditBy() {
-        return lastEditBy;
-    }
+    public Long getLastEditBy() {return lastEditBy;}
 
     public void setLastEditBy(Long LastEditBy) {this.lastEditBy = LastEditBy; }
 
+    public Long getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Long language) {this.language = language; }
+
     @Override
     public String toString() {
-        return "Student{" +
-                "timeOfCreation=" + timeOfCreation +
-                ", teacherId=" + teacherId +
-                ", id='" + id + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", groupId='" + groupId + '\'' +
-                '}';
+        ObjectMapper mapper = new ObjectMapper();
+        Teacher obj = this;
+        String jsonInString = "";
+        //Object to JSON in String
+        try {
+            jsonInString = mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return  jsonInString;
     }
 }
 
