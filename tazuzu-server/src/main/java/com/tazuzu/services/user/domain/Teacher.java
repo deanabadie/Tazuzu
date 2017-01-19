@@ -11,7 +11,8 @@ import java.util.Date;
 /**
  * Created by noy on 13/01/2017.
  */
-public class Teacher extends User{
+@Entity
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

@@ -44,7 +44,7 @@ public class User {
     private Timestamp timeOfCreation;
     @NotNull
     private Timestamp timeOfLastEdit;
-    @NotNull
+
     private Long LastEditBy;
 
     public User(User user) {
@@ -62,10 +62,20 @@ public class User {
         this.LastEditBy = user.userId;
     }
 
-    public User(String firstName, String lastName, String email) {
+    public User(String userName,String firstName, String lastName, String email,String Password,
+                   String photoPath) {
+        this.userName = userName;
         this.firstName  = firstName;
         this.lastName   = lastName;
         this.email      = email;
+        this.Password = Password;
+        this.registrationDate = new Timestamp(System.currentTimeMillis());
+        this.isActivated = true;
+        this.isAdmin = false;
+        this.photoPath = photoPath;
+        this.timeOfCreation = new Timestamp(System.currentTimeMillis());
+        this.timeOfLastEdit = this.timeOfCreation;
+        this.LastEditBy = userId;
     }
 
     User() {
