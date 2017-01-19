@@ -9,6 +9,10 @@ import { AlertService, AuthenticationService } from '../_services/index';
 })
 
 export class LoginComponent implements OnInit {
+    
+    languages = ['English', 'Hebrew','Arabic'];  
+    userTypes = ['Student','Teacher'];  
+
     model: any = {};
     loading = false;
     returnUrl: string;
@@ -32,7 +36,12 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    console.log(this.model.userType);
+                    if (this.model.userType == "Teacher"){
+                        this.router.navigate(['/homeTeacher']);
+                    }else{
+                        this.router.navigate(['/home']);
+                    }
                 },
                 error => {
                     this.alertService.error(error);

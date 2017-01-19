@@ -21,19 +21,18 @@
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%.-1level|%-40.40logger{0}|%msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <logger name="com.tazuzu" level="debug">
-            <appender-ref ref="ApplicationLogAppender"/>
+        <appender-ref ref="ApplicationLogAppender"/>
     </logger>
 
-    <logger name="org.springframework" level="warn" />
-
-    <logger name="org.springframework.beans" level="warn" />
+    <logger name="org" level="warn"/>
+    <logger name="jndi" level="warn"/>
 
     <root level="debug">
-        <appender-ref ref="console" />
+        <appender-ref ref="console"/>
     </root>
 </configuration>

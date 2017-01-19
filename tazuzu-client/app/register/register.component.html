@@ -21,6 +21,49 @@
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
             <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
         </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="id">ID</label>
+            <input type="number" class="form-control" name="id" [(ngModel)]="model.id" #id="ngModel" required />
+            <div *ngIf="f.submitted && !id.valid" class="help-block">ID is required</div>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" required>
+            <option *ngFor="let g of genders" [value]="gender">{{g}}</option>
+            </select>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dob.valid }">
+            <label for="dob">Date of birth</label>
+            <input type="date" class="form-control" name="dob" [(ngModel)]="model.dob" #dob="ngModel" required />
+            <div *ngIf="f.submitted && !dob.valid" class="help-block">Date of birth is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.dob" #email="ngModel" required />
+            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+        </div>
+        <div class="form-group">
+            <label for="school">School</label>
+            <select class="form-control" id="school" required>
+            <option *ngFor="let school of schools" [value]="school">{{school}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="class">Class</label>
+            <select class="form-control" id="class" required>
+            <option *ngFor="let class of classes" [value]="class">{{class}}</option>
+            </select>
+        </div> 
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" name="school" [(ngModel)]="model.height" #height="ngModel" required />
+            <div *ngIf="f.submitted && !height.valid" class="help-block">Height is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" name="school" [(ngModel)]="model.weight" #weight="ngModel" required />
+            <div *ngIf="f.submitted && !weight.valid" class="help-block">Weight is required</div>
+        </div>
         <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Register</button>
             <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>

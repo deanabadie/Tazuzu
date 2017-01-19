@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertService, UserService } from '../_services/index';
+import { AlertService, TeacherService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -9,17 +9,23 @@ import { AlertService, UserService } from '../_services/index';
 })
 
 export class RegisterTeacherComponent {
+
+    schools = ['Rishon Le Zion - Mekif A', 'Rishon Le Zion - Mekif B',
+            'Rishon Le Zion - Mekif C', 'Rishon Le Zion - Mekif D'];
+
+    genders = ['Male','Female'];
+
     model: any = {};
     loading = false;
 
     constructor(
         private router: Router,
-        private userService: UserService,
+        private teacherService: TeacherService,
         private alertService: AlertService) { }
 
     register() {
         this.loading = true;
-        this.userService.create(this.model)
+        this.teacherService.create(this.model)
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);

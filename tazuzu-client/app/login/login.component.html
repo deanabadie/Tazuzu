@@ -12,9 +12,24 @@
             <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
         </div>
         <div class="form-group">
+            <label for="language">Language</label>
+            <select class="form-control" id="language" name="language"
+            [(ngModel)]="model.language" #language="ngModel" required>
+            <option *ngFor="let l of languages" [ngValue]="l">{{l}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="userType">User Type</label>
+            <select class="form-control" id="userType" name="userType"
+            [(ngModel)]="model.userType" #userType="ngModel" required>
+            <option *ngFor="let u of userTypes" [ngValue]="u">{{u}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Login</button>
             <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
             <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+            <a [routerLink]="['/registerTeacher']" class="btn btn-link">Register Teacher</a>
         </div>
     </form>
 </div>
