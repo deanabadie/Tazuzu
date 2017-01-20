@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Again... @Service is just another type of @Component
@@ -33,7 +34,7 @@ public class StudentServiceImpl {
     }
 
     public Student getStudent(Long studentId) {
-        return studentRepository.getOne(studentId);
+        return studentRepository.findOne(studentId);
     }
 
     public List<Student> getAllStudents() {
@@ -41,17 +42,27 @@ public class StudentServiceImpl {
     }
 
     @Transactional
-    public Student createStudent(Student student) {
+    public Student createStudent(Student s) {
+        Student newStudent = new Student();
+        newStudent.setEmail(s.getEmail());
+        newStudent.setFirstName(s.getFirstName());
+        newStudent.setLastName(s.getLastName());
+        newStudent.setGroupId(s.getGroupId());
+        newStudent.setPhotoPath(s.getPhotoPath());
+        newStudent.setUserName(s.getUserName());
+        newStudent.setActivated(true);
+        newStudent.setUserId(s.getUserId());
+
+        return studentRepository.save(newStudent);
+    }
+
+    @Transactional
+    public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
 
-    @Transactional
-    public void updateStudent(Student student) {
-        studentRepository.save(student);
+    public Boolean exists(Long id) {
+        return studentRepository.exists(id);
     }
 
-    @Transactional
-    public void deleteStudent(Long studentId) {
-        studentRepository.delete(studentId);
-    }
 }

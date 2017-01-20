@@ -1,0 +1,131 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tazuzu",
+		"_postman_id": "e39cbcff-48f7-8fda-e871-72e682231b0d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST - /users",
+			"request": {
+				"url": "http://localhost:8080/api/students",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "push-token",
+						"value": "asdasdasddsa",
+						"description": ""
+					},
+					{
+						"key": "device-type",
+						"value": "iOS",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"deaaaaaaaaana3dsdasaa2adasd\",\n  \"firstName\": \"Itzik\",\n  \"lastName\": \"Bitzik\",\n  \"email\": \"deandaaaaaaa32aaaaa@bitzik.com\",\n  \"photoPath\": \"2http://www.ynet.co.il\",\n  \"createdAt\": \"2017-01-20T12:38:56Z\",\n  \"updatedAt\": \"2017-01-20T12:38:56Z\",\n  \"groupId\": 1,\n  \"activated\": false,\n  \"userId\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - /users/{id}",
+			"request": {
+				"url": "http://localhost:8080/api/students/57",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "push-token",
+						"value": "asdasdasddsa",
+						"description": ""
+					},
+					{
+						"key": "device-type",
+						"value": "iOS",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 57,\n  \"userName\": \"bitzik\",\n  \"firstName\": \"Itzik\",\n  \"lastName\": \"Bitzik\",\n  \"email\": \"itzik@bitzik.com\",\n  \"photoPath\": \"http://www.ynet.co.il\",\n  \"createdAt\": \"2017-01-20T12:38:56Z\",\n  \"updatedAt\": \"2017-01-20T12:38:56Z\",\n  \"groupId\": 1,\n  \"activated\": false,\n  \"userId\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST - /schools",
+			"request": {
+				"url": "http://localhost:8080/api/schools",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "push-token",
+						"value": "asdasdasddsa",
+						"description": ""
+					},
+					{
+						"key": "device-type",
+						"value": "iOS",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"TAU\",\n  \"city\": \"Tel-Aviv\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST - /classes",
+			"request": {
+				"url": "http://localhost:8080/api/schools",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "push-token",
+						"value": "asdasdasddsa",
+						"description": ""
+					},
+					{
+						"key": "device-type",
+						"value": "iOS",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

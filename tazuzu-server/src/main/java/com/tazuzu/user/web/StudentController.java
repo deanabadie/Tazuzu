@@ -1,5 +1,6 @@
 package com.tazuzu.user.web;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,39 +8,52 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-@SuppressWarnings("unused")
 @RestController
-@RequestMapping(name = "/student")
+@RequestMapping(value = "/students")
+@SuppressWarnings("unused")
 public class StudentController {
 
-    private final StudentServiceImpl studentService;
+    private final StudentServiceImpl service;
 
     @Autowired
     public StudentController(StudentServiceImpl studentService) {
-        this.studentService = studentService;
+        this.service = studentService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Student> getEntity(@PathVariable  Long id) {
+        Student s = service.getStudent(id);
+
+        if ( s == null ) {
+            throw new EntityNotFoundException("Could not find student with the given id (" + id + ")");
+        }
+
+        return new ResponseEntity<>(s, HttpStatus.OK);
+    }
+
+    @GetMapping
     public List<Student> getStudents() {
-        return studentService.getAllStudents();
+        return service.getAllStudents();
     }
 
-    /**
-     * GET - /api/student/{userId}
-     * @param studentId
-     * @return
-     */
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public Student getStudent(@PathVariable long studentId) {
-        return studentService.getStudent(studentId);
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        if ( !service.exists(id) ) {
+            throw new EntityNotFoundException("Could not ...");
+        }
+
+        student = service.updateStudent(student);
+
+        return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        student = studentService.createStudent(student);
-
+        student = service.createStudent(student);
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
+
 }

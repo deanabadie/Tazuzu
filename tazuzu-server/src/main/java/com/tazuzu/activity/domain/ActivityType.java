@@ -1,10 +1,10 @@
-//package com.tazuzu.services.activity.domain;
-//
-//import javax.persistence.Entity;
-//
-///**
-// * Created by nofarb on 19-Jan-17.
-// */
-//@Entity
-//public class ActivityType {
-//}
+package com.tazuzu.activity.domain;
+
+public enum ActivityType {
+
+    ONE,
+    TWO,
+    THREE,
+    FOUR
+
+}

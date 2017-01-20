@@ -8,14 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by nofarb on 19-Jan-17.
- */
 @Service
-public class ActivityServiceImpl implements ActivityService{
+@SuppressWarnings("unused")
+public class ActivityServiceImpl {
+
+    private final ActivityRepository activityRepository;
 
     @Autowired
-    ActivityRepository activityRepository;
+    public ActivityServiceImpl(ActivityRepository activityRepository) {
+        this.activityRepository = activityRepository;
+    }
 
     public Activity getActivity(long userId) {
         return activityRepository.getOne(userId);

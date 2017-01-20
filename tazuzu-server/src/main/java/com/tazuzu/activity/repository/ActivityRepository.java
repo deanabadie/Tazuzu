@@ -6,9 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by nofarb on 19-Jan-17.
- */
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
     List<Activity> findAll();

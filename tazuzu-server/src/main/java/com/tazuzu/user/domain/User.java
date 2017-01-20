@@ -1,18 +1,23 @@
 package com.tazuzu.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.sql.Timestamp;
 
-@SuppressWarnings("unused")
 @Entity
-public class User {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type")
+//@Where(clause = "deleted_at!=null")
+@SuppressWarnings("unused")
+public abstract class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -29,27 +34,24 @@ public class User {
     private String email;
 
     @JsonIgnore
-    private String Password;
-
-    @NotNull
-    private Date registrationDate;
+    private String password;
 
     @NotNull
     private boolean isActivated;
 
     @NotNull
-    private boolean isAdmin;
-
-    @NotNull
     private String photoPath;
 
-    @NotNull
-    private Timestamp timeOfCreation;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 
-    @NotNull
-    private Timestamp timeOfLastEdit;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
-    private Long LastEditBy;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedAt;
 
     public User() {}
 
@@ -93,36 +95,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
     public boolean isActivated() {
         return isActivated;
     }
 
     public void setActivated(boolean activated) {
         isActivated = activated;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
     }
 
     public String getPhotoPath() {
@@ -133,28 +111,35 @@ public class User {
         this.photoPath = photoPath;
     }
 
-    public Timestamp getTimeOfCreation() {
-        return timeOfCreation;
+    public Long getId() {
+        return id;
     }
 
-    public void setTimeOfCreation(Timestamp timeOfCreation) {
-        this.timeOfCreation = timeOfCreation;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Timestamp getTimeOfLastEdit() {
-        return timeOfLastEdit;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTimeOfLastEdit(Timestamp timeOfLastEdit) {
-        this.timeOfLastEdit = timeOfLastEdit;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Long getLastEditBy() {
-        return LastEditBy;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setLastEditBy(Long lastEditBy) {
-        LastEditBy = lastEditBy;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

@@ -1,36 +1,41 @@
 package com.tazuzu.user.web;
 
 import com.tazuzu.user.domain.Teacher;
+import com.tazuzu.user.service.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by nofarb on 17-Jan-17.
- */
+@RestController
+@RequestMapping(value = "/teachers")
+@SuppressWarnings("unused")
 public class TeacherController {
-    @Autowired
-    private TeacherService teacherService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    private final TeacherServiceImpl teacherService;
+
+    @Autowired
+    public TeacherController(TeacherServiceImpl teacherService) {
+        this.teacherService = teacherService;
+    }
+
+    @GetMapping
     public List<Teacher> getTeacher() {
         return teacherService.getAllTeachers();
     }
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    @GetMapping(value = "/{userId}")
     public Teacher getTeacher(@PathVariable long teacherId) {
         return teacherService.getTeacher(teacherId);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher) {
-        teacherService.createTeacher(teacher);
-        return new ResponseEntity<Object>(null, null, HttpStatus.CREATED);
+        teacher = teacherService.createTeacher(teacher).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return new ResponseEntity<>(teacher, HttpStatus.CREATED);
     }
 }

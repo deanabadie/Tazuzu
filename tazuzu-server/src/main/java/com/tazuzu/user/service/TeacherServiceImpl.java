@@ -3,11 +3,14 @@ package com.tazuzu.user.service;
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("unused")
+@Service
 public class TeacherServiceImpl{
 
     private final TeacherRepository teacherRepository;
@@ -26,8 +29,8 @@ public class TeacherServiceImpl{
     }
 
     @Transactional
-    public Teacher createTeacher(Teacher teacher) {
-        return teacherRepository.save(teacher);
+    public Optional<Teacher> createTeacher(Teacher teacher) {
+        return Optional.of(teacherRepository.save(teacher));
     }
 
     @Transactional
