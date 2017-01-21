@@ -10,12 +10,11 @@ import { AlertService, UserService } from '../_services/index';
 
 export class RegisterComponent {
     
-    schools = ['Rishon Le Zion - Mekif A', 'Rishon Le Zion - Mekif B',
-            'Rishon Le Zion - Mekif C', 'Rishon Le Zion - Mekif D'];
+    schools = ['1', '2','3', '4'];
 
-    classes = ['A1', 'A2','A3', 'A4'];
+    classes = ['1', '2','3', '4'];
 
-    genders = ['Male','Female'];
+    genders = ['M','F'];
      
 
     model: any = {};
