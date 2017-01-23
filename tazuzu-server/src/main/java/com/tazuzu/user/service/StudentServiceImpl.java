@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+
 
 /**
  * Again... @Service is just another type of @Component
@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 public class StudentServiceImpl {
 
-    private final StudentRepository studentRepository;
+    public static StudentRepository studentRepository;
 
     /**
      * Auto wired is injecting a service representing the required type
@@ -33,7 +33,7 @@ public class StudentServiceImpl {
         this.studentRepository = studentRepository;
     }
 
-    public Student getStudent(Long studentId) {
+    public static Student getStudent(long studentId) {
         return studentRepository.findOne(studentId);
     }
 
@@ -42,7 +42,7 @@ public class StudentServiceImpl {
     }
 
     @Transactional
-    public Student createStudent(Student s) {
+    public static Student createStudent(Student s) {
         Student newStudent = new Student();
         newStudent.setEmail(s.getEmail());
         newStudent.setFirstName(s.getFirstName());

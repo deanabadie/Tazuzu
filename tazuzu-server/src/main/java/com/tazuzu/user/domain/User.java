@@ -18,7 +18,7 @@ public abstract class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(unique = true, nullable = false)
     @NotNull
@@ -55,11 +55,11 @@ public abstract class User {
 
     public User() {}
 
-    public Long getUserId() {
+    public long getUserId() {
         return id;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.id = userId;
     }
 
@@ -111,11 +111,11 @@ public abstract class User {
         this.photoPath = photoPath;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
