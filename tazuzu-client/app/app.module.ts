@@ -44,9 +44,9 @@ import { RegisterTeacherComponent } from './registerTeacher/index';
         TeacherService,
 
         // providers used to create fake backend
-        fakeBackendProvider,
-        MockBackend,
-        BaseRequestOptions
+        //fakeBackendProvider,
+  //      MockBackend,
+    //    BaseRequestOptions
     ],
     bootstrap: [AppComponent]
 })

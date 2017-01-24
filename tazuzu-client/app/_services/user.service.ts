@@ -18,10 +18,10 @@ export class UserService {
     }
 
     create(user: User) {
-      //return this.http.post('http://nofar-pc:8080/TazuzuServices/students/register', JSON.stringify(user),this.jwt())
-          //  .map(this.extractData);//.catch(this.handleError);
+      return this.http.post('http://nofar-pc:8080/api/students', JSON.stringify(user),this.jwt())
+          .map(this.extractData);//.catch(this.handleError);
            
-        return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
+       // return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {

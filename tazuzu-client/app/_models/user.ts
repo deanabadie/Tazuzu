@@ -1,6 +1,6 @@
 ﻿export class User {
-    id: number;
-    username: string;
+    govId: number;
+    userName: string;
     password: string;
     firstName: string;
     lastName: string;
@@ -11,4 +11,5 @@
     class: string;
     height: number;
     weight: number;
+    photoPath: string;
 }

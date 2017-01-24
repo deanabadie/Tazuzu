@@ -11,20 +11,20 @@
             <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
             <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
+            <label for="userName">Username</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="model.userName" #userName="ngModel" required />
+            <div *ngIf="f.submitted && !userName.valid" class="help-block">Username is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
             <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !studentId.valid }">
-            <label for="studentId">ID</label>
-            <input type="number" class="form-control" name="studentId" [(ngModel)]="model.studentId" #studentId="ngModel" required />
-            <div *ngIf="f.submitted && !studentId.valid" class="help-block">ID is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !govId.valid }">
+            <label for="govId">ID</label>
+            <input type="number" class="form-control" name="govId" [(ngModel)]="model.govId" #govId="ngModel" required />
+            <div *ngIf="f.submitted && !govId.valid" class="help-block">ID is required</div>
         </div>
         <div class="form-group">
             <label for="gender">Gender</label>
@@ -66,6 +66,11 @@
             <label for="weight">Weight</label>
             <input type="number" class="form-control" name="school" [(ngModel)]="model.weight" #weight="ngModel" required />
             <div *ngIf="f.submitted && !weight.valid" class="help-block">Weight is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
+            <label for="photoPath">Photo path</label>
+            <input type="text" class="form-control" name="photoPath" [(ngModel)]="model.photoPath" #photoPath="ngModel" required />
+            <div *ngIf="f.submitted && !photoPath.valid" class="help-block">Photo path is required</div>
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Register</button>
