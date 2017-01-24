@@ -9,51 +9,41 @@ public class Student extends User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @NotNull
-    private long studentId;
-    @NotNull
-    private long groupId;
+    private Long govId;
+
     @NotNull
     private double height;
+
     @NotNull
     private double weight;
 
+    @NotNull
+    private Long groupId;
+
     public Student() {}
 
-    public long getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(long groupId) {
+    public void setGroupId(Long groupId) {
         this.groupId = groupId;
     }
 
     @Override
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    @Override
-    public void setId(long id) {
-        this.id = id;
+    public Long getGovId() {
+        return govId;
     }
 
-    public long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(long id) {
-        this.studentId = id;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setGovId(Long govId) {
+        this.govId = govId;
     }
 
     public double getHeight() {
@@ -62,5 +52,13 @@ public class Student extends User {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }

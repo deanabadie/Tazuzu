@@ -1,12 +1,10 @@
 package com.tazuzu.user.domain;
 
-import org.hibernate.annotations.Entity;
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@SuppressWarnings("unused")
 public class Teacher extends User {
 
     @Id
@@ -16,7 +14,7 @@ public class Teacher extends User {
     @NotNull
     private Long groupId;
 
-    public Teacher(Teacher teacher) {}
+    public Teacher() {}
 
     public Long getGroupId() {
         return groupId;

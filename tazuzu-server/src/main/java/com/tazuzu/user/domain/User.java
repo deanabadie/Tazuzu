@@ -18,7 +18,7 @@ public abstract class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(unique = true, nullable = false)
     @NotNull
@@ -42,6 +42,9 @@ public abstract class User {
     @NotNull
     private String photoPath;
 
+    @NotNull
+    private String gender;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -55,11 +58,11 @@ public abstract class User {
 
     public User() {}
 
-    public long getUserId() {
+    public Long getUserId() {
         return id;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.id = userId;
     }
 
@@ -111,11 +114,11 @@ public abstract class User {
         this.photoPath = photoPath;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,5 +144,13 @@ public abstract class User {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
