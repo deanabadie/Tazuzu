@@ -6,6 +6,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 import java.util.TimeZone;
 
+/**
+ * SpringBoot Main Application:
+ * Sets up default configuration, starts spring application context (containers),
+ * performs class path scan (service, controller annotations etc.) and starts Tomcat server
+ */
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-@RestController
+@RestController //Means everything we do will be converted into JSON and be sent as an HTTP response
 @RequestMapping(value = "/students")
 @SuppressWarnings("unused")
 public class StudentController {
