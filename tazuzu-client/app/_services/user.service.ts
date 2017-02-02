@@ -18,14 +18,14 @@ export class UserService {
     }
 
     create(user: User) {
-      return this.http.post('http://nofar-pc:8080/api/students', JSON.stringify(user),this.jwt())
+      return this.http.post('http://localhost:8080/api/students', JSON.stringify(user),this.jwt())
           .map(this.extractData);//.catch(this.handleError);
            
        // return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put('/api/users/' + user.govId, user, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
