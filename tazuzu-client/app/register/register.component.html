@@ -1,12 +1,12 @@
 ﻿<div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
             <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
             <label for="lastName">Last Name</label>
             <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
             <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
@@ -52,8 +52,8 @@
         </div>
         <div class="form-group">
             <label for="class">Class</label>
-            <select class="form-control" id="groupId" name="groupId"
-            [(ngModel)]="model.groupId" #groupId="ngModel" required>
+            <select class="form-control" id="class" name="class"
+            [(ngModel)]="model.class" #class="ngModel" required>
             <option *ngFor="let class of classes" [value]="class">{{class}}</option>
             </select>
         </div> 
@@ -62,12 +62,12 @@
             <input type="number" class="form-control" name="school" [(ngModel)]="model.height" #height="ngModel" required />
             <div *ngIf="f.submitted && !height.valid" class="help-block">Height is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !weight.valid }">
             <label for="weight">Weight</label>
             <input type="number" class="form-control" name="school" [(ngModel)]="model.weight" #weight="ngModel" required />
             <div *ngIf="f.submitted && !weight.valid" class="help-block">Weight is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoPath.valid }">
             <label for="photoPath">Photo path</label>
             <input type="text" class="form-control" name="photoPath" [(ngModel)]="model.photoPath" #photoPath="ngModel" required />
             <div *ngIf="f.submitted && !photoPath.valid" class="help-block">Photo path is required</div>
