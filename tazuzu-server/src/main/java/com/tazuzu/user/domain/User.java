@@ -1,6 +1,7 @@
 package com.tazuzu.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tazuzu.general.domain.BaseEntity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
@@ -14,7 +15,7 @@ import java.util.Date;
 @DiscriminatorColumn(name = "user_type")
 //@Where(clause = "deleted_at!=null")
 @SuppressWarnings("unused")
-public abstract class User {
+public abstract class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,7 +34,7 @@ public abstract class User {
     @Column(unique = true)
     private String email;
 
-    @JsonIgnore
+    @NotNull
     private String password;
 
     @NotNull
@@ -44,17 +45,6 @@ public abstract class User {
 
     @NotNull
     private String gender;
-
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedAt;
 
     public User() {}
 
@@ -128,22 +118,6 @@ public abstract class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getGender() {
