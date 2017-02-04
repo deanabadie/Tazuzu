@@ -1,6 +1,5 @@
-package com.tazuzu.user.web;
+package com.tazuzu.user.webController;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

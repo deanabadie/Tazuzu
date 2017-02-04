@@ -1,5 +1,7 @@
 package com.tazuzu.user.service;
 
+import com.tazuzu.organization.repository.ClassRepository;
+import com.tazuzu.organization.repository.SchoolRepository;
 import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +46,18 @@ public class StudentServiceImpl {
     @Transactional
     public Student createStudent(Student s) {
         Student newStudent = new Student();
-        newStudent.setEmail(s.getEmail());
+        newStudent.setUserName(s.getUserName());
         newStudent.setFirstName(s.getFirstName());
         newStudent.setLastName(s.getLastName());
-        newStudent.setGroupId(s.getGroupId());
+        newStudent.setEmail(s.getEmail());
         newStudent.setPhotoPath(s.getPhotoPath());
-        newStudent.setUserName(s.getUserName());
         newStudent.setActivated(true);
+        newStudent.setGender(s.getGender());
+        newStudent.setGovId(s.getGovId());
+        newStudent.setHeight(s.getHeight());
+        newStudent.setWeight(s.getWeight());
+        newStudent.setSchoolName(s.getSchoolName());
+        newStudent.setSchoolClass(s.getSchoolClass());
         newStudent.setUserId(s.getUserId());
 
         return studentRepository.save(newStudent);
@@ -64,5 +71,4 @@ public class StudentServiceImpl {
     public Boolean exists(Long id) {
         return studentRepository.exists(id);
     }
-
 }

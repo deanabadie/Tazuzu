@@ -1,5 +1,7 @@
 package com.tazuzu.user.domain;
 
+import com.tazuzu.organization.domain.School;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -21,17 +23,12 @@ public class Student extends User {
     private double weight;
 
     @NotNull
-    private Long groupId;
+    private String schoolName;
+
+    @NotNull
+    private String schoolClass;
 
     public Student() {}
-
-    public Long getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
-    }
 
     @Override
     public Long getId() {
@@ -60,5 +57,21 @@ public class Student extends User {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public String getSchoolClass() {
+        return schoolClass;
+    }
+
+    public void setSchoolClass(String schoolClass) {
+        this.schoolClass = schoolClass;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 }

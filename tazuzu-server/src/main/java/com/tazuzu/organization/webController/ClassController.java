@@ -1,4 +1,4 @@
-package com.tazuzu.organization.controller;
+package com.tazuzu.organization.webController;
 
 import com.tazuzu.organization.domain.Class;
 import com.tazuzu.organization.service.ClassService;

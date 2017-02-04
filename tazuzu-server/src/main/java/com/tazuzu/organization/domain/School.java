@@ -1,5 +1,7 @@
 package com.tazuzu.organization.domain;
 
+import com.tazuzu.general.domain.BaseEntity;
+
 import javax.persistence.*;
 
 @Entity

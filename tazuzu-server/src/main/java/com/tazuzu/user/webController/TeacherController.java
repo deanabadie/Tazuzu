@@ -1,4 +1,4 @@
-package com.tazuzu.user.web;
+package com.tazuzu.user.webController;
 
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.service.TeacherServiceImpl;
