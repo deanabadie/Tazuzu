@@ -45,22 +45,22 @@ public class StudentController {
             throw new EntityNotFoundException("Could not find id " + id);
         }
 
-        Student student = service.updateStudent(studentRequest);
+        Student student = service.updateStudent(id, studentRequest);
 
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{username}")
-    public ResponseEntity<Student> updateStudent(@PathVariable String username, @RequestBody StudentRequest studentRequest) {
-
-//        if ( !service.exists(username) ) {
-//            throw new EntityNotFoundException("Could not ...");
-//        }
-
-        Student student = service.updateStudent(studentRequest);
-
-        return new ResponseEntity<>(student, HttpStatus.OK);
-    }
+//    @PutMapping(value = "/{username}")
+//    public ResponseEntity<Student> updateStudent(@PathVariable String username, @RequestBody StudentRequest studentRequest) {
+//
+////        if ( !service.exists(username) ) {
+////            throw new EntityNotFoundException("Could not ...");
+////        }
+//
+//        Student student = service.updateStudent(studentRequest);
+//
+//        return new ResponseEntity<>(student, HttpStatus.OK);
+//    }
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody StudentRequest studentRequest) {
         Student student = service.createStudent(studentRequest);

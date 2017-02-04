@@ -60,11 +60,14 @@ public class StudentServiceImpl {
     }
 
     @Transactional
-    public Student updateStudent(StudentRequest studentRequest) {
+    public Student updateStudent(Long id, StudentRequest studentRequest) {
 
-//        Long id = classRepository.getOneByUsername(username);
+        Student originalStudent = studentRepository.findOne(id);
 
         Student newStudent = new Student(studentRequest);
+        newStudent.setCreatedAt(originalStudent.getCreatedAt());
+        newStudent.setDeletedAt(originalStudent.getDeletedAt());
+        newStudent.setId(id);
         School school = schoolRepository.findByName(studentRequest.getSchoolName());
         newStudent.setSchool(school);
         Class schoolClass = classRepository.findBySchoolNameAndName(studentRequest.getSchoolName(), studentRequest.getSchoolClass());
