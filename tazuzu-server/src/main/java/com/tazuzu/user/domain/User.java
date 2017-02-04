@@ -44,7 +44,7 @@ public abstract class User extends BaseEntity {
     private String photoPath;
 
     @NotNull
-    private String gender;
+    private char gender;
 
     public User() {}
 
@@ -120,11 +120,11 @@ public abstract class User extends BaseEntity {
         this.password = password;
     }
 
-    public String getGender() {
+    public char getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(char gender) {
         this.gender = gender;
     }
 }

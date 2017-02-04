@@ -1,9 +1,11 @@
 package com.tazuzu.user.domain;
 
+import com.tazuzu.organization.domain.Class;
 import com.tazuzu.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")
@@ -23,16 +25,42 @@ public class Student extends User {
     private double weight;
 
     @NotNull
-    private String schoolName;
+    @ManyToOne
+    private School school;
 
     @NotNull
-    private String schoolClass;
+    @ManyToOne
+    private Class schoolClass;
+//
+//    @NotNull
+//    private Date dateOfBirth;
 
     public Student() {}
 
+    public Student(StudentRequest sr){
+        this.setUserName(sr.getUserName());
+        this.setFirstName(sr.getFirstName());
+        this.setLastName(sr.getLastName());
+        this.setEmail(sr.getEmail());
+        this.setPhotoPath(sr.getPhotoPath());
+        this.setActivated(true);
+        this.setGender(sr.getGender());
+        this.setGovId(sr.getGovId());
+        this.setHeight(sr.getHeight());
+        this.setWeight(sr.getWeight());
+        this.setPassword(sr.getPassword());
+//        this.setDateOfBirth(sr.getDateOfBirth());
+//        this.setSchool(sr.getSchoolName());
+//        this.setSchoolClass(sr.getSchoolClass());
+    }
     @Override
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public void setId(Long id){
+        this.id = id;
     }
 
     public Long getGovId() {
@@ -59,19 +87,27 @@ public class Student extends User {
         this.weight = weight;
     }
 
-    public String getSchoolName() {
-        return schoolName;
+    public School getSchool() {
+        return school;
     }
 
-    public String getSchoolClass() {
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public Class getSchoolClass() {
         return schoolClass;
     }
 
-    public void setSchoolClass(String schoolClass) {
+    public void setSchoolClass(Class schoolClass) {
         this.schoolClass = schoolClass;
     }
-
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
+//
+//    public Date getDateOfBirth() {
+//        return dateOfBirth;
+//    }
+//
+//    public void setDateOfBirth(Date dateOfBirth) {
+//        this.dateOfBirth = dateOfBirth;
+//    }
 }

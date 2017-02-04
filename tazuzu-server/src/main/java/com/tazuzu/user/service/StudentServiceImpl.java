@@ -1,8 +1,11 @@
 package com.tazuzu.user.service;
 
+import com.tazuzu.organization.domain.Class;
+import com.tazuzu.organization.domain.School;
 import com.tazuzu.organization.repository.ClassRepository;
 import com.tazuzu.organization.repository.SchoolRepository;
 import com.tazuzu.user.domain.Student;
+import com.tazuzu.user.domain.StudentRequest;
 import com.tazuzu.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +23,8 @@ import java.util.Optional;
 public class StudentServiceImpl {
 
     private final StudentRepository studentRepository;
-
+    private final ClassRepository classRepository;
+    private final SchoolRepository schoolRepository;
     /**
      * Auto wired is injecting a service representing the required type
      * Because we declared StudentRepository as a @Repository (which is just another type of @Component)
@@ -31,8 +35,10 @@ public class StudentServiceImpl {
      * Do not do it :)
      */
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, ClassRepository classRepository, SchoolRepository schoolRepository) {
         this.studentRepository = studentRepository;
+        this.classRepository = classRepository;
+        this.schoolRepository = schoolRepository;
     }
 
     public Student getStudent(Long studentId) {
@@ -44,28 +50,26 @@ public class StudentServiceImpl {
     }
 
     @Transactional
-    public Student createStudent(Student s) {
-        Student newStudent = new Student();
-        newStudent.setUserName(s.getUserName());
-        newStudent.setFirstName(s.getFirstName());
-        newStudent.setLastName(s.getLastName());
-        newStudent.setEmail(s.getEmail());
-        newStudent.setPhotoPath(s.getPhotoPath());
-        newStudent.setActivated(true);
-        newStudent.setGender(s.getGender());
-        newStudent.setGovId(s.getGovId());
-        newStudent.setHeight(s.getHeight());
-        newStudent.setWeight(s.getWeight());
-        newStudent.setSchoolName(s.getSchoolName());
-        newStudent.setSchoolClass(s.getSchoolClass());
-        newStudent.setUserId(s.getUserId());
-
+    public Student createStudent(StudentRequest s) {
+        Student newStudent = new Student(s);
+        School school = schoolRepository.findByName(s.getSchoolName());
+        newStudent.setSchool(school);
+        Class schoolClass = classRepository.findBySchoolNameAndName(s.getSchoolName(), s.getSchoolClass());
+        newStudent.setSchoolClass(schoolClass);
         return studentRepository.save(newStudent);
     }
 
     @Transactional
-    public Student updateStudent(Student student) {
-        return studentRepository.save(student);
+    public Student updateStudent(StudentRequest studentRequest) {
+
+//        Long id = classRepository.getOneByUsername(username);
+
+        Student newStudent = new Student(studentRequest);
+        School school = schoolRepository.findByName(studentRequest.getSchoolName());
+        newStudent.setSchool(school);
+        Class schoolClass = classRepository.findBySchoolNameAndName(studentRequest.getSchoolName(), studentRequest.getSchoolClass());
+        newStudent.setSchoolClass(schoolClass);
+        return studentRepository.save(newStudent);
     }
 
     public Boolean exists(Long id) {

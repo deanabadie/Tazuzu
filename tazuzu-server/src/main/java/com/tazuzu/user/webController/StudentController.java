@@ -1,6 +1,7 @@
 package com.tazuzu.user.webController;
 
 import com.tazuzu.user.domain.Student;
+import com.tazuzu.user.domain.StudentRequest;
 import com.tazuzu.user.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,19 +40,30 @@ public class StudentController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody StudentRequest studentRequest) {
         if ( !service.exists(id) ) {
-            throw new EntityNotFoundException("Could not ...");
+            throw new EntityNotFoundException("Could not find id " + id);
         }
 
-        student = service.updateStudent(student);
+        Student student = service.updateStudent(studentRequest);
 
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/{username}")
+    public ResponseEntity<Student> updateStudent(@PathVariable String username, @RequestBody StudentRequest studentRequest) {
+
+//        if ( !service.exists(username) ) {
+//            throw new EntityNotFoundException("Could not ...");
+//        }
+
+        Student student = service.updateStudent(studentRequest);
+
+        return new ResponseEntity<>(student, HttpStatus.OK);
+    }
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        student = service.createStudent(student);
+    public ResponseEntity<Student> createStudent(@RequestBody StudentRequest studentRequest) {
+        Student student = service.createStudent(studentRequest);
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 
