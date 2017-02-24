@@ -5,7 +5,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -19,9 +18,9 @@ public class Activity {
     @NotNull
     private String activityName;
 
-    private Long ActivityTypeId;
+    private Long activityTypeId;
 
-    private int NumOfMeasurements;
+    private int numOfMeasurements;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -37,5 +36,21 @@ public class Activity {
     private long LastEditedBy;
 
     public Activity (){}
+
+    public Long getActivityTypeId() { return activityTypeId; }
+
+    public void setActivityTypeId(Long activityTypeId) { this.activityTypeId = activityTypeId; }
+
+    public String getActivityName() { return activityName; }
+
+    public void setActivityName(String activityName) { this.activityName = activityName; }
+
+    public int getNumOfMeasurents() { return numOfMeasurements; }
+
+    public void setNumOfMeasurents(int numOfMeasurents) { this.numOfMeasurements = numOfMeasurents; }
+
+    public Long getId() { return activityId; }
+
+    public void setId(Long id) { this.activityId = id; }
 
 }

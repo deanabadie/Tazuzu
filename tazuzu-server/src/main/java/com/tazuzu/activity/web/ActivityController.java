@@ -1,7 +1,7 @@
 package com.tazuzu.activity.web;
 
 import com.tazuzu.activity.domain.Activity;
-import com.tazuzu.activity.service.ActivityService;
+import com.tazuzu.activity.service.ActivityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @SuppressWarnings("unused")
 public class ActivityController {
 
-    private final ActivityService activityService;
+    private final ActivityServiceImpl activityService;
 
     @Autowired
-    public ActivityController(ActivityService activityService) {
+    public ActivityController(ActivityServiceImpl activityService) {
         this.activityService = activityService;
     }
 
