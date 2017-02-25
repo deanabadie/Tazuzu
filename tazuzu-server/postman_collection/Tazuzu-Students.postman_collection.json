@@ -1,0 +1,55 @@
+{
+	"id": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+	"name": "Tazuzu-Students",
+	"description": "",
+	"order": [
+		"0cf0c866-370c-a666-bcbe-077a2bd8cca8",
+		"4d1b6c58-9666-248f-3d75-9615edfb7a88"
+	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "0cf0c866-370c-a666-bcbe-077a2bd8cca8",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/students",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488011894784,
+			"name": "POST - /students",
+			"description": "",
+			"collectionId": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		},
+		{
+			"id": "4d1b6c58-9666-248f-3d75-9615edfb7a88",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/students/1",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT - /students/{id}",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1488012090091,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar123@post.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		}
+	]
+}

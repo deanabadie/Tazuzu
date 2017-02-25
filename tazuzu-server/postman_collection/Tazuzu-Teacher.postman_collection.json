@@ -1,0 +1,53 @@
+{
+	"id": "b4cf3596-46c0-fc49-124f-6a1fcdb1e657",
+	"name": "Tazuzu-Teacher",
+	"description": "",
+	"order": [
+		"61940723-fbef-79e3-0beb-8c4a353d91b0",
+		"4b667d33-008e-f80c-b4f9-1b03ae4de253"
+	],
+	"folders": [],
+	"timestamp": 1488012201364,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "4b667d33-008e-f80c-b4f9-1b03ae4de253",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/teachers/3",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488011992722,
+			"name": "PUT - /teacher/{id}",
+			"description": "",
+			"collectionId": "b4cf3596-46c0-fc49-124f-6a1fcdb1e657",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"bla\",\n  \"lastName\": \"bla\",\n  \"userName\": \"blaUpdate\",\n  \"password\": \"12345\",\n  \"gender\": \"F\",\n  \"email\": \"1nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		},
+		{
+			"id": "61940723-fbef-79e3-0beb-8c4a353d91b0",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/teachers",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488011819451,
+			"name": "POST - /teachers",
+			"description": "",
+			"collectionId": "b4cf3596-46c0-fc49-124f-6a1fcdb1e657",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"bla\",\n  \"lastName\": \"bla\",\n  \"userName\": \"bla\",\n  \"password\": \"12345\",\n  \"gender\": \"F\",\n  \"email\": \"nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"id": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+	"name": "Tazuzu- Classes",
+	"description": "",
+	"order": [
+		"833c7c21-8533-2038-4e74-077c9a90c739"
+	],
+	"folders": [],
+	"timestamp": 1488012280952,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "833c7c21-8533-2038-4e74-077c9a90c739",
+			"name": "POST - /classes",
+			"description": "",
+			"collectionId": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+			"method": "POST",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}",
+			"url": "http://localhost:8080/api/schools",
+			"responses": []
+		}
+	]
+}

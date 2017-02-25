@@ -1,0 +1,27 @@
+{
+	"id": "e737a50a-c7b8-6d5c-ee31-4b838b4d5fab",
+	"name": "Tazuzu- Schools",
+	"description": "",
+	"order": [
+		"c1c9f2ea-e47d-2218-43c3-e189d4fd9021"
+	],
+	"folders": [],
+	"timestamp": 1488012260293,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "c1c9f2ea-e47d-2218-43c3-e189d4fd9021",
+			"name": "POST - /schools",
+			"description": "",
+			"collectionId": "e737a50a-c7b8-6d5c-ee31-4b838b4d5fab",
+			"method": "POST",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n  \"name\": \"TAU\",\n  \"city\": \"Tel-Aviv\"\n}",
+			"url": "http://localhost:8080/api/schools",
+			"responses": []
+		}
+	]
+}
