@@ -3,8 +3,11 @@ package com.tazuzu.user.service;
 import com.tazuzu.organization.domain.School;
 import com.tazuzu.organization.repository.ClassRepository;
 import com.tazuzu.organization.repository.SchoolRepository;
+import com.tazuzu.organization.service.ClassService;
+import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.domain.TeacherRequest;
+import com.tazuzu.user.repository.StudentRepository;
 import com.tazuzu.user.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,18 +18,21 @@ import java.util.Optional;
 
 @SuppressWarnings("unused")
 @Service
-public class TeacherServiceImpl{
+public class TeacherService {
 
     private final TeacherRepository teacherRepository;
-    private final ClassRepository classRepository;
+    private final StudentRepository studentRepository;
     private final SchoolRepository schoolRepository;
+    private final ClassService classService;
 
 
     @Autowired
-    public TeacherServiceImpl(TeacherRepository teacherRepository, ClassRepository classRepository, SchoolRepository schoolRepository) {
+    public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository,
+                          SchoolRepository schoolRepository, ClassService classService) {
         this.teacherRepository = teacherRepository;
-        this.classRepository = classRepository;
+        this.studentRepository = studentRepository;
         this.schoolRepository = schoolRepository;
+        this.classService = classService;
     }
 
     public Teacher getTeacher(Long teacherId) {
@@ -66,4 +72,10 @@ public class TeacherServiceImpl{
     public Boolean exists(Long id) {
         return teacherRepository.exists(id);
     }
+
+//    @Transactional
+//    public List<Student> getTeachersClassStudents(Class cls){
+////        return classService.getClassStudents(cls);
+//        return studentRepository.findByClass(cls);
+//    }
 }

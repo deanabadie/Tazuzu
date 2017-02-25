@@ -8,9 +8,9 @@
 ///**
 // * Created by Noy on 19/01/2017.
 // */
-//public class StudentServiceImplTest extends StudentServiceImpl {
+//public class StudentServiceImplTest extends StudentService {
 //    private StudentRepository studentRepository;
-//    private StudentServiceImpl studentService;
+//    private StudentService studentService;
 //    /**
 //     * Auto wired is injecting a service representing the required type
 //     * Because we declared StudentRepository as a @Repository (which is just another type of @Component)

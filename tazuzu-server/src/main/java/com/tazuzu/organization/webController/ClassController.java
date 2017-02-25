@@ -1,6 +1,7 @@
 package com.tazuzu.organization.webController;
 
 import com.tazuzu.organization.domain.Class;
+import com.tazuzu.organization.domain.ClassRequest;
 import com.tazuzu.organization.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,29 +18,6 @@ public class ClassController {
     @Autowired
     public ClassController(ClassService classService) {
         this.classService = classService;
-    }
-
-    public static class ClassRequest {
-
-        private String name;
-
-        private Long schoolId;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Long getSchoolId() {
-            return schoolId;
-        }
-
-        public void setSchoolId(Long schoolId) {
-            this.schoolId = schoolId;
-        }
     }
 
     @PostMapping
@@ -63,5 +41,4 @@ public class ClassController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
 }

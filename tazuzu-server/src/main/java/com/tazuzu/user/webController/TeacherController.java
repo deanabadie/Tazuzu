@@ -2,7 +2,7 @@ package com.tazuzu.user.webController;
 
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.domain.TeacherRequest;
-import com.tazuzu.user.service.TeacherServiceImpl;
+import com.tazuzu.user.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class TeacherController {
 
-    private final TeacherServiceImpl service;
+    private final TeacherService service;
 
     @Autowired
-    public TeacherController(TeacherServiceImpl teacherService) {
+    public TeacherController(TeacherService teacherService) {
         this.service = teacherService;
     }
 

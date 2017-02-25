@@ -20,7 +20,7 @@ import java.util.Optional;
  * and can be injected to other Spring components
  */
 @Service
-public class StudentServiceImpl {
+public class StudentService {
 
     private final StudentRepository studentRepository;
     private final ClassRepository classRepository;
@@ -35,7 +35,7 @@ public class StudentServiceImpl {
      * Do not do it :)
      */
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository, ClassRepository classRepository, SchoolRepository schoolRepository) {
+    public StudentService(StudentRepository studentRepository, ClassRepository classRepository, SchoolRepository schoolRepository) {
         this.studentRepository = studentRepository;
         this.classRepository = classRepository;
         this.schoolRepository = schoolRepository;
@@ -78,4 +78,5 @@ public class StudentServiceImpl {
     public Boolean exists(Long id) {
         return studentRepository.exists(id);
     }
+
 }
