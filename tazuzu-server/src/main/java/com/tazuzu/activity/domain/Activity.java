@@ -1,5 +1,6 @@
 package com.tazuzu.activity.domain;
 
+import com.tazuzu.general.domain.BaseEntity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")
-public class Activity {
+public class Activity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -21,16 +22,6 @@ public class Activity {
     private Long activityTypeId;
 
     private int numOfMeasurements;
-
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date TimeOfCreation;
-
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date TimeOfLastEdit;
 
     @NotNull
     private long LastEditedBy;
@@ -45,12 +36,19 @@ public class Activity {
 
     public void setActivityName(String activityName) { this.activityName = activityName; }
 
-    public int getNumOfMeasurents() { return numOfMeasurements; }
-
-    public void setNumOfMeasurents(int numOfMeasurents) { this.numOfMeasurements = numOfMeasurents; }
-
     public Long getId() { return activityId; }
 
     public void setId(Long id) { this.activityId = id; }
 
+    public void setNumOfMeasurements(int numOfMeasurements) {
+        this.numOfMeasurements = numOfMeasurements;
+    }
+
+    public int getNumOfMeasurements() {
+        return numOfMeasurements;
+    }
+
+    public void setLastEditedBy(long lastEditedBy) {
+        LastEditedBy = lastEditedBy;
+    }
 }

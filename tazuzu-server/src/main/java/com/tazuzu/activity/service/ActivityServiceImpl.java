@@ -1,8 +1,10 @@
 package com.tazuzu.activity.service;
 
 import com.tazuzu.activity.domain.Activity;
+import com.tazuzu.activity.domain.ActivityRequest;
 import com.tazuzu.activity.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -61,18 +63,26 @@ public class ActivityServiceImpl {
     public List<Activity> getAllActivities() { return activityRepository.findAll(); }
 
     @Transactional
-    public Activity createActivity(Activity a) {
+    public Activity createActivity(ActivityRequest activityRequest) {
 
         Activity newActivity = new Activity();
-        newActivity.setActivityName(a.getActivityName());
-        newActivity.setActivityTypeId(a.getActivityTypeId());
-        newActivity.setNumOfMeasurents(a.getNumOfMeasurents());
+        newActivity.setActivityName(activityRequest.getActivityName());
+        newActivity.setActivityTypeId(activityRequest.getActivityTypeId());
+        newActivity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
         return activityRepository.save(newActivity);
 
     }
 
     @Transactional
-    public Activity updateActivity(Activity activity) { return activityRepository.save(activity); }
+    public Activity updateActivity(Long id, ActivityRequest activityRequest) {
+
+        Activity originalActivity = activityRepository.findOne(id);
+
+        originalActivity.setActivityName(activityRequest.getActivityName());
+        originalActivity.setActivityTypeId(activityRequest.getActivityTypeId());
+        originalActivity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
+        return activityRepository.save(originalActivity);
+    }
 
     public Boolean exists(Long activityId) { return activityRepository.exists(activityId); }
 

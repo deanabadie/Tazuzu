@@ -42,7 +42,7 @@ public class TeacherController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Teacher> updateTeacher(@PathVariable Long id, @RequestBody TeacherRequest teacherRequest) {
         if ( !service.exists(id) ) {
-            throw new EntityNotFoundException("Could not find id " + id);
+            throw new EntityNotFoundException("Could not find teacher with given id: " + id);
         }
 
         Teacher teacher = service.updateTeacher(id, teacherRequest);

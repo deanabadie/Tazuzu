@@ -1,7 +1,7 @@
 package com.tazuzu.user.service;
 
+import com.tazuzu.organization.domain.Class;
 import com.tazuzu.organization.domain.School;
-import com.tazuzu.organization.repository.ClassRepository;
 import com.tazuzu.organization.repository.SchoolRepository;
 import com.tazuzu.organization.service.ClassService;
 import com.tazuzu.user.domain.Student;
@@ -73,9 +73,8 @@ public class TeacherService {
         return teacherRepository.exists(id);
     }
 
-//    @Transactional
-//    public List<Student> getTeachersClassStudents(Class cls){
-////        return classService.getClassStudents(cls);
-//        return studentRepository.findByClass(cls);
-//    }
+    @Transactional
+    public List<Student> getTeachersClassStudents(Class cls){
+        return studentRepository.findBySchoolClass(cls);
+    }
 }
