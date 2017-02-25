@@ -1,10 +1,12 @@
 {
-	"id": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+	"id": "81d54d16-c6f7-df8d-36a7-f6e96556d6bb",
 	"name": "Tazuzu-Students",
 	"description": "",
 	"order": [
-		"0cf0c866-370c-a666-bcbe-077a2bd8cca8",
-		"4d1b6c58-9666-248f-3d75-9615edfb7a88"
+		"010d6ef0-e3f6-72bc-c703-affc4ac37dfc",
+		"2d176d7d-0d88-1f63-cbfe-8fd6e280f927",
+		"35dc8625-8350-3e36-ab1e-8cda302abb51",
+		"6c6daad3-352b-86b2-4dd6-db9225d2dacb"
 	],
 	"folders": [],
 	"timestamp": 0,
@@ -12,7 +14,7 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "0cf0c866-370c-a666-bcbe-077a2bd8cca8",
+			"id": "010d6ef0-e3f6-72bc-c703-affc4ac37dfc",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
 			"url": "http://localhost:8080/api/students",
 			"preRequestScript": null,
@@ -26,18 +28,18 @@
 			"time": 1488011894784,
 			"name": "POST - /students",
 			"description": "",
-			"collectionId": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+			"collectionId": "81d54d16-c6f7-df8d-36a7-f6e96556d6bb",
 			"responses": [],
 			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
 		},
 		{
-			"id": "4d1b6c58-9666-248f-3d75-9615edfb7a88",
+			"id": "2d176d7d-0d88-1f63-cbfe-8fd6e280f927",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
 			"url": "http://localhost:8080/api/students/1",
 			"pathVariables": {},
 			"preRequestScript": null,
 			"method": "PUT",
-			"collectionId": "cd046ec9-238e-225a-7de0-045fafbf65aa",
+			"collectionId": "81d54d16-c6f7-df8d-36a7-f6e96556d6bb",
 			"data": [],
 			"dataMode": "raw",
 			"name": "PUT - /students/{id}",
@@ -49,6 +51,45 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
+			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar123@post.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		},
+		{
+			"id": "35dc8625-8350-3e36-ab1e-8cda302abb51",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/students",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488014096408,
+			"name": "GET- /students",
+			"description": "",
+			"collectionId": "81d54d16-c6f7-df8d-36a7-f6e96556d6bb",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		},
+		{
+			"id": "6c6daad3-352b-86b2-4dd6-db9225d2dacb",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/students/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488014184390,
+			"name": "GET- /students/{id}",
+			"description": "",
+			"collectionId": "81d54d16-c6f7-df8d-36a7-f6e96556d6bb",
+			"responses": [],
 			"rawModeData": "{\n  \"firstName\": \"Nofar\",\n  \"lastName\": \"Shoham\",\n  \"userName\": \"nofar\",\n  \"password\": \"1234\",\n  \"govId\": 12345,\n  \"gender\": \"F\",\n  \"email\": \"nofar123@post.com\",\n  \"schoolName\": \"Amal\",\n  \"schoolClass\": \"k\",\n  \"height\": 1.78,\n  \"weight\":60,\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
 		}
 	]
