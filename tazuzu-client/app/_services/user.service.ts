@@ -18,10 +18,10 @@ export class UserService {
     }
 
     create(user: User) {
-      return this.http.post('http://localhost:8080/api/students', JSON.stringify(user),this.jwt())
-          .map(this.extractData);//.catch(this.handleError);
+     // return this.http.post('http://nofar-pc:8080/api/students', JSON.stringify(user),this.jwt())
+       //   .map(this.extractData);//.catch(this.handleError);
            
-       // return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
+    return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {
@@ -55,10 +55,16 @@ export class UserService {
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
+       let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       if (currentUser && currentUser.token) {
+        let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        headers.append('Access-Control-Allow-Origin','*');
+        return new RequestOptions({ headers: headers });
+
+
+           // let headers = new Headers({ 'Content-Type': 'application/json' });
+           // headers.append('Access-Control-Allow-Origin','*');
+           // return new RequestOptions({ headers: headers });
         }
     }
 }

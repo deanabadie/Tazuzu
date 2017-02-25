@@ -1,4 +1,4 @@
-package com.tazuzu.organization.domain;
+package com.tazuzu.general.domain;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -9,7 +9,9 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 @MappedSuperclass
-class BaseEntity {
+@SuppressWarnings("unused")
+
+public class BaseEntity {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,6 +1,6 @@
 package com.tazuzu.organization.service;
 
-import com.tazuzu.organization.controller.ClassController;
+import com.tazuzu.organization.webController.ClassController;
 import com.tazuzu.organization.domain.Class;
 import com.tazuzu.organization.repository.ClassRepository;
 import com.tazuzu.organization.repository.SchoolRepository;
@@ -31,4 +31,4 @@ public class ClassService {
         return repository.findOne(id);
     }
 
-}
+    }
