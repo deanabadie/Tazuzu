@@ -10,9 +10,9 @@ import { AlertService, UserService } from '../_services/index';
 
 export class RegisterComponent {
     
-    schools = ['1', '2','3', '4'];
+    schools = ['1', '2','3', '4', 'Amal'];
 
-    classes = ['1', '2','3', '4'];
+    classes = ['1', '2','3', '4', 'k'];
 
     genders = ['M','F'];
      
