@@ -31,7 +31,7 @@ public abstract class User extends BaseEntity {
     @NotNull
     private String lastName;
 
-    @Column(unique = true)
+//    @Column(unique = true)
     private String email;
 
     @NotNull
@@ -47,14 +47,6 @@ public abstract class User extends BaseEntity {
     private char gender;
 
     public User() {}
-
-    public Long getUserId() {
-        return id;
-    }
-
-    public void setUserId(Long userId) {
-        this.id = userId;
-    }
 
     public String getUserName() {
         return userName;

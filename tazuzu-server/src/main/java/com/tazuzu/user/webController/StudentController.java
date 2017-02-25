@@ -24,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Student> getEntity(@PathVariable  Long id) {
+    public ResponseEntity<Student> getEntity(@PathVariable Long id) {
         Student s = service.getStudent(id);
 
         if ( s == null ) {
@@ -46,21 +46,9 @@ public class StudentController {
         }
 
         Student student = service.updateStudent(id, studentRequest);
-
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-//    @PutMapping(value = "/{username}")
-//    public ResponseEntity<Student> updateStudent(@PathVariable String username, @RequestBody StudentRequest studentRequest) {
-//
-////        if ( !service.exists(username) ) {
-////            throw new EntityNotFoundException("Could not ...");
-////        }
-//
-//        Student student = service.updateStudent(studentRequest);
-//
-//        return new ResponseEntity<>(student, HttpStatus.OK);
-//    }
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody StudentRequest studentRequest) {
         Student student = service.createStudent(studentRequest);

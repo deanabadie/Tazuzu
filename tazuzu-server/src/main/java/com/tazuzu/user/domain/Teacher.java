@@ -1,5 +1,7 @@
 package com.tazuzu.user.domain;
 
+import com.tazuzu.organization.domain.School;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -12,17 +14,28 @@ public class Teacher extends User {
     private Long id;
 
     @NotNull
-    private Long groupId;
+    @ManyToOne
+    private School school;
 
     public Teacher() {}
 
-    public Long getGroupId() {
-        return groupId;
+    public Teacher(TeacherRequest teacherRequest){
+        this.setEmail(teacherRequest.getEmail());
+        this.setPassword(teacherRequest.getPassword());
+        this.setActivated(true);
+        this.setFirstName(teacherRequest.getFirstName());
+        this.setGender(teacherRequest.getGender());
+        this.setLastName(teacherRequest.getLastName());
+        this.setUserName(teacherRequest.getUserName());
+        this.setPhotoPath(teacherRequest.getPhotoPath());
     }
 
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
+    public School getSchool() {
+        return school;
     }
 
+    public void setSchool(School school) {
+        this.school = school;
+    }
 }
 
