@@ -18,10 +18,10 @@ export class UserService {
     }
 
     create(user: User) {
-     // return this.http.post('http://nofar-pc:8080/api/students', JSON.stringify(user),this.jwt())
-       //   .map(this.extractData);//.catch(this.handleError);
+      return this.http.post('http://nofar-pc:8080/api/students', JSON.stringify(user),this.jwt())
+          .map(this.extractData);//.catch(this.handleError);
            
-    return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
+    //return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {
@@ -39,32 +39,20 @@ export class UserService {
         return body.data || { };
     }
 
-  //  private handleError (error: Response | any){
-        // In a real world app, we might use a remote logging infrastructure
-   //let errMsg: string;
-   // if (error instanceof Response) {
-//const body = error.json() || '';
-//const err = body.error || JSON.stringify(body);
-   //   errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
- //   } else {
-    //  errMsg = error.message ? error.message : error.toString();
- //   }
-  //  console.error(errMsg);
-  //  return Observable.throw(errMsg);
-  //  }
-
     private jwt() {
         // create authorization header with jwt token
-       let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       if (currentUser && currentUser.token) {
-        let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-        headers.append('Access-Control-Allow-Origin','*');
-        return new RequestOptions({ headers: headers });
+       //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       //if (currentUser && currentUser.token) {
+        //let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        //headers.append('Access-Control-Allow-Origin','*');
+        //return new RequestOptions({ headers: headers });
 
 
-           // let headers = new Headers({ 'Content-Type': 'application/json' });
-           // headers.append('Access-Control-Allow-Origin','*');
-           // return new RequestOptions({ headers: headers });
+            let headers = new Headers({ 'Content-Type': 'application/json' });
+           headers.append('Access-Control-Allow-Origin','*');
+           headers.append('Access-Control-Allow-Methods','*');
+           headers.append('Access-Control-Allow-Headers','*');
+           headers.append('Access-Control-Allow-Credentials','true');
+            return new RequestOptions({ headers: headers });
         }
     }
-}

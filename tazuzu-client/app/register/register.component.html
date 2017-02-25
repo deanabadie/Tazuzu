@@ -46,14 +46,14 @@
         <div class="form-group">
             <label for="school">School</label>
             <select class="form-control" id="school" name="school"
-                [(ngModel)]="model.school" #school="ngModel" required>
+                [(ngModel)]="model.schoolName" #school="ngModel" required>
             <option *ngFor="let school of schools" [value]="school">{{school}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="class">Class</label>
             <select class="form-control" id="class" name="class"
-            [(ngModel)]="model.class" #class="ngModel" required>
+            [(ngModel)]="model.schoolClass" #class="ngModel" required>
             <option *ngFor="let class of classes" [value]="class">{{class}}</option>
             </select>
         </div> 

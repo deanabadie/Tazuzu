@@ -7,8 +7,8 @@
     gender: string;
     dateOfBirth: Date;
     email: string;
-    school: string;
-    class: string;
+    schoolName: string;
+    schoolClass: string;
     height: number;
     weight: number;
     photoPath: string;
