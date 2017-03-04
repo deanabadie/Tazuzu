@@ -1,0 +1,33 @@
+{
+	"id": "3e558546-29d3-8282-445a-23760b5b94b1",
+	"name": "Tazuzu - login",
+	"description": "",
+	"order": [
+		"92477a79-1750-7578-f157-c01d2b747957"
+	],
+	"folders": [],
+	"timestamp": 1488619016391,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "92477a79-1750-7578-f157-c01d2b747957",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488629747068,
+			"name": "POST - /students copy",
+			"description": "",
+			"collectionId": "3e558546-29d3-8282-445a-23760b5b94b1",
+			"responses": [],
+			"rawModeData": "{\n  \"userName\": \"nofar\",\n  \"password\": \"1234\"\n}"
+		}
+	]
+}
