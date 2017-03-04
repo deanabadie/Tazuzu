@@ -12,4 +12,6 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAll();
     List<Student> findBySchoolClass(Class cls);
+    Student findByUserName(String userName);
+//    boolean validatePassword(String username, String password);
 }

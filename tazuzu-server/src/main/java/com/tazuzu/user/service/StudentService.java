@@ -14,26 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Again... @Service is just another type of @Component
- * Each class annotated with @Service is treated inside the Spring container
- * and can be injected to other Spring components
- */
 @Service
 public class StudentService {
 
     private final StudentRepository studentRepository;
     private final ClassRepository classRepository;
     private final SchoolRepository schoolRepository;
-    /**
-     * Auto wired is injecting a service representing the required type
-     * Because we declared StudentRepository as a @Repository (which is just another type of @Component)
-     * We can inject every service/repository/component into other Spring components by using the autowired annotation
-     * You just declare a new constructor with all the types that you want to use and Spring is doing it for you...
-     *
-     * The initial example you did was declaring Autowired on a property and not on the constructor - which is bad practice
-     * Do not do it :)
-     */
+
     @Autowired
     public StudentService(StudentRepository studentRepository, ClassRepository classRepository, SchoolRepository schoolRepository) {
         this.studentRepository = studentRepository;

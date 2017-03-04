@@ -12,6 +12,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/teachers")
 @SuppressWarnings("unused")
 public class TeacherController {

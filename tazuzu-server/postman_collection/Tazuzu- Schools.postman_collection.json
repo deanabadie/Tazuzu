@@ -1,9 +1,10 @@
 {
-	"id": "e737a50a-c7b8-6d5c-ee31-4b838b4d5fab",
+	"id": "108024dd-e144-55ca-0b5c-6b4df5841da8",
 	"name": "Tazuzu- Schools",
 	"description": "",
 	"order": [
-		"c1c9f2ea-e47d-2218-43c3-e189d4fd9021"
+		"3e39a3b2-7543-cd19-bc50-4eefb3c56e53",
+		"6abb2fd3-d443-9300-c9bf-06ae571e5d98"
 	],
 	"folders": [],
 	"timestamp": 1488012260293,
@@ -11,17 +12,38 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "c1c9f2ea-e47d-2218-43c3-e189d4fd9021",
+			"id": "3e39a3b2-7543-cd19-bc50-4eefb3c56e53",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/schools/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488015025296,
+			"name": "GET- /schools/{id}",
+			"description": "",
+			"collectionId": "108024dd-e144-55ca-0b5c-6b4df5841da8",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
+		},
+		{
+			"id": "6abb2fd3-d443-9300-c9bf-06ae571e5d98",
 			"name": "POST - /schools",
 			"description": "",
-			"collectionId": "e737a50a-c7b8-6d5c-ee31-4b838b4d5fab",
+			"collectionId": "108024dd-e144-55ca-0b5c-6b4df5841da8",
 			"method": "POST",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
 			"dataMode": "raw",
 			"data": [],
 			"rawModeData": "{\n  \"name\": \"TAU\",\n  \"city\": \"Tel-Aviv\"\n}",
 			"url": "http://localhost:8080/api/schools",
-			"responses": []
+			"responses": [],
+			"preRequestScript": "",
+			"tests": ""
 		}
 	]
 }

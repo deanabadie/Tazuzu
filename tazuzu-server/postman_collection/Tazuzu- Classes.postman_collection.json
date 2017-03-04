@@ -3,7 +3,8 @@
 	"name": "Tazuzu- Classes",
 	"description": "",
 	"order": [
-		"833c7c21-8533-2038-4e74-077c9a90c739"
+		"833c7c21-8533-2038-4e74-077c9a90c739",
+		"6c54590a-2591-2d3a-f0f4-391f4357080b"
 	],
 	"folders": [],
 	"timestamp": 1488012280952,
@@ -11,17 +12,42 @@
 	"public": false,
 	"requests": [
 		{
+			"id": "6c54590a-2591-2d3a-f0f4-391f4357080b",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/classess/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488616980107,
+			"name": "GET- /classes/{id}",
+			"description": "",
+			"collectionId": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
+		},
+		{
 			"id": "833c7c21-8533-2038-4e74-077c9a90c739",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/classes",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488617071543,
 			"name": "POST - /classes",
 			"description": "",
 			"collectionId": "a29a336d-4b30-6d89-c39b-b49af63c9849",
-			"method": "POST",
-			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}",
-			"url": "http://localhost:8080/api/schools",
-			"responses": []
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"k\",\n  \"schoolId\": \"1\"\n}"
 		}
 	]
 }

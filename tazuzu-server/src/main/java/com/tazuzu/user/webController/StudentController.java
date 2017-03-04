@@ -12,6 +12,8 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController //Means everything we do will be converted into JSON and be sent as an HTTP response
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/students")
 @SuppressWarnings("unused")
 public class StudentController {
