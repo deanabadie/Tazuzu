@@ -10,11 +10,12 @@ import { AlertService, TeacherService } from '../_services/index';
 
 export class RegisterTeacherComponent {
 
-    schools = ['Rishon Le Zion - Mekif A', 'Rishon Le Zion - Mekif B',
-            'Rishon Le Zion - Mekif C', 'Rishon Le Zion - Mekif D'];
+    schools = ['1', '2','3', '4', 'Amal'];
 
-    genders = ['Male','Female'];
+    classes = ['1', '2','3', '4', 'k'];
 
+    genders = ['M','F'];
+    
     model: any = {};
     loading = false;
 
