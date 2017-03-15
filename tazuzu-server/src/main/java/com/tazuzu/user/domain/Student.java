@@ -5,7 +5,6 @@ import com.tazuzu.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")

@@ -1,12 +1,9 @@
 package com.tazuzu.activity.domain;
 
 import com.tazuzu.general.domain.BaseEntity;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")
