@@ -1,6 +1,6 @@
-package com.tazuzu.general.security.login.service;
+package com.tazuzu.security.login.service;
 
-import com.tazuzu.general.security.login.domain.LoginRequest;
+import com.tazuzu.security.login.domain.LoginRequest;
 import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.domain.User;

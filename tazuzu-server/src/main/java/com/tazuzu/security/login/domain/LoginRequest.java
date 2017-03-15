@@ -1,4 +1,4 @@
-package com.tazuzu.general.security.login.domain;
+package com.tazuzu.security.login.domain;
 
 public class LoginRequest {
 

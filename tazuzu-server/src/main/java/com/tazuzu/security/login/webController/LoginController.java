@@ -1,7 +1,7 @@
-package com.tazuzu.general.security.login.webController;
+package com.tazuzu.security.login.webController;
 
-import com.tazuzu.general.security.login.domain.LoginRequest;
-import com.tazuzu.general.security.login.service.LoginService;
+import com.tazuzu.security.login.domain.LoginRequest;
+import com.tazuzu.security.login.service.LoginService;
 import com.tazuzu.user.domain.Student;
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.domain.User;

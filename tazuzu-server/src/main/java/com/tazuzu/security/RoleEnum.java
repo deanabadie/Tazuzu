@@ -1,4 +1,4 @@
-package com.tazuzu.general.security;
+package com.tazuzu.security;
 
 
 public enum RoleEnum {

@@ -1,5 +1,9 @@
 package com.tazuzu.user.webController;
 
+import com.tazuzu.activity.domain.Activity;
+import com.tazuzu.activity.domain.ActivityRequest;
+import com.tazuzu.organization.domain.Class;
+import com.tazuzu.organization.domain.ClassRequest;
 import com.tazuzu.user.domain.Teacher;
 import com.tazuzu.user.domain.TeacherRequest;
 import com.tazuzu.user.service.TeacherService;
@@ -54,6 +58,13 @@ public class TeacherController {
     public ResponseEntity<Teacher> createTeacher(@RequestBody TeacherRequest teacherRequest) {
         Teacher teacher = service.createTeacher(teacherRequest);
         return new ResponseEntity<>(teacher, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/send")
+    public ResponseEntity<Activity> sendActivityToClass(@RequestBody ActivityRequest activityRequest,
+                                                        ClassRequest clsRequest){
+        Activity activity = service.sendActivityToClass(activityRequest, clsRequest);
+        return new ResponseEntity<>(activity, HttpStatus.OK);
     }
 
 }

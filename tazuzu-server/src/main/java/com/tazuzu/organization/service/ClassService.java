@@ -37,6 +37,14 @@ public class ClassService {
         return repository.findOne(id);
     }
 
+    public void sendActivityToAll(Class cls) {
+        List<Student> allStudents = studentRepository.findBySchoolClass(cls);
+        for (Student s: allStudents){
+//            s.updateActivity
+            System.out.print("Class and id: [" + s.getSchoolClass().getName() +", "+ s.getId() + "]");
+        }
+    }
+
 //    public List<Student> getClassStudents(Class cls){
 //
 //        List<Student> ans = studentRepository.findByClass(cls.getId());

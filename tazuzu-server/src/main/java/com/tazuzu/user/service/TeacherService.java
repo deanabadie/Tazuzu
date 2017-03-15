@@ -1,6 +1,9 @@
 package com.tazuzu.user.service;
 
+import com.tazuzu.activity.domain.Activity;
+import com.tazuzu.activity.domain.ActivityRequest;
 import com.tazuzu.organization.domain.Class;
+import com.tazuzu.organization.domain.ClassRequest;
 import com.tazuzu.organization.domain.School;
 import com.tazuzu.organization.repository.SchoolRepository;
 import com.tazuzu.organization.service.ClassService;
@@ -76,5 +79,21 @@ public class TeacherService {
     @Transactional
     public List<Student> getTeachersClassStudents(Class cls){
         return studentRepository.findBySchoolClass(cls);
+    }
+
+    public Activity sendActivityToClass(ActivityRequest activityRequest, ClassRequest clsRequest){
+        Class cls = new Class();
+        Class newClass = new Class();
+        newClass.setName(clsRequest.getName());
+        newClass.setSchool(schoolRepository.findOne(clsRequest.getSchoolId()));
+        classService.sendActivityToAll(cls);
+
+        Activity activity = new Activity();
+        activity.setActivityName(activityRequest.getActivityName());
+        activity.setActivityTypeId(activityRequest.getActivityTypeId());
+        activity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
+
+        classService.sendActivityToAll(cls);
+        return activity;
     }
 }

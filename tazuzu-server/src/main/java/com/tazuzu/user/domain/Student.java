@@ -1,10 +1,12 @@
 package com.tazuzu.user.domain;
 
+import com.tazuzu.activity.domain.Activity;
 import com.tazuzu.organization.domain.Class;
 import com.tazuzu.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @SuppressWarnings("unused")
@@ -30,6 +32,10 @@ public class Student extends User {
     @NotNull
     @ManyToOne
     private Class schoolClass;
+
+    @ManyToMany
+    private List<Activity> activities;
+
 //
 //    @NotNull
 //    private Date dateOfBirth;
