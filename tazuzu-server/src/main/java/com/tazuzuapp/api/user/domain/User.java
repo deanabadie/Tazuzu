@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type")
-//@Where(clause = "deleted_at!=null")
 @SuppressWarnings("unused")
 public abstract class User extends BaseEntity {
 
@@ -26,7 +25,6 @@ public abstract class User extends BaseEntity {
     @NotNull
     private String lastName;
 
-//    @Column(unique = true)
     private String email;
 
     @NotNull

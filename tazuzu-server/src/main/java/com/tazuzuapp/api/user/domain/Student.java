@@ -7,6 +7,7 @@ import com.tazuzuapp.api.organization.domain.School;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @SuppressWarnings("unused")
@@ -33,12 +34,8 @@ public class Student extends User {
     @ManyToOne
     private Class schoolClass;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
     private List<Activity> activities;
-
-//
-//    @NotNull
-//    private Date dateOfBirth;
 
     public Student() {}
 
@@ -54,10 +51,8 @@ public class Student extends User {
         this.setHeight(sr.getHeight());
         this.setWeight(sr.getWeight());
         this.setPassword(sr.getPassword());
-//        this.setDateOfBirth(sr.getDateOfBirth());
-//        this.setSchool(sr.getSchoolName());
-//        this.setSchoolClass(sr.getSchoolClass());
     }
+
     @Override
     public Long getId() {
         return id;
@@ -107,12 +102,12 @@ public class Student extends User {
     public void setSchoolClass(Class schoolClass) {
         this.schoolClass = schoolClass;
     }
-//
-//    public Date getDateOfBirth() {
-//        return dateOfBirth;
-//    }
-//
-//    public void setDateOfBirth(Date dateOfBirth) {
-//        this.dateOfBirth = dateOfBirth;
-//    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public List<Activity> getActivities() {
+        return this.activities;
+    }
 }

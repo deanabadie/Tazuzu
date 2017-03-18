@@ -1,9 +1,11 @@
 package com.tazuzuapp.api.activity.domain;
 
 import com.tazuzuapp.api.general.domain.BaseEntity;
+import com.tazuzuapp.api.user.domain.Student;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @SuppressWarnings("unused")
@@ -20,10 +22,23 @@ public class Activity extends BaseEntity {
 
     private int numOfMeasurements;
 
-    @NotNull
-    private long LastEditedBy;
+    @ManyToMany
+    @JoinTable(name = "activity_students", joinColumns = {
+            @JoinColumn(name = "activity_id", nullable = false, updatable = false)
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "student_id", nullable = false, updatable = false)
+    })
+    private List<Student> participants;
 
     public Activity (){}
+
+    public List<Student> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Student> participants) {
+        this.participants = participants;
+    }
 
     public Long getActivityTypeId() { return activityTypeId; }
 
@@ -43,9 +58,5 @@ public class Activity extends BaseEntity {
 
     public int getNumOfMeasurements() {
         return numOfMeasurements;
-    }
-
-    public void setLastEditedBy(long lastEditedBy) {
-        LastEditedBy = lastEditedBy;
     }
 }

@@ -1,8 +1,13 @@
 package com.tazuzuapp.api;
 
+import com.tazuzuapp.api.activity.domain.Activity;
+import com.tazuzuapp.api.user.domain.Student;
+import com.tazuzuapp.api.user.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Set;
 import java.util.TimeZone;
 
 /**
