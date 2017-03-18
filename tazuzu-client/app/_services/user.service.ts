@@ -5,31 +5,31 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { User } from '../_models/index';
 
+const config = require('../config/environment');
+
 @Injectable()
 export class UserService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
+        return this.http.get(config.API_URL + '/api/users', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(config.API_URL + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(user: User) {
-      return this.http.post('http://localhost:8080/api/students', JSON.stringify(user),this.jwt())
-         .map(this.extractData);//.catch(this.handleError);
-           
-   // return this.http.post('/api/users/', user, this.jwt()).map((response: Response) => response.json());
+      return this.http.post(config.API_URL + '/api/students', JSON.stringify(user),this.jwt())
+         .map(this.extractData);
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.govId, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(config.API_URL + '/api/users/' + user.govId, user, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete(config.API_URL + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods
