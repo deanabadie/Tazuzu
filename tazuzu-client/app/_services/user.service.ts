@@ -5,7 +5,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import { User } from '../_models/index';
 
-const config = require('../config/environment.json');
+const config = require('../config/environment');
 
 @Injectable()
 export class UserService {

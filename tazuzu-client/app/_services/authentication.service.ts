@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
-const config = require('../config/environment.json');
+const config = require('../config/environment');
 
 @Injectable()
 export class AuthenticationService {
