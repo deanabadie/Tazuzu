@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        this.authenticationService.login(this.model.userName, this.model.password)
+        this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                    console.log(this.model.userType);
                     if (this.model.userType == "Teacher"){
                         this.router.navigate(['/homeTeacher']);
                     }else{
