@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -30,4 +32,18 @@ public class StudentRepositoryTest {
         assertThat(s.getLastName()).isEqualTo("Sparrow");
     }
 
+    @Test
+    public void findAllTest() throws Exception {
+        List<Student> sl = this.repository.findAll();
+        assertThat(sl.size() > 0);
+        assertThat(sl.size()).isEqualTo(1);
+    }
+
+    @Test
+    public void deleteUserTest() throws Exception {
+        Student s = this.repository.findOne(new Long(1));
+        this.repository.delete(s);
+        Student dbStudent = repository.findOne(s.getId());
+        assertThat(dbStudent).isNull();
+    }
 }
