@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AlertService, TeacherService } from '../_services/index';
+import { User } from '../_models/index';
+import { AlertService, UserService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -17,17 +17,17 @@ export class RegisterComponent {
     genders = ['M','F'];
      
 
-    model: any = {};
+    model: any ={};
     loading = false;
 
     constructor(
         private router: Router,
-        private teacherService: TeacherService,
+        private userService: UserService,
         private alertService: AlertService) { }
 
     register() {
         this.loading = true;
-        this.teacherService.create(this.model)
+        this.userService.create(this.model)
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);

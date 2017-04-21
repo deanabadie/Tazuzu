@@ -3,7 +3,7 @@
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName ngModel required />
             <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
@@ -26,12 +26,10 @@
             <input type="number" class="form-control" name="govId" [(ngModel)]="model.govId" #govId="ngModel" required />
             <div *ngIf="f.submitted && !govId.valid" class="help-block">ID is required</div>
         </div>
-        <div class="form-group">
-            <label for="gender">Gender</label>
-            <select class="form-control" id="gender" name="gender"
-            [(ngModel)]="model.gender" #gender="ngModel" required>
-            <option *ngFor="let g of genders" [value]="g">{{g}}</option>
-            </select>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
+            <label for="gender">Gender (M\F)</label>
+            <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required />
+            <div *ngIf="f.submitted && !gender.valid" class="help-block">Gender is required M or F</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
             <label for="dateOfBirth">Date of birth</label>
@@ -43,29 +41,10 @@
             <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
             <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
         </div>
-        <div class="form-group">
-            <label for="school">School</label>
-            <select class="form-control" id="school" name="school"
-                [(ngModel)]="model.schoolName" #school="ngModel" required>
-            <option *ngFor="let school of schools" [value]="school">{{school}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="class">Class</label>
-            <select class="form-control" id="class" name="class"
-            [(ngModel)]="model.schoolClass" #class="ngModel" required>
-            <option *ngFor="let class of classes" [value]="class">{{class}}</option>
-            </select>
-        </div> 
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
-            <label for="height">Height</label>
-            <input type="number" class="form-control" name="school" [(ngModel)]="model.height" #height="ngModel" required />
-            <div *ngIf="f.submitted && !height.valid" class="help-block">Height is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !weight.valid }">
-            <label for="weight">Weight</label>
-            <input type="number" class="form-control" name="school" [(ngModel)]="model.weight" #weight="ngModel" required />
-            <div *ngIf="f.submitted && !weight.valid" class="help-block">Weight is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !schoolName.valid }">
+            <label for="schoolName">School</label>
+            <input type="text" class="form-control" name="schoolName" [(ngModel)]="model.schoolName" #schoolName="ngModel" required />
+            <div *ngIf="f.submitted && !schoolName.valid" class="help-block">school Name is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoPath.valid }">
             <label for="photoPath">Photo path</label>

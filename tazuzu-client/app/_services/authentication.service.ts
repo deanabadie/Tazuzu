@@ -32,6 +32,6 @@ export class AuthenticationService {
            headers.append('Access-Control-Allow-Methods','*');
            headers.append('Access-Control-Allow-Headers','*');
            headers.append('Access-Control-Allow-Credentials','true');
-            return new RequestOptions({ headers: headers }); 
+        return new RequestOptions({ headers: headers }); 
         }
 }
