@@ -66,7 +66,7 @@ public class ActivityServiceImpl {
 
         Activity newActivity = new Activity();
         newActivity.setActivityName(activityRequest.getActivityName());
-        newActivity.setActivityTypeId(activityRequest.getActivityTypeId());
+//        newActivity.setActivityTypeId(activityRequest.getActivityTypeId());
         newActivity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
         return activityRepository.save(newActivity);
 
@@ -78,7 +78,7 @@ public class ActivityServiceImpl {
         Activity originalActivity = activityRepository.findOne(id);
 
         originalActivity.setActivityName(activityRequest.getActivityName());
-        originalActivity.setActivityTypeId(activityRequest.getActivityTypeId());
+//        originalActivity.setActivityTypeId(activityRequest.getActivityTypeId());
         originalActivity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
         return activityRepository.save(originalActivity);
     }

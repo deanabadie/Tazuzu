@@ -1,17 +1,18 @@
 package com.tazuzuapp.api.activity.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by nofarb on 25-Feb-17.
- */
 public class ActivityRequest {
+
     @NotNull
     private String activityName;
 
-    private Long activityTypeId;
-
+    @NotEmpty
     private int numOfMeasurements;
+
+    @NotNull
+    private Long measurementTypeId;
 
     public String getActivityName() {
         return activityName;
@@ -21,19 +22,19 @@ public class ActivityRequest {
         this.activityName = activityName;
     }
 
-    public Long getActivityTypeId() {
-        return activityTypeId;
-    }
-
-    public void setActivityTypeId(Long activityTypeId) {
-        this.activityTypeId = activityTypeId;
-    }
-
     public int getNumOfMeasurements() {
         return numOfMeasurements;
     }
 
     public void setNumOfMeasurements(int numOfMeasurements) {
         this.numOfMeasurements = numOfMeasurements;
+    }
+
+    public Long getMeasurementTypeId() {
+        return measurementTypeId;
+    }
+
+    public void setMeasurementTypeId(Long measurementTypeId) {
+        this.measurementTypeId = measurementTypeId;
     }
 }

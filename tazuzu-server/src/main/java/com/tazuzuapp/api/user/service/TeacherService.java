@@ -89,7 +89,7 @@ public class TeacherService {
 
         Activity activity = new Activity();
         activity.setActivityName(activityRequest.getActivityName());
-        activity.setActivityTypeId(activityRequest.getActivityTypeId());
+//        activity.setActivityTypeId(activityRequest.getActivityTypeId());
         activity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
 
         classService.sendActivityToAll(cls);

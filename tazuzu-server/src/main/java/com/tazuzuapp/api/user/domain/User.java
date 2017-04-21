@@ -37,6 +37,9 @@ public abstract class User extends BaseEntity {
     private String photoPath;
 
     @NotNull
+    private Long govId;
+
+    @NotNull
     private char gender;
 
     public User() {}
@@ -111,5 +114,13 @@ public abstract class User extends BaseEntity {
 
     public void setGender(char gender) {
         this.gender = gender;
+    }
+
+    public Long getGovId() {
+        return govId;
+    }
+
+    public void setGovId(Long govId) {
+        this.govId = govId;
     }
 }

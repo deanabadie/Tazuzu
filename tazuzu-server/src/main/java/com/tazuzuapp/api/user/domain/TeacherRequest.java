@@ -3,6 +3,8 @@ package com.tazuzuapp.api.user.domain;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+
 public class TeacherRequest {
 
     @NotEmpty
@@ -26,6 +28,9 @@ public class TeacherRequest {
 
     @NotEmpty
     private String schoolName;
+
+    @NotNull
+    private Long govId;
 
     private String photoPath;
 
@@ -91,5 +96,13 @@ public class TeacherRequest {
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public Long getGovId() {
+        return govId;
+    }
+
+    public void setGovId(Long govId) {
+        this.govId = govId;
     }
 }

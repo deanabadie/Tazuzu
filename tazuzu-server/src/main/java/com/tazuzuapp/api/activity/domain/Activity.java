@@ -1,7 +1,7 @@
 package com.tazuzuapp.api.activity.domain;
 
 import com.tazuzuapp.api.general.domain.BaseEntity;
-import com.tazuzuapp.api.user.domain.Student;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,31 +18,13 @@ public class Activity extends BaseEntity {
     @NotNull
     private String activityName;
 
-    private Long activityTypeId;
-
+    @NotEmpty
     private int numOfMeasurements;
 
-    @ManyToMany
-    @JoinTable(name = "activity_students", joinColumns = {
-            @JoinColumn(name = "activity_id", nullable = false, updatable = false)
-    }, inverseJoinColumns = {
-            @JoinColumn(name = "student_id", nullable = false, updatable = false)
-    })
-    private List<Student> participants;
+    @NotNull
+    private Long measurementTypeId;
 
     public Activity (){}
-
-    public List<Student> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<Student> participants) {
-        this.participants = participants;
-    }
-
-    public Long getActivityTypeId() { return activityTypeId; }
-
-    public void setActivityTypeId(Long activityTypeId) { this.activityTypeId = activityTypeId; }
 
     public String getActivityName() { return activityName; }
 

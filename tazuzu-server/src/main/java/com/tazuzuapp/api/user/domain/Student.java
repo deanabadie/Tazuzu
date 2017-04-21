@@ -1,6 +1,7 @@
 package com.tazuzuapp.api.user.domain;
 
 import com.tazuzuapp.api.activity.domain.Activity;
+import com.tazuzuapp.api.activity.domain.Test;
 import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.School;
 
@@ -18,9 +19,6 @@ public class Student extends User {
     private Long id;
 
     @NotNull
-    private Long govId;
-
-    @NotNull
     private double height;
 
     @NotNull
@@ -34,8 +32,8 @@ public class Student extends User {
     @ManyToOne
     private Class schoolClass;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
-    private List<Activity> activities;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsStudents")
+    private List<Test> activities;
 
     public Student() {}
 
@@ -61,14 +59,6 @@ public class Student extends User {
     @Override
     public void setId(Long id){
         this.id = id;
-    }
-
-    public Long getGovId() {
-        return govId;
-    }
-
-    public void setGovId(Long govId) {
-        this.govId = govId;
     }
 
     public double getHeight() {
@@ -103,11 +93,11 @@ public class Student extends User {
         this.schoolClass = schoolClass;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public List<Test> getActivities() {
+        return activities;
     }
 
-    public List<Activity> getActivities() {
-        return this.activities;
+    public void setActivities(List<Test> activities) {
+        this.activities = activities;
     }
 }
