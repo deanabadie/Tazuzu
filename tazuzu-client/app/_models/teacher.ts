@@ -8,8 +8,5 @@ export class Teacher {
     dateOfBirth: Date;
     email: string;
     schoolName: string;
-    schoolClass: string;
-    height: number;
-    weight: number;
     photoPath: string;
 }

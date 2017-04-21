@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Teacher } from '../_models/index';
 import { AlertService, TeacherService } from '../_services/index';
 
 @Component({
