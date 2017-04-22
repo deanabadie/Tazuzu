@@ -14,7 +14,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "result_type")
 
-public class Test extends BaseEntity{
+public abstract class Test extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long testId;

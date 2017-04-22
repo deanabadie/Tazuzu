@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
-public class TeacherRequest {
+public class TeacherRequest extends UserRequest {
 
     @NotEmpty
     private String firstName;
@@ -33,6 +33,18 @@ public class TeacherRequest {
     private Long govId;
 
     private String photoPath;
+
+    public TeacherRequest(Teacher t){
+        firstName = t.getFirstName();
+        lastName = t.getFirstName();
+        userName = t.getUserName();
+        gender = t.getGender();
+        email = t.getEmail();
+        schoolName = t.getSchool().toString();
+        govId = t.getGovId();
+        photoPath = t.getPhotoPath();
+
+    }
 
     public String getFirstName() {
         return firstName;

@@ -7,7 +7,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@SuppressWarnings("unused")
 public class TestDistance extends Test {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long testId;

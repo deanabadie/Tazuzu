@@ -2,9 +2,7 @@ package com.tazuzuapp.api.security.login.webController;
 
 import com.tazuzuapp.api.security.login.domain.LoginRequest;
 import com.tazuzuapp.api.security.login.service.LoginService;
-import com.tazuzuapp.api.user.domain.Student;
-import com.tazuzuapp.api.user.domain.Teacher;
-import com.tazuzuapp.api.user.domain.User;
+import com.tazuzuapp.api.user.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,18 +22,20 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<User> login (@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<UserRequest> login (@RequestBody LoginRequest loginRequest) {
 
         User user = service.login(loginRequest);
         if (user == null) {
             throw new EntityNotFoundException("No such username " + loginRequest.getUserName());
         } else if (user instanceof Student) {
             Student s = (Student) user;
-            return new ResponseEntity<>(s, HttpStatus.CREATED);
+            StudentRequest sr = new StudentRequest(s);
+            return new ResponseEntity<>(sr, HttpStatus.CREATED);
         }
         else{
             Teacher t = (Teacher) user;
-            return new ResponseEntity<>(t, HttpStatus.CREATED);
+            TeacherRequest tr = new TeacherRequest(t);
+            return new ResponseEntity<>(tr, HttpStatus.CREATED);
         }
     }
 }

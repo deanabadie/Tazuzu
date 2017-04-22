@@ -27,5 +27,4 @@ public class MeasurementTypeService {
 
     public List<MeasurementType> getAllMeasurementTypes() { return measurementTypeRepository.findAll(); }
 
-
 }

@@ -42,4 +42,8 @@ public class School extends BaseEntity {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String toString(){
+        return city + " - " + name;
+    }
 }

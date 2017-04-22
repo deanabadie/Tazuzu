@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-/**
- * Created by deana on 11/03/2017.
- */
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/measurementTypes")
@@ -38,4 +36,5 @@ public class MeasurementTypeController {
     public List<MeasurementType> getMeasurementTypes() {
         return service.getAllMeasurementTypes();
     }
+
 }

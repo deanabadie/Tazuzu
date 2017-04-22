@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @SuppressWarnings("unused")
-public class StudentRequest {
+public class StudentRequest extends UserRequest{
 
     @NotEmpty
     private String firstName;
@@ -43,14 +43,31 @@ public class StudentRequest {
     private String schoolClass;
 
     @NotNull
-    private Long height;
+    private double height;
 
     @NotNull
-    private Long weight;
+    private double weight;
 
     @NotEmpty
     private String photoPath;
 
+    private Long id;
+
+    public StudentRequest(Student s){
+        id = s.getId();
+        firstName = s.getFirstName();
+        lastName = s.getLastName();
+        userName = s.getUserName();
+        password = s.getPassword();
+        govId = s.getGovId();
+        gender = s.getGender();
+        email = s.getEmail();
+        schoolName = s.getSchool().toString();
+        schoolClass = s.getSchoolClass().getName();
+        height = s.getHeight();
+        weight = s.getWeight();
+        photoPath = s.getPhotoPath();
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -123,7 +140,7 @@ public class StudentRequest {
         this.schoolClass = schoolClass;
     }
 
-    public Long getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -131,7 +148,7 @@ public class StudentRequest {
         this.height = height;
     }
 
-    public Long getWeight() {
+    public double getWeight() {
         return weight;
     }
 
