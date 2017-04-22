@@ -53,6 +53,8 @@ public class StudentRequest extends UserRequest{
 
     private Long id;
 
+    private String type = "student";
+
     public StudentRequest(){}
 
     public StudentRequest(Student s){

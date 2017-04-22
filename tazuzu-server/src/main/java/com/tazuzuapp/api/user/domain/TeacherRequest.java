@@ -34,6 +34,10 @@ public class TeacherRequest extends UserRequest {
 
     private String photoPath;
 
+    private String type = "teacher";
+
+    private Long id;
+
     public TeacherRequest(){
 
     }
@@ -46,6 +50,7 @@ public class TeacherRequest extends UserRequest {
         schoolName = t.getSchool().toString();
         govId = t.getGovId();
         photoPath = t.getPhotoPath();
+        id = t.getId();
 
     }
 
