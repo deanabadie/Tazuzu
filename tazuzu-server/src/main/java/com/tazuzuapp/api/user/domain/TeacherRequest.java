@@ -34,6 +34,9 @@ public class TeacherRequest extends UserRequest {
 
     private String photoPath;
 
+    public TeacherRequest(){
+
+    }
     public TeacherRequest(Teacher t){
         firstName = t.getFirstName();
         lastName = t.getFirstName();

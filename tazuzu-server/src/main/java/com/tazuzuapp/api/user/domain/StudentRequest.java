@@ -53,6 +53,8 @@ public class StudentRequest extends UserRequest{
 
     private Long id;
 
+    public StudentRequest(){}
+
     public StudentRequest(Student s){
         id = s.getId();
         firstName = s.getFirstName();
