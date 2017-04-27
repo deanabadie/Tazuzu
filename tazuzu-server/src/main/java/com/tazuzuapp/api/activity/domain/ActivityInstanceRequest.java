@@ -14,7 +14,6 @@ public class ActivityInstanceRequest {
     private Long activityTypeId;
 
     @NotNull
-//    @Size(min = 1, max = 3)
     private Long numOfMeasurements;
 
     @NotNull

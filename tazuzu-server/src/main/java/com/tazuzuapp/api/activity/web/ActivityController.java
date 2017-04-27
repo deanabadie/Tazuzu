@@ -3,6 +3,9 @@ package com.tazuzuapp.api.activity.web;
 import com.tazuzuapp.api.activity.domain.ActivityInstance;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurement;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
+import com.tazuzuapp.api.activity.domain.PayloadResponse;
+import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
+import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
 import com.tazuzuapp.api.user.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +19,42 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/activityInstances")
+@RequestMapping("/activities")
 @SuppressWarnings("unused")
-public class ActivityInstanceController {
+public class ActivityController {
 
     private final ActivityInstanceService service;
 
-    @Autowired
-    public ActivityInstanceController(ActivityInstanceService activityInstanceService) { this.service = activityInstanceService; }
+    private final ActivityTypeRepository activityTypeRepository;
 
-    @PostMapping
-    public ResponseEntity<ActivityInstance> createActivityInstance(@RequestBody ActivityInstanceRequest activityInstanceRequest) {
-        ActivityInstance activityInstance = service.createActivityInstance(activityInstanceRequest);
-        return new ResponseEntity<>(activityInstance, HttpStatus.CREATED);
+    private final ActivityInstanceRepository activityInstanceRepository;
+
+    @Autowired
+    public ActivityController(
+            ActivityInstanceService activityInstanceService,
+            ActivityTypeRepository activityTypeRepository,
+            ActivityInstanceRepository activityInstanceRepository
+    ) {
+        this.service = activityInstanceService;
+        this.activityTypeRepository = activityTypeRepository;
+        this.activityInstanceRepository = activityInstanceRepository;
     }
 
+    @GetMapping(value = "/payload")
+    public ResponseEntity<PayloadResponse> Payload() {
+        PayloadResponse response = new PayloadResponse(activityTypeRepository, activityInstanceRepository);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "")
+    public ResponseEntity<ActivityInstance> createActivityInstance(@RequestBody ActivityInstanceRequest activityInstanceRequest) {
+        try {
+            ActivityInstance activityInstance = service.createActivityInstance(activityInstanceRequest);
+            return new ResponseEntity<>(activityInstance, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<ActivityInstance> updateActivityInstance(@PathVariable Long id, @RequestBody ActivityInstanceRequest activityInstanceRequest) {

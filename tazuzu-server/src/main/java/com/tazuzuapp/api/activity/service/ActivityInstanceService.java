@@ -39,25 +39,31 @@ public class ActivityInstanceService {
         this.notificationService = notificationService;
     }
 
-    public ActivityInstance createActivityInstance(ActivityInstanceRequest activityInstanceRequest) {
+    public ActivityInstance createActivityInstance(ActivityInstanceRequest activityInstanceRequest) throws Exception {
         ActivityInstance activityInstance = new ActivityInstance(activityInstanceRequest);
         activityInstance.setActivityType(activityTypeRepository.findOne(activityInstanceRequest.getActivityTypeId()));
         activityInstanceRepository.save(activityInstance);
-        ActivityInstanceMeasurement activityInstanceMeasurement = new ActivityInstanceMeasurement();
 
         Long classId = activityInstanceRequest.getClassId();
         List<Student> students = new ArrayList<>();
 
-        if (classId != 0){
+        if (classId != null){
             students = studentRepository.findBySchoolClassId(classId);
         }else{
+            List<Long> studentsIds = activityInstanceRequest.getStudentIdList();
+            if ( studentsIds == null || studentsIds.isEmpty() ) {
+                throw new Exception("Must have at least one student in order to create activity");
+            }
+
             for (Long studentId : activityInstanceRequest.getStudentIdList()){
                 students.add(studentRepository.findOne(studentId));
             }
         }
 
         for (Student s: students) {
+            ActivityInstanceMeasurement activityInstanceMeasurement = new ActivityInstanceMeasurement();
             activityInstanceMeasurement.setStudent(s);
+            activityInstanceMeasurement.setActivityInstance(activityInstance);
             activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
 
             if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {

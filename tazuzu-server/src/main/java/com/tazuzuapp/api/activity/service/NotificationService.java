@@ -32,7 +32,7 @@ public class NotificationService {
         String htmlContent = emailContentBuilder.build(values, "student-activity-notification");
 
         InternetAddress sender = new InternetAddress(
-                "tazuzu@gmail.com",
+                "tazuzuapp@gmail.com",
                 "Tazuzu app"
         );
 

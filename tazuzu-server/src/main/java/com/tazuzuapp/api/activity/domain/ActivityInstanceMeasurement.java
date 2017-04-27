@@ -2,9 +2,9 @@ package com.tazuzuapp.api.activity.domain;
 
 import com.tazuzuapp.api.general.domain.BaseEntity;
 import com.tazuzuapp.api.user.domain.Student;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.time.Duration;
 
@@ -12,9 +12,9 @@ import java.time.Duration;
 public class ActivityInstanceMeasurement extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long ActivityInstanceMeasurmentId;
+    private Long id;
 
-    @NotEmpty
+    @NotNull
     @ManyToOne
     private ActivityInstance activityInstance;
 
@@ -35,6 +35,14 @@ public class ActivityInstanceMeasurement extends BaseEntity{
 
     public void setActivityInstance(ActivityInstance activityInstance) {
         this.activityInstance = activityInstance;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Student getStudent() {
