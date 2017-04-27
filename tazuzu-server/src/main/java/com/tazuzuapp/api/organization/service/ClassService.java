@@ -2,6 +2,7 @@ package com.tazuzuapp.api.organization.service;
 
 import com.tazuzuapp.api.organization.domain.ClassRequest;
 import com.tazuzuapp.api.organization.domain.Class;
+import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.organization.repository.ClassRepository;
 import com.tazuzuapp.api.organization.repository.SchoolRepository;
 import com.tazuzuapp.api.user.domain.Student;
@@ -43,6 +44,11 @@ public class ClassService {
 //            s.updateActivity
             System.out.print("Class and id: [" + s.getSchoolClass().getName() +", "+ s.getId() + "]");
         }
+    }
+
+    public List<Class> findClassesBySchoolId(Long schoolId){
+        School s = schoolRepository.findOne(schoolId);
+        return repository.findBySchool(s);
     }
 
 //    public List<Student> getClassStudents(Class cls){

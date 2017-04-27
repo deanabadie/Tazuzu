@@ -1,9 +1,12 @@
 package com.tazuzuapp.api.activity.domain;
 
+import com.tazuzuapp.api.user.domain.Student;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.util.List;
 
 public class ActivityInstanceRequest {
     
@@ -11,7 +14,6 @@ public class ActivityInstanceRequest {
     private Long activityTypeId;
 
     @NotNull
-//    @Size(min = 1, max = 3)
     private Long numOfMeasurements;
 
     @NotNull
@@ -20,6 +22,10 @@ public class ActivityInstanceRequest {
 
     @NotNull
     private boolean isMandatory;
+
+    private Long classId;
+
+    private List<Long> studentIdList;
 
     public Long getActivityTypeId() {
         return activityTypeId;
@@ -51,6 +57,22 @@ public class ActivityInstanceRequest {
 
     public void setMandatory(boolean mandatory) {
         isMandatory = mandatory;
+    }
+
+    public Long getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Long classId) {
+        this.classId = classId;
+    }
+
+    public List<Long> getStudentIdList() {
+        return studentIdList;
+    }
+
+    public void setStudentIdList(List<Long> studentIdList) {
+        this.studentIdList = studentIdList;
     }
 }
 

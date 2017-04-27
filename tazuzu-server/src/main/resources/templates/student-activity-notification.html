@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:dir="rtl" lang="HE">
+<head>
+    <title th:remove="all">A new activity was created for you</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body style="text-align:right; direction:rtl;">
+    <p><b>A new activity was created for you</b></p>
+
+    <div>
+        Hi <span th:text="${firstName}"></span>,
+        <br />
+        A new activity was created for your, it's taking place at: <span th:text="${activityDate}"></span>.<br />
+        Please log in into the system using the following link:<br />
+        <a href="http://localhost:3000">Login</a><br />
+    </div>
+
+</body>
+</html>

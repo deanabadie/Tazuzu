@@ -20,9 +20,6 @@ public class ActivityType extends BaseEntity {
     private String activityName;
 
     @NotNull
-    private Long numOfMeasurements;
-
-    @NotNull
     private MeasurementType measurementTypeId;
 
     public String getActivityName() { return activityName; }
@@ -32,14 +29,6 @@ public class ActivityType extends BaseEntity {
     public Long getId() { return activityId; }
 
     public void setId(Long id) { this.activityId = id; }
-
-    public void setNumOfMeasurements(Long numOfMeasurements) {
-        this.numOfMeasurements = numOfMeasurements;
-    }
-
-    public Long getNumOfMeasurements() {
-        return numOfMeasurements;
-    }
 
     public MeasurementType getMeasurementTypeId() {
         return measurementTypeId;

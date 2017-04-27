@@ -9,11 +9,11 @@ public class ActivityInstance {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long activityInstanceId;
+    private Long id;
 
     @NotNull
     @ManyToOne
-    ActivityType activityType;
+    private ActivityType activityType;
 
     @NotNull
     private Long numOfMeasurements;
@@ -29,6 +29,22 @@ public class ActivityInstance {
         activityDate = activityInstanceRequest.getActivityDate();
         numOfMeasurements = activityInstanceRequest.getNumOfMeasurements();
         isMandatory = activityInstanceRequest.isMandatory();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isMandatory() {
+        return isMandatory;
+    }
+
+    public void setMandatory(boolean mandatory) {
+        isMandatory = mandatory;
     }
 
     public ActivityType getActivityType() {

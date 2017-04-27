@@ -46,7 +46,7 @@ public class LoginController {
 
         public Long govId;
 
-        public char Gender;
+        public char gender;
 
         public String userType;
 
@@ -55,9 +55,10 @@ public class LoginController {
             authResponse.id = u.getId();
             authResponse.firstName = u.getFirstName();
             authResponse.lastName = u.getLastName();
-            authResponse.Gender = u.getGender();
+            authResponse.gender = u.getGender();
             authResponse.govId = u.getGovId();
             authResponse.photoPath = u.getPhotoPath();
+            authResponse.email = u.getEmail();
             authResponse.userType = u instanceof Student ? "Student" : "Teacher";
             return authResponse;
         }

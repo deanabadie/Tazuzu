@@ -1,10 +1,12 @@
 {
-	"id": "108024dd-e144-55ca-0b5c-6b4df5841da8",
+	"id": "695bc60f-16fc-d660-6e28-e9a776fdb9ca",
 	"name": "Tazuzu- Schools",
 	"description": "",
 	"order": [
-		"3e39a3b2-7543-cd19-bc50-4eefb3c56e53",
-		"6abb2fd3-d443-9300-c9bf-06ae571e5d98"
+		"f799663d-a224-8437-bb53-209cac547773",
+		"aee8a8c2-9872-79e9-61ba-b66c4bc7f5d3",
+		"8dff198b-7451-6474-8f55-aa149c598617",
+		"bc7bb3a9-b6b6-f386-bb36-850e4d93991e"
 	],
 	"folders": [],
 	"timestamp": 1488012260293,
@@ -12,7 +14,61 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "3e39a3b2-7543-cd19-bc50-4eefb3c56e53",
+			"id": "8dff198b-7451-6474-8f55-aa149c598617",
+			"name": "POST - /schools",
+			"description": "",
+			"collectionId": "695bc60f-16fc-d660-6e28-e9a776fdb9ca",
+			"method": "POST",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n  \"name\": \"TAU\",\n  \"city\": \"Tel-Aviv\"\n}",
+			"url": "http://localhost:8080/api/schools",
+			"responses": [],
+			"preRequestScript": "",
+			"tests": ""
+		},
+		{
+			"id": "aee8a8c2-9872-79e9-61ba-b66c4bc7f5d3",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJEZWFuIiwibGFzdE5hbWUiOiJBYmFkaWUiLCJlbWFpbCI6bnVsbCwicGhvdG9QYXRoIjoiaHR0cDovL3d3dy55bmV0LmNvLmlsIiwiZ292SWQiOjEyMzQ1NiwiR2VuZGVyIjoiRiIsInVzZXJUeXBlIjoiU3R1ZGVudCJ9fQ.S4kNbEooA8s_kjQKl27ajXlUxM8gU87PMLbVcMjjZ09cYAaFQc547GerkTovlh_Ktn27js-Kl3CE73xZnp7r9w\n",
+			"url": "http://localhost:8080/api/schools",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493327947698,
+			"name": "GET- /schools",
+			"description": "",
+			"collectionId": "695bc60f-16fc-d660-6e28-e9a776fdb9ca",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
+		},
+		{
+			"id": "bc7bb3a9-b6b6-f386-bb36-850e4d93991e",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJEZWFuIiwibGFzdE5hbWUiOiJBYmFkaWUiLCJlbWFpbCI6bnVsbCwicGhvdG9QYXRoIjoiaHR0cDovL3d3dy55bmV0LmNvLmlsIiwiZ292SWQiOjEyMzQ1NiwiR2VuZGVyIjoiRiIsInVzZXJUeXBlIjoiU3R1ZGVudCJ9fQ.S4kNbEooA8s_kjQKl27ajXlUxM8gU87PMLbVcMjjZ09cYAaFQc547GerkTovlh_Ktn27js-Kl3CE73xZnp7r9w\n",
+			"url": "http://localhost:8080/api/schools",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493323582120,
+			"name": "POST - /schools",
+			"description": "",
+			"collectionId": "695bc60f-16fc-d660-6e28-e9a776fdb9ca",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Amal\",\n  \"city\": \"Nahariya\"\n}"
+		},
+		{
+			"id": "f799663d-a224-8437-bb53-209cac547773",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
 			"url": "http://localhost:8080/api/schools/1",
 			"preRequestScript": null,
@@ -26,24 +82,9 @@
 			"time": 1488015025296,
 			"name": "GET- /schools/{id}",
 			"description": "",
-			"collectionId": "108024dd-e144-55ca-0b5c-6b4df5841da8",
+			"collectionId": "695bc60f-16fc-d660-6e28-e9a776fdb9ca",
 			"responses": [],
 			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
-		},
-		{
-			"id": "6abb2fd3-d443-9300-c9bf-06ae571e5d98",
-			"name": "POST - /schools",
-			"description": "",
-			"collectionId": "108024dd-e144-55ca-0b5c-6b4df5841da8",
-			"method": "POST",
-			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n  \"name\": \"TAU\",\n  \"city\": \"Tel-Aviv\"\n}",
-			"url": "http://localhost:8080/api/schools",
-			"responses": [],
-			"preRequestScript": "",
-			"tests": ""
 		}
 	]
 }
