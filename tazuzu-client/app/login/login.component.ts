@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-
+    
     login() {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
