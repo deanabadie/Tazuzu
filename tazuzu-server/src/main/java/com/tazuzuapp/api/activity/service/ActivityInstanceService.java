@@ -6,12 +6,10 @@ import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
 import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
-import com.tazuzuapp.api.general.services.EmailService;
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -32,7 +30,6 @@ public class ActivityInstanceService {
         ActivityInstanceRepository activityInstanceRepository,
         StudentRepository studentRepository,
         ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository,
-        EmailService emailService,
         NotificationService notificationService
     ) {
         this.activityTypeRepository = activityTypeRepository;
