@@ -65,4 +65,7 @@ public class StudentService {
         return studentRepository.exists(id);
     }
 
+//    public void addActivity(Long id, TestDistance testDistance) {
+//        studentRepository.addActivity()
+//    }
 }
