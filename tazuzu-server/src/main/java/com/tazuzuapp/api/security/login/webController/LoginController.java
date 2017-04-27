@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController //Means everything we do will be converted into JSON and be sent as an HTTP response
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = {"Authorization"})
 @RequestMapping(value = "/login")
 public class LoginController {
 
