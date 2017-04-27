@@ -1,12 +1,9 @@
 package com.tazuzuapp.api.user.domain;
 
-import com.tazuzuapp.api.activity.domain.Activity;
-import com.tazuzuapp.api.activity.domain.Test;
 import com.tazuzuapp.api.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @SuppressWarnings("unused")
@@ -20,8 +17,8 @@ public class Teacher extends User {
     @ManyToOne
     private School school;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsTeachers")
-    private List<Test> activities;
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsTeachers")
+//    private List<ActivityInstanceMeasurment> activities;
 
     public Teacher() {}
 
@@ -45,12 +42,12 @@ public class Teacher extends User {
         this.school = school;
     }
 
-    public List<Test> getActivities() {
-        return activities;
-    }
+//    public List<ActivityInstanceMeasurment> getActivities() {
+//        return activities;
+//    }
 
-    public void setActivities(List<Test> activities) {
-        this.activities = activities;
-    }
+//    public void setActivities(List<ActivityInstanceMeasurment> activities) {
+//        this.activities = activities;
+//    }
 }
 

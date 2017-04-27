@@ -1,7 +1,6 @@
 package com.tazuzuapp.api.user.service;
 
-import com.tazuzuapp.api.activity.domain.Activity;
-import com.tazuzuapp.api.activity.domain.ActivityRequest;
+import com.tazuzuapp.api.activity.domain.ActivityType;
 import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.ClassRequest;
 import com.tazuzuapp.api.organization.domain.School;
@@ -80,19 +79,19 @@ public class TeacherService {
         return studentRepository.findBySchoolClass(cls);
     }
 
-    public Activity sendActivityToClass(ActivityRequest activityRequest, ClassRequest clsRequest){
-        Class cls = new Class();
-        Class newClass = new Class();
-        newClass.setName(clsRequest.getName());
-        newClass.setSchool(schoolRepository.findOne(clsRequest.getSchoolId()));
-        classService.sendActivityToAll(cls);
-
-        Activity activity = new Activity();
-        activity.setActivityName(activityRequest.getActivityName());
-//        activity.setActivityTypeId(activityRequest.getActivityTypeId());
-        activity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
-
-        classService.sendActivityToAll(cls);
-        return activity;
-    }
+//    public ActivityType sendActivityToClass(ActivityRequest activityRequest, ClassRequest clsRequest){
+//        Class cls = new Class();
+//        Class newClass = new Class();
+//        newClass.setName(clsRequest.getName());
+//        newClass.setSchool(schoolRepository.findOne(clsRequest.getSchoolId()));
+//        classService.sendActivityToAll(cls);
+//
+//        ActivityType activity = new ActivityType(activityRequest);
+////        activity.setActivityName(activityRequest.getActivityName());
+//////        activity.setActivityTypeId(activityRequest.getActivityTypeId());
+////        activity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
+//
+//        classService.sendActivityToAll(cls);
+//        return activity;
+//    }
 }

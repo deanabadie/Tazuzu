@@ -32,7 +32,7 @@ public class SchoolController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<School> createSchool(@PathVariable Long id) {
+    public ResponseEntity<School> getSchoolbyId(@PathVariable Long id) {
         School scl = schoolService.findOne(id);
 
         if ( scl != null ) {
