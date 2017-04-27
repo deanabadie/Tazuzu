@@ -1,16 +1,18 @@
 package com.tazuzuapp.api.security.login.domain;
 
+@SuppressWarnings("all")
 public class LoginRequest {
 
-    String userName;
+    Long idNumber;
+
     String password;
 
-    public String getUserName() {
-        return userName;
+    public Long getIdNumber() {
+        return idNumber;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setIdNumber(Long idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getPassword() {

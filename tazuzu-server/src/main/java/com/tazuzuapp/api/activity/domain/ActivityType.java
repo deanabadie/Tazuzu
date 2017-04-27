@@ -5,11 +5,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
 @SuppressWarnings("unused")
-public class Activity extends BaseEntity {
+public class ActivityType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -18,13 +19,11 @@ public class Activity extends BaseEntity {
     @NotNull
     private String activityName;
 
-    @NotEmpty
-    private int numOfMeasurements;
+    @NotNull
+    private Long numOfMeasurements;
 
     @NotNull
-    private Long measurementTypeId;
-
-    public Activity (){}
+    private MeasurementType measurementTypeId;
 
     public String getActivityName() { return activityName; }
 
@@ -34,11 +33,20 @@ public class Activity extends BaseEntity {
 
     public void setId(Long id) { this.activityId = id; }
 
-    public void setNumOfMeasurements(int numOfMeasurements) {
+    public void setNumOfMeasurements(Long numOfMeasurements) {
         this.numOfMeasurements = numOfMeasurements;
     }
 
-    public int getNumOfMeasurements() {
+    public Long getNumOfMeasurements() {
         return numOfMeasurements;
     }
+
+    public MeasurementType getMeasurementTypeId() {
+        return measurementTypeId;
+    }
+
+    public void setMeasurementTypeId(MeasurementType measurementTypeId) {
+        this.measurementTypeId = measurementTypeId;
+    }
+
 }
