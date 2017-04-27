@@ -12,7 +12,6 @@ import com.tazuzuapp.api.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.mail.internet.InternetAddress;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -54,8 +53,7 @@ public class ActivityInstanceService {
 
         if (classId != 0){
             students = studentRepository.findBySchoolClassId(classId);
-        }
-        else{
+        }else{
             for (Long studentId : activityInstanceRequest.getStudentIdList()){
                 students.add(studentRepository.findOne(studentId));
             }
