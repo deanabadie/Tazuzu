@@ -18,7 +18,7 @@ public class Teacher extends User {
     private School school;
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsTeachers")
-//    private List<ActivityInstanceMeasurment> activities;
+//    private List<ActivityInstanceMeasurement> activities;
 
     public Teacher() {}
 
@@ -42,11 +42,11 @@ public class Teacher extends User {
         this.school = school;
     }
 
-//    public List<ActivityInstanceMeasurment> getActivities() {
+//    public List<ActivityInstanceMeasurement> getActivities() {
 //        return activities;
 //    }
 
-//    public void setActivities(List<ActivityInstanceMeasurment> activities) {
+//    public void setActivities(List<ActivityInstanceMeasurement> activities) {
 //        this.activities = activities;
 //    }
 }

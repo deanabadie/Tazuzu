@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.Duration;
 
 @Entity
-public class ActivityInstanceMeasurment extends BaseEntity{
+public class ActivityInstanceMeasurement extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long ActivityInstanceMeasurmentId;

@@ -1,10 +1,11 @@
 {
-	"id": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+	"id": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
 	"name": "Tazuzu- Classes",
 	"description": "",
 	"order": [
-		"833c7c21-8533-2038-4e74-077c9a90c739",
-		"6c54590a-2591-2d3a-f0f4-391f4357080b"
+		"5abc0a69-7dfc-f191-cc12-3867d770d7d4",
+		"3481db38-378c-4204-4115-3fa0d913e86a",
+		"8b77a00a-f2af-251b-aeb8-3fe755ae3ad0"
 	],
 	"folders": [],
 	"timestamp": 1488012280952,
@@ -12,9 +13,9 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "6c54590a-2591-2d3a-f0f4-391f4357080b",
+			"id": "3481db38-378c-4204-4115-3fa0d913e86a",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
-			"url": "http://localhost:8080/api/classess/1",
+			"url": "http://localhost:8080/api/classes/1",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -23,15 +24,15 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488616980107,
+			"time": 1489861230846,
 			"name": "GET- /classes/{id}",
 			"description": "",
-			"collectionId": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
 			"responses": [],
 			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
 		},
 		{
-			"id": "833c7c21-8533-2038-4e74-077c9a90c739",
+			"id": "5abc0a69-7dfc-f191-cc12-3867d770d7d4",
 			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
 			"url": "http://localhost:8080/api/classes",
 			"preRequestScript": null,
@@ -45,9 +46,28 @@
 			"time": 1488617071543,
 			"name": "POST - /classes",
 			"description": "",
-			"collectionId": "a29a336d-4b30-6d89-c39b-b49af63c9849",
+			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
 			"responses": [],
 			"rawModeData": "{\n  \"name\": \"k\",\n  \"schoolId\": \"1\"\n}"
+		},
+		{
+			"id": "8b77a00a-f2af-251b-aeb8-3fe755ae3ad0",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/classes",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489857233821,
+			"name": "GET- /classes",
+			"description": "",
+			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
 		}
 	]
 }

@@ -29,7 +29,7 @@ public class Student extends User {
     private Class schoolClass;
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsStudents")
-//    private List<ActivityInstanceMeasurment> activities;
+//    private List<ActivityInstanceMeasurement> activities;
 
     public Student() {}
 
