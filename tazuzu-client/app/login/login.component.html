@@ -2,7 +2,7 @@
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !idNumber.valid }">
             <label for="idNumber">idNumber</label>
-            <input type="text" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" #idNumber="ngModel" required />
+            <input type="number" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" #idNumber="ngModel" required />
             <div *ngIf="f.submitted && !idNumber.valid" class="help-block">Id number is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
@@ -27,8 +27,8 @@
         <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Login</button>
             <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-            <a [routerLink]="['/registerTeacher']" class="btn btn-link">Register Teacher</a>
+            <!--<a [routerLink]="['/register']" class="btn btn-link">Register</a>-->
+            <a [routerLink]="['/registerTeacher']" class="btn btn-link">Register</a>
         </div>
     </form>
 </div>

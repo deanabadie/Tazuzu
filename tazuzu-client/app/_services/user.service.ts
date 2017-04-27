@@ -12,11 +12,15 @@ export class UserService {
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get(config.API_URL + '/api/users', this.jwt()).map((response: Response) => response.json());
+        return this.http.get(config.API_URL + '/api/students', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
-        return this.http.get(config.API_URL + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(config.API_URL + '/api/students/' + id, this.jwt()).map((response: Response) => response.json());
+    }
+
+    getStudent(id: number){
+        return this.http.get(config.API_URL + '/api/students/' + id, this.jwt()).map(this.extractData);
     }
 
     create(user: User) {
@@ -25,11 +29,11 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(config.API_URL + '/api/users/' + user.idNumber, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(config.API_URL + '/api/students/' + user.govId , user, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
-        return this.http.delete(config.API_URL + '/api/users/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.delete(config.API_URL + '/api/students/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     // private helper methods

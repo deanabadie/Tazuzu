@@ -42,7 +42,7 @@ import { RegisterTeacherComponent } from './registerTeacher/index';
         AuthenticationService,
         UserService,
         TeacherService,
-
+        
         //providers used to create fake backend
        //fakeBackendProvider,
        //MockBackend,

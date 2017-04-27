@@ -4,6 +4,7 @@
       <button type="button" class="btn btn-default">Past Activities</button>
       <button type="button" class="btn btn-default">Create Activity</button>
       <button type="button" class="btn btn-default">My Grades</button>
+      <button type="button" class="btn btn-warning">Log Out</button>
     </div>
   </div>
 
@@ -15,12 +16,12 @@
               <div class="panel-heading">General Information</div>
               <div class="panel-body">
                   <ul class="list-group" style="background-color: #94315d;">
-                  <li class="list-group-item" style="background-color: #94315d; border: none">First Name: </li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Last Name:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Gender:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Email:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Id:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">School:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">First Name: {{currentUser.firstName}} </li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Last Name: {{currentUser.lastName}}</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Gender: {{currentUser.gender}}</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Email: {{currentUser.email}}</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Id: {{currentUser.govId}}</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">School: </li>
                   <li class="list-group-item" style="background-color: #94315d; border: none">Class:</li>
                   <li class="list-group-item" style="background-color: #94315d; border: none">Height:</li>
                   <li class="list-group-item" style="background-color: #94315d; border: none">Weight:</li>

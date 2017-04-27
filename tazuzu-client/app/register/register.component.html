@@ -1,6 +1,11 @@
 ﻿<div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !teacherId.valid }">
+            <label for="teacherId">Teacher ID</label>
+            <input type="number" class="form-control" name="teacherId" [(ngModel)]="model.teacherId" #teacherId="ngModel" required />
+            <div *ngIf="f.submitted && !teacherId.valid" class="help-block">ID is required</div>
+        </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
@@ -75,7 +80,7 @@
         <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Register</button>
             <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+            <a [routerLink]="['/homeTeacher']" class="btn btn-link">Cancel</a>
         </div>
     </form>
 </div>

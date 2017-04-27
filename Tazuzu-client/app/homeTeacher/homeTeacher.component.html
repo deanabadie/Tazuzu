@@ -7,11 +7,11 @@
                     <div class="panel-heading">General Information</div>
                     <div class="panel-body">
                         <ul class="list-group" style="background-color: #94315d;">
-                            <li class="list-group-item" style="background-color: #94315d;">First Name: </li>
-                            <li class="list-group-item" style="background-color: #94315d;">Last Name:</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Gender:</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Email:</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Id:</li>
+                            <li class="list-group-item" style="background-color: #94315d;">First Name: {{currentUser.firstName}} </li>
+                            <li class="list-group-item" style="background-color: #94315d;">Last Name: {{currentUser.lastName}}</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Gender: {{currentUser.gender}}</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Email: {{currentUser.email}}</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Id: {{currentUser.govId}}</li>
                         </ul>
                     </div>
                 </div>
@@ -20,7 +20,6 @@
                 <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZMU3jACjxRTIz6naPYx__V9TmID9AC46G3mC5GuHUH3AQ1hzB6e7aCIQ" style="background-color:#3b5998" width="165" height="165">
             </div>
         </div>
-        
         <div class="row">
             <div class ="col-md-3">
                 <button type="button" class="btn btn-default btn-md">
@@ -28,8 +27,8 @@
                 </button>
             </div>
             <div class ="col-sm-3">
-                <button type="button" class="btn btn-default btn-md">
-                    <span class="glyphicon glyphicon-plus">Register Students</span> 
+                <button ngClick type="button" class="btn btn-default btn-md">
+                    <span class="glyphicon glyphicon-plus"><a [routerLink]="['/register']">Register Student</a></span> 
                 </button>
             </div>
         </div>

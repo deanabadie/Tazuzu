@@ -1,15 +1,16 @@
 ﻿export class User {
-    idNumber: number;
-    userName: string;
-    password: string;
     firstName: string;
     lastName: string;
+    userName: string;
+    password: string;
+    govId: number;
     gender: string;
-    dateOfBirth: Date;
     email: string;
     schoolName: string;
     schoolClass: string;
     height: number;
     weight: number;
     photoPath: string;
+    teacherId: number;
+    dateOfBirth: Date;
 }
