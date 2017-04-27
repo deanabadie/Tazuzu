@@ -94,7 +94,13 @@ public class ActivityInstanceService {
         return activityInstanceRepository.findOne(id);
     }
 
-    public List<ActivityInstance> getPendingActivities() { return activityInstanceRepository.findByActivityDateAfter(LocalDateTime.now()); }
+    public List<ActivityInstanceMeasurement> getPendingMeasurements(Long id) {
+        Student s = studentRepository.findOne(id);
+        return activityInstanceMeasurementRepository.findByStudentAndActivityInstanceActivityDateAfter(s, LocalDateTime.now());
+    }
 
-    public List<ActivityInstance> getPastActivities() { return activityInstanceRepository.findByActivityDateBefore(LocalDateTime.now()); }
+    public List<ActivityInstanceMeasurement> getPastMeasurements(Long id) {
+        Student s = studentRepository.findOne(id);
+        return activityInstanceMeasurementRepository.findByStudentAndActivityInstanceActivityDateBefore(s, LocalDateTime.now());
+    }
 }

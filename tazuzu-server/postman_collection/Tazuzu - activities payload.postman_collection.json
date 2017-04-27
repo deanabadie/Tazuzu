@@ -1,0 +1,33 @@
+{
+	"id": "a401e2ad-5a98-0a38-3fe9-b21f2a97bbc8",
+	"name": "Tazuzu - activities payload",
+	"description": "",
+	"order": [
+		"fd0ab5d7-20fc-185f-eb45-cf39f80edfc8"
+	],
+	"folders": [],
+	"timestamp": 1493306784994,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "fd0ab5d7-20fc-185f-eb45-cf39f80edfc8",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/activities/payload",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493306879060,
+			"name": "GET - /activities/payload",
+			"description": "",
+			"collectionId": "a401e2ad-5a98-0a38-3fe9-b21f2a97bbc8",
+			"responses": [],
+			"rawModeData": "{\n  \"userName\": \"abadie\",\n  \"password\": \"1234\"\n}"
+		}
+	]
+}
