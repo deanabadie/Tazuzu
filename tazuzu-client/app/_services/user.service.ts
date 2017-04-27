@@ -43,6 +43,10 @@ export class UserService {
         return body.data || { };
     }
 
+    getPendingActivities(id: number){
+        return this.http.get(config.API_URL + '/api/students/' + id + '/activities/pending/', this.jwt()).map((response: Response) => response.json());
+    }
+
     private jwt() {
            let headers = new Headers({ 'Content-Type': 'application/json' });
            headers.append('Authorization',localStorage.getItem("Authorization"));

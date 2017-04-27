@@ -1,6 +1,14 @@
 ﻿
 
     <div id="container" class="col-md-12 col-lg-offset-2">
+        <div class="text-center">
+            <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default">Create Activity</button>
+            <button type="button" class="btn btn-default"><a [routerLink]="['/register']">Register Student</a></button>
+            <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+            </div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-info">
@@ -21,7 +29,7 @@
             </div>
         </div>
         <div class="row">
-            <div class ="col-md-3">
+            <!--<div class ="col-md-3">
                 <button type="button" class="btn btn-default btn-md">
                     <span class="glyphicon glyphicon-plus">Create Activity</span> 
                 </button>
@@ -30,7 +38,7 @@
                 <button ngClick type="button" class="btn btn-default btn-md">
                     <span class="glyphicon glyphicon-plus"><a [routerLink]="['/register']">Register Student</a></span> 
                 </button>
-            </div>
+            </div>-->
         </div>
     </div>
     <!--<h3>All registered users:</h3>

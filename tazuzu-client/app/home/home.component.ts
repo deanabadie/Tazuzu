@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
 import { User } from '../_models/index';
-import { UserService, TeacherService } from '../_services/index';
+import { UserService, TeacherService, AuthenticationService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -11,15 +11,21 @@ import { UserService, TeacherService } from '../_services/index';
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
-    
-    constructor(private userService: UserService) {
+
+    constructor(private userService: UserService, private authenticationService: AuthenticationService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser.pendingActivities = userService.getPendingActivities(this.currentUser.id);
         //var userServiceObj = userService.getStudent(rawCurrentUser.id);
        //this.currentUser = JSON.parse(rawCurrentUser);
     }
-    
+
+    logout(){
+        this.authenticationService.logout();
+    }
+
     ngOnInit() {
         this.loadAllUsers();
+
     }
 
     deleteUser(id: number) {
