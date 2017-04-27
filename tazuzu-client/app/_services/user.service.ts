@@ -25,7 +25,7 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(config.API_URL + '/api/users/' + user.govId, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(config.API_URL + '/api/users/' + user.idNumber, user, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
@@ -40,19 +40,8 @@ export class UserService {
     }
 
     private jwt() {
-        // create authorization header with jwt token
-       //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-       //if (currentUser && currentUser.token) {
-       // let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-       // headers.append('Access-Control-Allow-Origin','*');
-       // return new RequestOptions({ headers: headers });
-
-
            let headers = new Headers({ 'Content-Type': 'application/json' });
-           headers.append('Access-Control-Allow-Origin','*');
-           headers.append('Access-Control-Allow-Methods','*');
-           headers.append('Access-Control-Allow-Headers','*');
-           headers.append('Access-Control-Allow-Credentials','true');
+           headers.append('Authorization',localStorage.getItem("Authorization"));
             return new RequestOptions({ headers: headers }); 
         }
     }

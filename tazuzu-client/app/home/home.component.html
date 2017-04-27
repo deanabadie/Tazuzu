@@ -1,4 +1,68 @@
-﻿
+﻿<div id="container" class="col-md-12 col-lg-offset-2">
+  <div class="text-center">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default">Past Activities</button>
+      <button type="button" class="btn btn-default">Create Activity</button>
+      <button type="button" class="btn btn-default">My Grades</button>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div id="generalInfor">
+      <div class="col-md-6">
+          <div class="panel panel-info">
+              <div class="panel-heading">General Information</div>
+              <div class="panel-body">
+                  <ul class="list-group" style="background-color: #94315d;">
+                  <li class="list-group-item" style="background-color: #94315d; border: none">First Name: </li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Last Name:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Gender:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Email:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Id:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">School:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Class:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Height:</li>
+                  <li class="list-group-item" style="background-color: #94315d; border: none">Weight:</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <img src="https://upload.wikimedia.org/wikipedia/he/7/70/%D7%90%D7%A8%D7%AA%D7%95%D7%A8.png" style="background-color:#3b5998" width="165" height="165">
+      </div>
+    </div>
+    </div>
+    <div class="panel panel-info" style="background-color:white">
+      <div class="panel-heading">Upcoming Activities</div>
+      <div class="panel-body" style="background-color:white">
+      <div id="upcomingActivitiesTable">
+        <table class="table table-striped" style="color: black; background-color:white">
+          <thead>
+            <th>Activity</th>
+            <th>Date</th>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Basketball</td>
+                <td>28/4/17 20:00</td>
+              </tr>
+              <tr>
+                <td>Swimming</td>
+                <td>28/4/17 20:00</td>
+              </tr>
+              <tr>
+                <td>Football</td>
+                <td>28/4/17 20:00</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+</div>
+
+<!--
   <h1>Hi {{currentUser.firstName}}! you are in Home page</h1>
 
 
@@ -59,4 +123,4 @@
             - <a (click)="deleteUser(user.id)">Delete</a>
         </li>
     </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p> 
+    <p><a [routerLink]="['/login']">Logout</a></p> -->

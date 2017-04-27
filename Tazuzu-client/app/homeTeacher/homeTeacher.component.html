@@ -1,10 +1,45 @@
 ﻿
-    <h1>Hi {{currentUser.firstName}} you are in Home Teacher page!</h1>
-    <h3>All registered users:</h3>
+
+    <div id="container" class="col-md-12 col-lg-offset-2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">General Information</div>
+                    <div class="panel-body">
+                        <ul class="list-group" style="background-color: #94315d;">
+                            <li class="list-group-item" style="background-color: #94315d;">First Name: </li>
+                            <li class="list-group-item" style="background-color: #94315d;">Last Name:</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Gender:</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Email:</li>
+                            <li class="list-group-item" style="background-color: #94315d;">Id:</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZMU3jACjxRTIz6naPYx__V9TmID9AC46G3mC5GuHUH3AQ1hzB6e7aCIQ" style="background-color:#3b5998" width="165" height="165">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class ="col-md-3">
+                <button type="button" class="btn btn-default btn-md">
+                    <span class="glyphicon glyphicon-plus">Create Activity</span> 
+                </button>
+            </div>
+            <div class ="col-sm-3">
+                <button type="button" class="btn btn-default btn-md">
+                    <span class="glyphicon glyphicon-plus">Register Students</span> 
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--<h3>All registered users:</h3>
     <ul>
         <li *ngFor="let user of users">
             {{user.username}} ({{user.firstName}} {{user.lastName}})
             - <a (click)="deleteUser(user.id)">Delete</a>
         </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
+    </ul>   
+    <p><a [routerLink]="['/login']">Logout</a></p>-->
+
