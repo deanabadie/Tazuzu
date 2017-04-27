@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -28,9 +30,12 @@ public class StudentRequest extends UserRequest{
     @NotEmpty
     private char gender;
 
-//    @DateTimeFormat
-//    @NotNull
-//    private Date dateOfBirth;
+    @NotNull
+    private Long teacherId;
+
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateOfBirth;
 
     @Email
     @NotEmpty
@@ -72,6 +77,7 @@ public class StudentRequest extends UserRequest{
         weight = s.getWeight();
         photoPath = s.getPhotoPath();
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -104,6 +110,14 @@ public class StudentRequest extends UserRequest{
         this.password = password;
     }
 
+    public Long getGovId() {
+        return govId;
+    }
+
+    public void setGovId(Long govId) {
+        this.govId = govId;
+    }
+
     public char getGender() {
         return gender;
     }
@@ -112,13 +126,21 @@ public class StudentRequest extends UserRequest{
         this.gender = gender;
     }
 
-//    public Date getDateOfBirth() {
-//        return dateOfBirth;
-//    }
-//
-//    public void setDateOfBirth(Date dateOfBirth) {
-//        this.dateOfBirth = dateOfBirth;
-//    }
+    public Long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
     public String getEmail() {
         return email;
@@ -148,7 +170,7 @@ public class StudentRequest extends UserRequest{
         return height;
     }
 
-    public void setHeight(Long height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
@@ -156,7 +178,7 @@ public class StudentRequest extends UserRequest{
         return weight;
     }
 
-    public void setWeight(Long weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -168,11 +190,19 @@ public class StudentRequest extends UserRequest{
         this.photoPath = photoPath;
     }
 
-    public Long getGovId() {
-        return govId;
+    public Long getId() {
+        return id;
     }
 
-    public void setGovId(Long govId) {
-        this.govId = govId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

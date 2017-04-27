@@ -2,11 +2,14 @@ package com.tazuzuapp.api.organization.webController;
 
 import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.ClassRequest;
+import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.organization.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -35,6 +38,17 @@ public class ClassController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Class> createClass(@PathVariable Long id) {
         Class cls = classService.findOne(id);
+
+        if ( cls != null ) {
+            return new ResponseEntity<>(cls, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/schools/{id}")
+    public ResponseEntity<List<Class>> findClassesBySchoolId(@PathVariable Long id) {
+        List<Class> cls = classService.findClassesBySchoolId(id);
 
         if ( cls != null ) {
             return new ResponseEntity<>(cls, HttpStatus.OK);

@@ -1,0 +1,53 @@
+{
+	"id": "94840c7b-6923-ecb0-ad8b-b8459c4cafee",
+	"name": "Tazuzu-Measurements",
+	"description": "",
+	"order": [
+		"c58ab15d-6a55-9fe0-93d9-501667fe1730",
+		"143fc2cd-213e-4604-7e24-b9bce9ca897a"
+	],
+	"folders": [],
+	"timestamp": 1493148382674,
+	"owner": "1476725",
+	"public": false,
+	"requests": [
+		{
+			"id": "143fc2cd-213e-4604-7e24-b9bce9ca897a",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/measurementTypes/3",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493325289505,
+			"name": "GET- /measurementTypes/{id}",
+			"description": "",
+			"collectionId": "94840c7b-6923-ecb0-ad8b-b8459c4cafee",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"bla\",\n  \"lastName\": \"bla\",\n  \"userName\": \"blaUpdate\",\n  \"password\": \"12345\",\n  \"gender\": \"F\",\n  \"email\": \"1nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		},
+		{
+			"id": "c58ab15d-6a55-9fe0-93d9-501667fe1730",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"url": "http://localhost:8080/api/measurementTypes",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493148952866,
+			"name": "GET - /measurementTypes",
+			"description": "",
+			"collectionId": "94840c7b-6923-ecb0-ad8b-b8459c4cafee",
+			"responses": [],
+			"rawModeData": "{\n  \"firstName\": \"bla\",\n  \"lastName\": \"bla\",\n  \"userName\": \"bla\",\n  \"password\": \"12345\",\n  \"gender\": \"F\",\n  \"email\": \"nofar@bitzik.com\",\n  \"schoolName\": \"Amal\",\n  \"photoPath\": \"http://www.ynet.co.il\"\n}"
+		}
+	]
+}

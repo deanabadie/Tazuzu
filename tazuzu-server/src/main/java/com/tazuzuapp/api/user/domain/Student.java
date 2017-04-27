@@ -5,6 +5,7 @@ import com.tazuzuapp.api.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @SuppressWarnings("unused")
@@ -21,6 +22,10 @@ public class Student extends User {
     private double weight;
 
     @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateOfBirth;
+
+    @NotNull
     @ManyToOne
     private School school;
 
@@ -28,8 +33,9 @@ public class Student extends User {
     @ManyToOne
     private Class schoolClass;
 
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsStudents")
-//    private List<ActivityInstanceMeasurement> activities;
+    @NotNull
+    @ManyToOne
+    private Teacher teacher;
 
     public Student() {}
 
@@ -45,6 +51,7 @@ public class Student extends User {
         this.setHeight(sr.getHeight());
         this.setWeight(sr.getWeight());
         this.setPassword(sr.getPassword());
+        this.setDateOfBirth(sr.getDateOfBirth());
     }
 
     @Override
@@ -87,5 +94,21 @@ public class Student extends User {
 
     public void setSchoolClass(Class schoolClass) {
         this.schoolClass = schoolClass;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

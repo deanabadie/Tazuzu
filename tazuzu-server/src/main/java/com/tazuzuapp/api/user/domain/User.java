@@ -25,6 +25,7 @@ public abstract class User extends BaseEntity {
     @NotNull
     private String lastName;
 
+    @NotNull
     private String email;
 
     @NotNull

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/schools")
@@ -34,6 +36,17 @@ public class SchoolController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<School> getSchoolbyId(@PathVariable Long id) {
         School scl = schoolService.findOne(id);
+
+        if ( scl != null ) {
+            return new ResponseEntity<>(scl, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<School>> getAllSchools() {
+        List<School> scl = schoolService.findAll();
 
         if ( scl != null ) {
             return new ResponseEntity<>(scl, HttpStatus.OK);

@@ -5,7 +5,8 @@
 	"order": [
 		"5abc0a69-7dfc-f191-cc12-3867d770d7d4",
 		"3481db38-378c-4204-4115-3fa0d913e86a",
-		"8b77a00a-f2af-251b-aeb8-3fe755ae3ad0"
+		"8b77a00a-f2af-251b-aeb8-3fe755ae3ad0",
+		"b496210a-3998-bb18-2eda-1c54ca576138"
 	],
 	"folders": [],
 	"timestamp": 1488012280952,
@@ -33,7 +34,7 @@
 		},
 		{
 			"id": "5abc0a69-7dfc-f191-cc12-3867d770d7d4",
-			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\n",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJEZWFuIiwibGFzdE5hbWUiOiJBYmFkaWUiLCJlbWFpbCI6bnVsbCwicGhvdG9QYXRoIjoiaHR0cDovL3d3dy55bmV0LmNvLmlsIiwiZ292SWQiOjEyMzQ1NiwiR2VuZGVyIjoiRiIsInVzZXJUeXBlIjoiU3R1ZGVudCJ9fQ.S4kNbEooA8s_kjQKl27ajXlUxM8gU87PMLbVcMjjZ09cYAaFQc547GerkTovlh_Ktn27js-Kl3CE73xZnp7r9w\n",
 			"url": "http://localhost:8080/api/classes",
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -43,7 +44,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488617071543,
+			"time": 1493323592049,
 			"name": "POST - /classes",
 			"description": "",
 			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
@@ -64,6 +65,25 @@
 			"helperAttributes": {},
 			"time": 1489857233821,
 			"name": "GET- /classes",
+			"description": "",
+			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
+			"responses": [],
+			"rawModeData": "{\n  \"name\": \"Ben Gurion\",\n  \"city\": \"Beer Sheva\"\n}"
+		},
+		{
+			"id": "b496210a-3998-bb18-2eda-1c54ca576138",
+			"headers": "Content-Type: application/json\npush-token: asdasdasddsa\ndevice-type: iOS\nAuthorization: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJEZWFuIiwibGFzdE5hbWUiOiJBYmFkaWUiLCJlbWFpbCI6bnVsbCwicGhvdG9QYXRoIjoiaHR0cDovL3d3dy55bmV0LmNvLmlsIiwiZ292SWQiOjEyMzQ1NiwiR2VuZGVyIjoiRiIsInVzZXJUeXBlIjoiU3R1ZGVudCJ9fQ.S4kNbEooA8s_kjQKl27ajXlUxM8gU87PMLbVcMjjZ09cYAaFQc547GerkTovlh_Ktn27js-Kl3CE73xZnp7r9w\n",
+			"url": "http://localhost:8080/api/classes/schools/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1493327659713,
+			"name": "GET- /classes/schools/{id}",
 			"description": "",
 			"collectionId": "2e4209e2-be72-04ab-cccb-23a8f1f011bf",
 			"responses": [],
