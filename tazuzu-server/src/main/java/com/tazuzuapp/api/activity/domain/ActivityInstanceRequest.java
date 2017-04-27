@@ -25,6 +25,8 @@ public class ActivityInstanceRequest {
 
     private Long classId;
 
+    private Long activityInstanceMeasurementId;
+
     private List<Long> studentIdList;
 
     public Long getActivityTypeId() {
@@ -73,6 +75,14 @@ public class ActivityInstanceRequest {
 
     public void setStudentIdList(List<Long> studentIdList) {
         this.studentIdList = studentIdList;
+    }
+
+    public Long getActivityInstanceMeasurementId() {
+        return activityInstanceMeasurementId;
+    }
+
+    public void setAimId(Long aimId) {
+        this.activityInstanceMeasurementId = aimId;
     }
 }
 

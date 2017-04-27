@@ -62,7 +62,12 @@ public class ActivityController {
             throw new EntityNotFoundException("Could not find test distance with given id: " + id);
         }
 
-        ActivityInstance activityInstance = service.updateActivityInstance(id, activityInstanceRequest);
+        ActivityInstance activityInstance = null;
+//        try {
+//            activityInstance = service.updateActivityInstance(id, activityInstanceRequest);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
