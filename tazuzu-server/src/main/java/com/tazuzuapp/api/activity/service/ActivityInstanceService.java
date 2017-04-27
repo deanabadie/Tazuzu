@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.internet.InternetAddress;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,4 +98,8 @@ public class ActivityInstanceService {
     public ActivityInstance getActivityInstance(Long id) {
         return activityInstanceRepository.findOne(id);
     }
+
+    public List<ActivityInstance> getPendingActivities() { return activityInstanceRepository.findByActivityDateAfter(LocalDateTime.now()); }
+
+    public List<ActivityInstance> getPastActivities() { return activityInstanceRepository.findByActivityDateBefore(LocalDateTime.now()); }
 }

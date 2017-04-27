@@ -56,6 +56,14 @@ public class ActivityInstanceController {
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/students/{id}")
+    public List<ActivityInstance> getPendingActivities() {
+        return service.getPendingActivities();
+    }
 
+    @GetMapping(value = "/students/{id}")
+    public List<ActivityInstance> getPastActivities() {
+        return service.getPendingActivities();
+    }
 
 }
