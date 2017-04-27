@@ -1,6 +1,7 @@
 package com.tazuzuapp.api.activity.web;
 
 import com.tazuzuapp.api.activity.domain.ActivityInstance;
+import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurement;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
 import com.tazuzuapp.api.user.domain.Student;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.awt.geom.Path2D;
 import java.util.List;
 
 @RestController
@@ -56,14 +58,16 @@ public class ActivityInstanceController {
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/students/{id}")
-    public List<ActivityInstance> getPendingActivities() {
-        return service.getPendingActivities();
+    @GetMapping(value = "/students/{id}/activities/pending")
+    public ResponseEntity<List<ActivityInstanceMeasurement>> getPendingActivities(@PathVariable Long id) {
+        List<ActivityInstanceMeasurement> activityInstanceMeasurements = service.getPendingMeasurements(id);
+        return new ResponseEntity<>(activityInstanceMeasurements, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/students/{id}")
-    public List<ActivityInstance> getPastActivities() {
-        return service.getPendingActivities();
+    @GetMapping(value = "/students/{id}/activities/past")
+    public ResponseEntity<List<ActivityInstanceMeasurement>> getPastMeasurements(@PathVariable Long id) {
+        List<ActivityInstanceMeasurement> activityInstancesMeasurements = service.getPastMeasurements(id);
+        return new ResponseEntity<>(activityInstancesMeasurements, HttpStatus.OK);
     }
 
 }
