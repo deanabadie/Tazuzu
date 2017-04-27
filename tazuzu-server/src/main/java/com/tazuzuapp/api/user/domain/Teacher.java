@@ -1,7 +1,6 @@
 package com.tazuzuapp.api.user.domain;
 
 import com.tazuzuapp.api.organization.domain.School;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -16,9 +15,6 @@ public class Teacher extends User {
     @NotNull
     @ManyToOne
     private School school;
-
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participantsTeachers")
-//    private List<ActivityInstanceMeasurement> activities;
 
     public Teacher() {}
 
@@ -42,12 +38,9 @@ public class Teacher extends User {
         this.school = school;
     }
 
-//    public List<ActivityInstanceMeasurement> getActivities() {
-//        return activities;
-//    }
-
-//    public void setActivities(List<ActivityInstanceMeasurement> activities) {
-//        this.activities = activities;
-//    }
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 }
 

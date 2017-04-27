@@ -26,10 +26,8 @@ public class NotificationService {
     public void sendActivityNotification(Student student, ActivityInstance activityInstance) throws UnsupportedEncodingException {
 
         Map<String, String> values = new HashMap<>();
-        values.put("message", "some content....");
         values.put("firstName", student.getFirstName());
         values.put("activityDate", activityInstance.getActivityDate().toString());
-        values.put("link", "Some link...");
 
         String htmlContent = emailContentBuilder.build(values, "student-activity-notification");
 
