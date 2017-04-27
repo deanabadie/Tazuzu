@@ -6,11 +6,14 @@ import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
 import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
+import com.tazuzuapp.api.general.services.EmailService;
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.InternetAddress;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +24,22 @@ public class ActivityInstanceService {
     private final StudentRepository studentRepository;
     private final ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository;
 
+    private final NotificationService notificationService;
+
     @Autowired
-    public ActivityInstanceService(ActivityTypeRepository activityTypeRepository, ActivityInstanceRepository activityInstanceRepository,
-                                   StudentRepository studentRepository, ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository) {
+    public ActivityInstanceService(
+        ActivityTypeRepository activityTypeRepository,
+        ActivityInstanceRepository activityInstanceRepository,
+        StudentRepository studentRepository,
+        ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository,
+        EmailService emailService,
+        NotificationService notificationService
+    ) {
         this.activityTypeRepository = activityTypeRepository;
         this.activityInstanceRepository = activityInstanceRepository;
         this.studentRepository = studentRepository;
         this.activityInstanceMeasurementRepository = activityInstanceMeasurementRepository;
+        this.notificationService = notificationService;
     }
 
     public ActivityInstance createActivityInstance(ActivityInstanceRequest activityInstanceRequest) {
@@ -47,9 +59,20 @@ public class ActivityInstanceService {
                 students.add(studentRepository.findOne(studentId));
             }
         }
+
         for (Student s: students) {
             activityInstanceMeasurement.setStudent(s);
             activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
+
+            if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
+                //Send notification
+                try {
+                    notificationService.sendActivityNotification(s, activityInstance);
+                } catch (UnsupportedEncodingException e) {
+                    //@TODO
+                    // What to do in case couldn't send the email?
+                }
+            }
         }
         return activityInstance;
     }
