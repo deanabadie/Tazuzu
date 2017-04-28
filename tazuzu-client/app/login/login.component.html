@@ -1,7 +1,7 @@
 ﻿<div class="col-md-6 col-md-offset-3">
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !idNumber.valid }">
-            <label for="idNumber">idNumber</label>
+            <label for="idNumber">Id</label>
             <input type="number" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" #idNumber="ngModel" required />
             <div *ngIf="f.submitted && !idNumber.valid" class="help-block">Id number is required</div>
         </div>
