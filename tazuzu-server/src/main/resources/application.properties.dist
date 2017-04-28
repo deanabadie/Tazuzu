@@ -13,8 +13,8 @@ spring.datasource.password=root
 spring.datasource.driverClassName=com.mysql.jdbc.Driver
 
 spring.mail.host=smtp.gmail.com
-spring.mail.username=
-spring.mail.password=
+spring.mail.username=tazuzuapp@gmail.com
+spring.mail.password=tazuzu@2017
 spring.mail.port=587
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.starttls.required=false
