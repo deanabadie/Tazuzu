@@ -3,8 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router, NavigationStart } from '@angular/router';
 //import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
-import { Teacher } from '../_models/index';
-
+import { Teacher , Activity } from '../_models/index';
 import {config} from './../config/environment';
 
 @Injectable()
@@ -21,6 +20,11 @@ export class TeacherService {
 
     create(user: Teacher) {
        return this.http.post(config.API_URL + '/api/teachers', JSON.stringify(user),this.jwt())
+         .map(this.extractData);
+    }
+
+    createActivity(activity : Activity) {
+        return this.http.post(config.API_URL + '/api/activities', JSON.stringify(activity),this.jwt())
          .map(this.extractData);
     }
 

@@ -19,6 +19,8 @@ import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
+import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
+
 
 @NgModule({
     imports: [
@@ -35,6 +37,8 @@ import { RegisterTeacherComponent } from './registerTeacher/index';
         LoginComponent,
         RegisterComponent,
         RegisterTeacherComponent,
+        TeacherCreateActivityComponent,
+        
     ],
     providers: [
         AuthGuard,

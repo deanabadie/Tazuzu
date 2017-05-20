@@ -5,6 +5,7 @@ import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
+import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'registerTeacher', component: RegisterTeacherComponent },
     { path: 'homeTeacher', component: HomeTeacherComponent },
     { path: 'home', component: HomeComponent },
-
+    { path: 'teacherCreateActivity', component: TeacherCreateActivityComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
