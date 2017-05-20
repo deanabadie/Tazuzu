@@ -5,7 +5,7 @@ import com.tazuzuapp.api.user.domain.Student;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public class ActivityInstanceRequest {
@@ -22,6 +22,21 @@ public class ActivityInstanceRequest {
 
     @NotNull
     private boolean isMandatory;
+
+    @NotNull
+    private String activityName;
+
+    @NotNull
+    private MeasurementType measurementType;
+
+    /*public ActivityInstanceRequest(ActivityInstance ai){
+        activityDate = ai.getActivityDate();
+        numOfMeasurements = ai.getNumOfMeasurements();
+        isMandatory = ai.isMandatory();
+        activityTypeId = ai.getActivityType().getId();
+        activityName = ai.getActivityType().getActivityName();
+        measurementType = ai.getActivityType().getMeasurementTypeId();
+    }*/
 
     private Long classId;
 
@@ -83,6 +98,14 @@ public class ActivityInstanceRequest {
 
     public void setAimId(Long aimId) {
         this.activityInstanceMeasurementId = aimId;
+    }
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
     }
 }
 

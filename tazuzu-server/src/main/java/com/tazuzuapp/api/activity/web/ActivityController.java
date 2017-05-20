@@ -1,9 +1,6 @@
 package com.tazuzuapp.api.activity.web;
 
-import com.tazuzuapp.api.activity.domain.ActivityInstance;
-import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurement;
-import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
-import com.tazuzuapp.api.activity.domain.PayloadResponse;
+import com.tazuzuapp.api.activity.domain.*;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
 import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
@@ -99,4 +96,18 @@ public class ActivityController {
         return new ResponseEntity<>(activityInstancesMeasurements, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/measurements/{id}")
+    public ResponseEntity<ActivityInstanceMeasurement> updateActivityInstanceMeasurement(@PathVariable Long id, @RequestBody ActivityInstanceMeasurementRequest activityInstanceMeasurementRequest) {
+        if ( !service.exists(id) ) {
+            throw new EntityNotFoundException("Could not find measurement with given id: " + id);
+        }
+
+        ActivityInstanceMeasurement activityInstanceMeasurement = null;
+        try {
+            activityInstanceMeasurement = service.updateActivityInstanceMeasurement(id, activityInstanceMeasurementRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(activityInstanceMeasurement, HttpStatus.OK);
+    }
 }

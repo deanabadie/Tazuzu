@@ -31,6 +31,10 @@ public class ActivityInstance {
         isMandatory = activityInstanceRequest.isMandatory();
     }
 
+    public ActivityInstance() {
+
+    }
+
     public Long getId() {
         return id;
     }

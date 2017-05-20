@@ -2,6 +2,7 @@ package com.tazuzuapp.api.activity.service;
 
 import com.tazuzuapp.api.activity.domain.ActivityInstance;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurement;
+import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurementRequest;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
@@ -10,6 +11,9 @@ import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -150,5 +154,15 @@ public class ActivityInstanceService {
     public List<ActivityInstanceMeasurement> getPastMeasurements(Long id) {
         Student s = studentRepository.findOne(id);
         return activityInstanceMeasurementRepository.findByStudentAndActivityInstanceActivityDateBefore(s, new Date());
+    }
+
+    public ActivityInstanceMeasurement updateActivityInstanceMeasurement(Long id, ActivityInstanceMeasurementRequest activityInstanceMeasurementRequest) {
+        ActivityInstanceMeasurement activityInstanceMeasurement = activityInstanceMeasurementRepository.findOne(id);
+        activityInstanceMeasurement.setGrade(activityInstanceMeasurementRequest.getGrade());
+        activityInstanceMeasurement.setResultDistance(activityInstanceMeasurementRequest.getResultDistance());
+        activityInstanceMeasurement.setResultTime(activityInstanceMeasurementRequest.getResultTime());
+        activityInstanceMeasurement.setResultQuantity(activityInstanceMeasurementRequest.getResultQuantity());
+        activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
+        return  activityInstanceMeasurement;
     }
 }
