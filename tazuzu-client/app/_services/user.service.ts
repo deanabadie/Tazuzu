@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router, NavigationStart } from '@angular/router';
 //import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
-import { User } from '../_models/index';
+import { User , Activity} from '../_models/index';
 
 import {config} from './../config/environment';
 
@@ -25,6 +25,11 @@ export class UserService {
 
     create(user: User) {
       return this.http.post(config.API_URL + '/api/students', JSON.stringify(user),this.jwt())
+         .map(this.extractData);
+    }
+
+    createActivity(activity : Activity) {
+        return this.http.post(config.API_URL + '/api/activities', JSON.stringify(activity),this.jwt())
          .map(this.extractData);
     }
 

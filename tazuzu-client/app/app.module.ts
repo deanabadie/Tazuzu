@@ -20,7 +20,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
 import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
-
+import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 
 @NgModule({
     imports: [
@@ -38,6 +38,8 @@ import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
         RegisterComponent,
         RegisterTeacherComponent,
         TeacherCreateActivityComponent,
+        StudentCreateActivityComponent,
+        
         
     ],
     providers: [

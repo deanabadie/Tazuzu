@@ -1,8 +1,8 @@
 ﻿<div id="container" class="col-md-12 col-lg-offset-2">
   <div class="text-center">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default">Past Activities</button>
-      <button type="button" class="btn btn-default">Create Activity</button>
+      <button type="button" class="btn btn-default">My Past Activities</button>
+      <button type="button" class="btn btn-default"><a [routerLink]="['/studentCreateActivity']">Create Activity</a></button>
       <button type="button" class="btn btn-default">My Grades</button>
       <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
     </div>
