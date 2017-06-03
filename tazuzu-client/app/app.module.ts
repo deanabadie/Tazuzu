@@ -22,6 +22,7 @@ import { RegisterTeacherComponent } from './registerTeacher/index';
 import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
 import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
+import { StudentGradesComponent } from './studentGrades/index';
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { StudentPastActivityComponent } from './studentPastActivity/index';
         TeacherCreateActivityComponent,
         StudentCreateActivityComponent,
         StudentPastActivityComponent,
+        StudentGradesComponent,
         
     ],
     providers: [

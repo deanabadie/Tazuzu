@@ -23,6 +23,10 @@ export class UserService {
       return this.http.get(config.API_URL + '/api/activities/' + id, this.jwt()).map((response: Response) => response.json());  
     }
 
+    getStudentGrades(id: number):any{
+      return this.http.get(config.API_URL + '/api/students/' + id, this.jwt()).map((response: Response) => response.json());  
+    }
+
     getStudent(id: number){
         return this.http.get(config.API_URL + '/api/students/' + id, this.jwt()).map(response => response.json());
     }
