@@ -2,12 +2,14 @@ package com.tazuzuapp.api.activity.domain;
 
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
 import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
+import com.tazuzuapp.api.organization.domain.School;
 
 import java.util.List;
 
 public class PayloadResponse {
     private List<ActivityType> activityTypes;
     private List<ActivityInstance> activityInstances;
+    private List<School> schools;
 
     public PayloadResponse(ActivityTypeRepository activityTypeRepository, ActivityInstanceRepository activityInstanceRepository) {
         this.activityTypes = activityTypeRepository.findAll();

@@ -42,12 +42,9 @@ export class TeacherService {
     }
 
     private jwt() {
-           let headers = new Headers({ 'Content-Type': 'application/json' });
-           headers.append('Access-Control-Allow-Origin','*');
-           headers.append('Access-Control-Allow-Methods','*');
-           headers.append('Access-Control-Allow-Headers','*');
-           headers.append('Access-Control-Allow-Credentials','true');
-            return new RequestOptions({ headers: headers }); 
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', localStorage.getItem('Authorization'));
+        return new RequestOptions({ headers: headers }); 
     }
     
-    }
+}

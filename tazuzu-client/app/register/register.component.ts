@@ -27,7 +27,11 @@ export class RegisterComponent {
 
     register() {
         this.loading = true;
-        this.userService.create(this.model)
+
+        const modelValue = {...this.model};
+        modelValue.teacherId = JSON.parse(localStorage.getItem('currentUser')).id;
+
+        this.userService.create(modelValue)
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
