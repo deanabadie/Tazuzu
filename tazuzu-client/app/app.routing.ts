@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
 import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
 import { StudentCreateActivityComponent } from './studentCreateActivity/index';
+import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'teacherCreateActivity', component: TeacherCreateActivityComponent },
     { path: 'studentCreateActivity', component: StudentCreateActivityComponent },
+    { path: 'studentPastActivity', component: StudentPastActivityComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

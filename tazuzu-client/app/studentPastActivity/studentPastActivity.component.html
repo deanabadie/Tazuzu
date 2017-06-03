@@ -1,0 +1,43 @@
+ <div id="container" class="col-md-12 col-lg-offset-2">
+    <div class="text-center">
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default"><a [routerLink]="['/home']">Back to home page</a></button>
+      <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+
+  <br>
+  <br>
+        <div class="panel panel-info" style="background-color:white">
+        <div class="panel-heading">Past Activities</div>
+        <div class="panel-body" style="background-color:white">
+        <div id="pastActivitiesTable">
+        <table class="table table-striped" style="color: black; background-color:white">
+          <thead>
+            <th>Activity</th>
+            <th>Date</th>
+            <th>Total Score</th>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Basketball</td>
+                <td>28/4/17 20:00</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>Swimming</td>
+                <td>28/4/17 20:00</td>
+                <td>95</td>
+              </tr>
+              <tr>
+                <td>Football</td>
+                <td>28/4/17 20:00</td>
+                <td>100</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+</div>
