@@ -10,17 +10,17 @@ import { AlertService, TeacherService } from '../_services/index';
 
 export class TeacherCreateActivityComponent {
 
-    measurements = ['Time', 'Quantity','Distance'];
+    measurements = [1,2,3];
 
-    measAmount = ['1', '2','3'];
+    measAmount = [1,2,3];
 
-    mandatory = ['Yes','No'];
+    mandatory = ['true','false'];
 
     activitiesnames = ['running 2 km','running 100 m'];
 
-    classes = ['k','m'];
+    classes = [1];
 
-    students =  ['245', '6'];
+    students =  [245,6];
     
     model: any = {};
     loading = false;
