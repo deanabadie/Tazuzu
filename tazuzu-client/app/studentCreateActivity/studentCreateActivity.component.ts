@@ -33,10 +33,10 @@ export class StudentCreateActivityComponent {
     createActivity() {
         this.loading = true;
         this.studentService.createActivity(this.model)
-            .subscribe(
+            .subscribe( 
                 data => {
                     this.alertService.success('New activity created successfully', true);
-                    this.router.navigate(['/home']);
+                    this.router.navigate(['/students/current']);
                 },
                 error => {
                     this.alertService.error(error);

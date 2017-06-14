@@ -1,9 +1,9 @@
-export class Activity {
-    activityName: string; //combobox need to get from DB
-    measurementTypeId: number; //combobox hard coded 1-3
-    numOfMeasurements: number; //combobox hard coded 1-3 
+export interface Activity {
+    activityName: string;
+    measurementTypeId: number;
+    numOfMeasurements: number; 
     activityDate: Date;
-    isMandatory: string; //yes or no
-    classId: string; //combobox need to get from DB
-    studentIdList: string; //combobox need to get from DB
+    isMandatory: string;
+    classId: string;
+    studentIdList: string;
 }

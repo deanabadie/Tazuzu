@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 
 // used to create fake backend
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -22,6 +22,7 @@ import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
 import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
+import { HttpService } from './_services/http.service';
 
 @NgModule({
     imports: [
@@ -50,6 +51,13 @@ import { StudentGradesComponent } from './studentGrades/index';
         AuthenticationService,
         UserService,
         TeacherService,
+        {
+            provide: HttpService,
+            useFactory: (backend: XHRBackend, options: RequestOptions) => {
+                return new HttpService(backend, options);
+            },
+            deps: [XHRBackend, RequestOptions]
+        }
     ],
     bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-export class Teacher {
+export interface Teacher {
     govId: number;
     userName: string;
     password: string;
