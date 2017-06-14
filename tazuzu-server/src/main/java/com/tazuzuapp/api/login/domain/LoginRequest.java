@@ -1,4 +1,4 @@
-package com.tazuzuapp.api.security.login.domain;
+package com.tazuzuapp.api.login.domain;
 
 @SuppressWarnings("all")
 public class LoginRequest {

@@ -1,4 +1,4 @@
-package com.tazuzuapp.api.user.webController;
+package com.tazuzuapp.api.user.controller;
 
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.StudentRequest;

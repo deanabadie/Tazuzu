@@ -1,4 +1,4 @@
-package com.tazuzuapp.api.organization.webController;
+package com.tazuzuapp.api.organization.controller;
 
 import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.organization.domain.SchoolRequest;

@@ -1,8 +1,7 @@
-package com.tazuzuapp.api.organization.webController;
+package com.tazuzuapp.api.organization.controller;
 
 import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.ClassRequest;
-import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.organization.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

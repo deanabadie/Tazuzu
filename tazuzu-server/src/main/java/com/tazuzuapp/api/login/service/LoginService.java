@@ -1,6 +1,6 @@
-package com.tazuzuapp.api.security.login.service;
+package com.tazuzuapp.api.login.service;
 
-import com.tazuzuapp.api.security.login.domain.LoginRequest;
+import com.tazuzuapp.api.login.domain.LoginRequest;
 import com.tazuzuapp.api.user.domain.User;
 import com.tazuzuapp.api.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

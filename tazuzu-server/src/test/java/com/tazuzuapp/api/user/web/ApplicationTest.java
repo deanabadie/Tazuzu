@@ -3,7 +3,7 @@ package com.tazuzuapp.api.user.web;
 /**
  * Created by deana on 13/03/2017.
  */
-import com.tazuzuapp.api.user.webController.StudentController;
+import com.tazuzuapp.api.user.controller.StudentController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,8 @@
-package com.tazuzuapp.api.security.login.webController;
+package com.tazuzuapp.api.login.controller;
 
-import com.tazuzuapp.api.organization.domain.Class;
-import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.security.JwtUtil;
-import com.tazuzuapp.api.security.login.domain.LoginRequest;
-import com.tazuzuapp.api.security.login.service.LoginService;
+import com.tazuzuapp.api.login.domain.LoginRequest;
+import com.tazuzuapp.api.login.service.LoginService;
 import com.tazuzuapp.api.user.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

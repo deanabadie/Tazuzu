@@ -1,7 +1,5 @@
-package com.tazuzuapp.api.user.webController;
+package com.tazuzuapp.api.user.controller;
 
-import com.tazuzuapp.api.activity.domain.ActivityType;
-import com.tazuzuapp.api.organization.domain.ClassRequest;
 import com.tazuzuapp.api.user.domain.Teacher;
 import com.tazuzuapp.api.user.domain.TeacherRequest;
 import com.tazuzuapp.api.user.service.TeacherService;

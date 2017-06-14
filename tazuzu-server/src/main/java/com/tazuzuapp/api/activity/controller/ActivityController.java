@@ -1,17 +1,15 @@
-package com.tazuzuapp.api.activity.web;
+package com.tazuzuapp.api.activity.controller;
 
 import com.tazuzuapp.api.activity.domain.*;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
 import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
-import com.tazuzuapp.api.user.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import java.awt.geom.Path2D;
 import java.util.List;
 
 @RestController
@@ -60,11 +58,7 @@ public class ActivityController {
         }
 
         ActivityInstance activityInstance = null;
-//        try {
-//            activityInstance = service.updateActivityInstance(id, activityInstanceRequest);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
@@ -78,7 +72,7 @@ public class ActivityController {
         ActivityInstance activityInstance = service.getActivityInstance(id);
 
         if ( activityInstance == null ) {
-            throw new EntityNotFoundException("Could not find student with the given id (" + id + ")");
+            throw new EntityNotFoundException("Could not find activity with the given id (" + id + ")");
         }
 
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
