@@ -7,7 +7,6 @@ import { AlertService, UserService } from '../_services/index';
     moduleId: module.id,
     templateUrl: 'register.component.html'
 })
-
 export class RegisterComponent {
 
     schools = ['1', '2', '3', '4', 'Amal'];

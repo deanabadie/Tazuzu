@@ -7,7 +7,6 @@ import { UserService, TeacherService, AuthenticationService } from '../_services
     moduleId: module.id,
     templateUrl: 'home.component.html'
 })
-
 export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
