@@ -32,9 +32,10 @@ public abstract class User extends BaseEntity {
     private String password;
 
     @NotNull
-    private boolean isActivated;
+    private boolean isActivated = true;
 
     @NotNull
+    @Column(length = 1000)
     private String photoPath;
 
     @NotNull

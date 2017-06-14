@@ -1,14 +1,14 @@
 ﻿<div class="col-md-6 col-md-offset-3">
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate autocomplete="off">
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !idNumber.valid }">
+    <form name="form" (ngSubmit)="f.valid && login()" #f="ngForm" novalidate autocomplete="off">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !model.idNumber.valid }">
             <label for="idNumber">Id</label>
-            <input type="number" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" required autocomplete="off" />
-            <div *ngIf="f.submitted && !idNumber.valid" class="help-block">Id number is required</div>
+            <input type="number" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" minlength="9" maxlength="9" required autocomplete="off" />
+            <div *ngIf="f.submitted && !model.idNumber.valid" class="help-block">Id number is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !model.password.valid }">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" required autocomplete="off" />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            <div *ngIf="f.submitted && !model.password.valid" class="help-block">Password is required</div>
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Login</button>

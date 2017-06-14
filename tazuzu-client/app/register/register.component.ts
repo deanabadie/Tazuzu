@@ -35,7 +35,7 @@ export class RegisterComponent {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/homeTeacher']);
+                    this.router.navigate(['/teachers/current']);
                 },
                 error => {
                     this.alertService.error(error);

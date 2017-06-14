@@ -12,18 +12,22 @@ import { StudentGradesComponent } from './studentGrades/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'registerTeacher', component: RegisterTeacherComponent },
-    { path: 'homeTeacher', component: HomeTeacherComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'teacherCreateActivity', component: TeacherCreateActivityComponent },
-    { path: 'studentCreateActivity', component: StudentCreateActivityComponent },
-    { path: 'studentPastActivity', component: StudentPastActivityComponent },
-    { path: 'studentGrades', component: StudentGradesComponent },
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+
+    //Teachers states
+    { path: 'teachers/students/registration', component: RegisterComponent },
+    { path: 'teachers/registration', component: RegisterTeacherComponent },
+    { path: 'teachers/current', component: HomeTeacherComponent },
+    { path: 'teachers/activities/create', component: TeacherCreateActivityComponent },
+
+    //Students states
+    { path: 'students/current', component: HomeComponent },
+    { path: 'students/activities/create', component: StudentCreateActivityComponent },
+    { path: 'students/activities/past', component: StudentPastActivityComponent },
+    { path: 'students/grades', component: StudentGradesComponent },
+    
+    //Default state - redirect to home
+    { path: '**', redirectTo: 'login' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

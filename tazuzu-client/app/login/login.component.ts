@@ -9,9 +9,6 @@ import { AlertService, AuthenticationService } from '../_services/index';
 })
 
 export class LoginComponent implements OnInit {
-    
-    languages = ['English', 'Hebrew','Arabic'];  
-    userTypes = ['Student','Teacher'];  
 
     model: any = {};
     loading = false;
@@ -35,15 +32,15 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.idNumber, this.model.password)
             .subscribe(
-                data => {
-                    var user = JSON.parse(localStorage.getItem("currentUser"));
+                (data) => {
+                    const user = JSON.parse(localStorage.getItem("currentUser"));
                     if (user.userType == "Teacher"){
-                        this.router.navigate(['/homeTeacher']);
+                        this.router.navigate(['/teachers/current']);
                     }else if (user.userType == "Student"){
-                        this.router.navigate(['/home']);
+                        this.router.navigate(['/students/current']);
                     }
                 },
-                error => {
+                (error) => {
                     this.alertService.error(error);
                     this.loading = false;
                 });

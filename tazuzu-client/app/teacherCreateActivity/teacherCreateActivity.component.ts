@@ -36,7 +36,7 @@ export class TeacherCreateActivityComponent {
             .subscribe(
                 data => {
                     this.alertService.success('New activity created successfully', true);
-                    this.router.navigate(['/homeTeacher']);
+                    this.router.navigate(['/teachers/current']);
                 },
                 error => {
                     this.alertService.error(error);

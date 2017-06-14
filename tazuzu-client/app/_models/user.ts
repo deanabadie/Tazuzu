@@ -1,4 +1,4 @@
-﻿export class User {
+﻿export class IUser {
     firstName: string;
     lastName: string;
     userName: string;
@@ -13,4 +13,4 @@
     photoPath: string;
     teacherId: number;
     dateOfBirth: Date;
-}
+} 
