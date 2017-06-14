@@ -7,9 +7,8 @@ import { AlertService, UserService } from '../_services/index';
     moduleId: module.id,
     templateUrl: 'studentPastActivity.component.html'
 })
-
 export class StudentPastActivityComponent {
-    
+
     model: any = {};
     loading = false;
 

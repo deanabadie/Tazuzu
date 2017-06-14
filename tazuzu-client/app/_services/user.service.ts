@@ -1,7 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router, NavigationStart } from '@angular/router';
-//import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { User, Activity } from '../_models/index';
 import { HttpService } from './http.service';

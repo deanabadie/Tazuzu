@@ -10,12 +10,12 @@ import { AlertService, TeacherService } from '../_services/index';
 
 export class RegisterTeacherComponent {
 
-    schools = ['1', '2','3', '4', 'Amal'];
+    schools = ['1', '2', '3', '4', 'Amal'];
 
-    classes = ['1', '2','3', '4', 'k'];
+    classes = ['1', '2', '3', '4', 'k'];
 
-    genders = ['M','F'];
-    
+    genders = ['M', 'F'];
+
     model: any = {};
     loading = false;
 
@@ -28,13 +28,13 @@ export class RegisterTeacherComponent {
         this.loading = true;
         this.teacherService.create(this.model)
             .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+            data => {
+                this.alertService.success('Registration successful', true);
+                this.router.navigate(['/login']);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
     }
 }

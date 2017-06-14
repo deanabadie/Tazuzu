@@ -9,15 +9,14 @@ import { AlertService, UserService } from '../_services/index';
 })
 
 export class RegisterComponent {
-    
-    schools = ['1', '2','3', '4', 'Amal'];
 
-    classes = ['1', '2','3', '4', 'k'];
+    schools = ['1', '2', '3', '4', 'Amal'];
 
-    genders = ['M','F'];
-     
+    classes = ['1', '2', '3', '4', 'k'];
 
-    model: any ={};
+    genders = ['M', 'F'];
+
+    model: any = {};
     loading = false;
 
     constructor(
@@ -28,18 +27,18 @@ export class RegisterComponent {
     register() {
         this.loading = true;
 
-        const modelValue = {...this.model};
+        const modelValue = { ...this.model };
         modelValue.teacherId = JSON.parse(localStorage.getItem('currentUser')).id;
 
         this.userService.create(modelValue)
             .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/teachers/current']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+            (data) => {
+                this.alertService.success('Registration successful', true);
+                this.router.navigate(['/teachers/current']);
+            },
+            (error) => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
     }
 }

@@ -33,7 +33,8 @@
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
             <label for="dateOfBirth">Date of birth</label>
-            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required />
+            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required
+            />
             <div *ngIf="f.submitted && !dateOfBirth.valid" class="help-block">Date of birth is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">

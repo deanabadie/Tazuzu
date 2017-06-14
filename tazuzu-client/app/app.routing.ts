@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     { path: 'students/activities/create', component: StudentCreateActivityComponent },
     { path: 'students/activities/past', component: StudentPastActivityComponent },
     { path: 'students/grades', component: StudentGradesComponent },
-    
+
     //Default state - redirect to home
     { path: '**', redirectTo: 'login' }
 ];

@@ -12,31 +12,32 @@
   <div class="row">
     <div id="generalInfor">
       <div class="col-md-6">
-          <div class="panel panel-info">
-              <div class="panel-heading">General Information</div>
-              <div class="panel-body">
-                  <ul class="list-group" style="background-color: #94315d;">
-                  <li class="list-group-item" style="background-color: #94315d; border: none">First Name: {{currentUser.firstName}} </li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Last Name: {{currentUser.lastName}}</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Gender: {{currentUser.gender}}</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Email: {{currentUser.email}}</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Id: {{currentUser.govId}}</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">School: </li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Class:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Height:</li>
-                  <li class="list-group-item" style="background-color: #94315d; border: none">Weight:</li>
-                  </ul>
-              </div>
+        <div class="panel panel-info">
+          <div class="panel-heading">General Information</div>
+          <div class="panel-body">
+            <ul class="list-group" style="background-color: #94315d;">
+              <li class="list-group-item" style="background-color: #94315d; border: none">First Name: {{currentUser.firstName}} </li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Last Name: {{currentUser.lastName}}</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Gender: {{currentUser.gender}}</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Email: {{currentUser.email}}</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Id: {{currentUser.govId}}</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">School: </li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Class:</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Height:</li>
+              <li class="list-group-item" style="background-color: #94315d; border: none">Weight:</li>
+            </ul>
           </div>
+        </div>
       </div>
       <div class="col-md-6">
-          <img src="https://upload.wikimedia.org/wikipedia/he/7/70/%D7%90%D7%A8%D7%AA%D7%95%D7%A8.png" style="background-color:#3b5998" width="165" height="165">
+        <img src="https://upload.wikimedia.org/wikipedia/he/7/70/%D7%90%D7%A8%D7%AA%D7%95%D7%A8.png" style="background-color:#3b5998"
+          width="165" height="165">
       </div>
     </div>
-    </div>
-    <div class="panel panel-info" style="background-color:white">
-      <div class="panel-heading">Upcoming Activities</div>
-      <div class="panel-body" style="background-color:white">
+  </div>
+  <div class="panel panel-info" style="background-color:white">
+    <div class="panel-heading">Upcoming Activities</div>
+    <div class="panel-body" style="background-color:white">
       <div id="upcomingActivitiesTable">
         <table class="table table-striped" style="color: black; background-color:white">
           <thead>
@@ -44,84 +45,21 @@
             <th>Date</th>
           </thead>
           <tbody>
-              <tr>
-                <td>Basketball</td>
-                <td>28/4/17 20:00</td>
-              </tr>
-              <tr>
-                <td>Swimming</td>
-                <td>28/4/17 20:00</td>
-              </tr>
-              <tr>
-                <td>Football</td>
-                <td>28/4/17 20:00</td>
-              </tr>
+            <tr>
+              <td>Basketball</td>
+              <td>28/4/17 20:00</td>
+            </tr>
+            <tr>
+              <td>Swimming</td>
+              <td>28/4/17 20:00</td>
+            </tr>
+            <tr>
+              <td>Football</td>
+              <td>28/4/17 20:00</td>
+            </tr>
           </tbody>
         </table>
       </div>
-      </div>
     </div>
+  </div>
 </div>
-
-<!--
-  <h1>Hi {{currentUser.firstName}}! you are in Home page</h1>
-
-
-
-
- <nav>
-    <div class="nav-wrapper">
-      <ul class="left hide-on-med-and-down">
-        <li><a id = "results" onclick="showTbl()">My Results</a></li>
-        <li><a id = "act" onclick="removeTbl()">Activities</a></li>
-        <li><a>Lehazmin Haverim</a></li>
-        <li class="active"><a href="collapsible.html"></a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <table id="mytbl" class="mdl-data-table mdl-js-data-table">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Name</th>
-      <th class="mdl-data-table__cell--non-numeric">Nickname</th>
-      <th>Age</th>
-      <th class="mdl-data-table__cell--non-numeric">Living?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
-      <td class="mdl-data-table__cell--non-numeric">The smart one</td>
-      <td>40</td>
-      <td class="mdl-data-table__cell--non-numeric">No</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Paul McCartney</td>
-      <td class="mdl-data-table__cell--non-numeric">The cute one</td>
-      <td>73</td>
-      <td class="mdl-data-table__cell--non-numeric">Yes</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">George Harrison</td>
-      <td class="mdl-data-table__cell--non-numeric">The shy one</td>
-      <td>58</td>
-      <td class="mdl-data-table__cell--non-numeric">No</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Ringo Starr</td>
-      <td class="mdl-data-table__cell--non-numeric">The funny one</td>
-      <td>74</td>
-      <td class="mdl-data-table__cell--non-numeric">Yes</td>
-    </tr>
-  </tbody>
-</table>
-
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.username}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p> -->

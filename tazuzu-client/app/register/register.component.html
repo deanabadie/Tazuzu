@@ -28,14 +28,14 @@
         </div>
         <div class="form-group">
             <label for="gender">Gender</label>
-            <select class="form-control" id="gender" name="gender"
-            [(ngModel)]="model.gender" #gender="ngModel" required>
+            <select class="form-control" id="gender" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
             <option *ngFor="let g of genders" [value]="g">{{g}}</option>
             </select>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
             <label for="dateOfBirth">Date of birth</label>
-            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required />
+            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required
+            />
             <div *ngIf="f.submitted && !dateOfBirth.valid" class="help-block">Date of birth is required</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -45,18 +45,16 @@
         </div>
         <div class="form-group">
             <label for="school">School</label>
-            <select class="form-control" id="school" name="school"
-                [(ngModel)]="model.schoolName" #school="ngModel" required>
+            <select class="form-control" id="school" name="school" [(ngModel)]="model.schoolName" #school="ngModel" required>
             <option *ngFor="let school of schools" [value]="school">{{school}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="class">Class</label>
-            <select class="form-control" id="class" name="class"
-            [(ngModel)]="model.schoolClass" #class="ngModel" required>
+            <select class="form-control" id="class" name="class" [(ngModel)]="model.schoolClass" #class="ngModel" required>
             <option *ngFor="let class of classes" [value]="class">{{class}}</option>
             </select>
-        </div> 
+        </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !height.valid }">
             <label for="height">Height</label>
             <input type="number" class="form-control" name="school" [(ngModel)]="model.height" #height="ngModel" required />

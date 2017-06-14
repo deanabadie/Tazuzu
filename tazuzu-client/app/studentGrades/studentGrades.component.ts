@@ -7,9 +7,8 @@ import { AlertService, UserService } from '../_services/index';
     moduleId: module.id,
     templateUrl: 'studentGrades.component.html'
 })
-
 export class StudentGradesComponent {
-    
+
     model: any = {};
     loading = false;
 

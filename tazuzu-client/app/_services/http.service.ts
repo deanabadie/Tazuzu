@@ -16,13 +16,12 @@ export class HttpService extends Http {
             }
             options.headers.set('Authorization', `${token}`);
             return super.request(config.API_URL + url, options);
-        } 
+        }
 
         // we have to add the token to the url object
         url.headers.set('Authorization', `${token}`);
         url.url = config.API_URL + url.url;
         return super.request(url, options);
     }
-
 
 } 

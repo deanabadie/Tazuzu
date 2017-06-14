@@ -1,31 +1,30 @@
-﻿
-
-    <div id="container" class="col-md-12 col-lg-offset-2">
-        <div class="text-center">
-            <div class="btn-group" role="group">
+﻿<div id="container" class="col-md-12 col-lg-offset-2">
+    <div class="text-center">
+        <div class="btn-group" role="group">
             <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/activity/create']">Create Activity</a></button>
             <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/students/registration']">Register Student</a></button>
             <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">Teacher - general information</div>
-                    <div class="panel-body">
-                        <ul class="list-group" style="background-color: #94315d;">
-                            <li class="list-group-item" style="background-color: #94315d;">First Name: {{currentUser.firstName}} </li>
-                            <li class="list-group-item" style="background-color: #94315d;">Last Name: {{currentUser.lastName}}</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Gender: {{currentUser.gender}}</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Email: {{currentUser.email}}</li>
-                            <li class="list-group-item" style="background-color: #94315d;">Id: {{currentUser.govId}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZMU3jACjxRTIz6naPYx__V9TmID9AC46G3mC5GuHUH3AQ1hzB6e7aCIQ" style="background-color:#3b5998" width="165" height="165">
-            </div>
         </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">Teacher - general information</div>
+                <div class="panel-body">
+                    <ul class="list-group" style="background-color: #94315d;">
+                        <li class="list-group-item" style="background-color: #94315d;">First Name: {{currentUser.firstName}} </li>
+                        <li class="list-group-item" style="background-color: #94315d;">Last Name: {{currentUser.lastName}}</li>
+                        <li class="list-group-item" style="background-color: #94315d;">Gender: {{currentUser.gender}}</li>
+                        <li class="list-group-item" style="background-color: #94315d;">Email: {{currentUser.email}}</li>
+                        <li class="list-group-item" style="background-color: #94315d;">Id: {{currentUser.govId}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZMU3jACjxRTIz6naPYx__V9TmID9AC46G3mC5GuHUH3AQ1hzB6e7aCIQ"
+                style="background-color:#3b5998" width="165" height="165">
+        </div>
+    </div>
+</div>

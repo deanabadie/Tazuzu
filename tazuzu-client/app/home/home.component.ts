@@ -14,9 +14,6 @@ export class HomeComponent implements OnInit {
 
     constructor(private userService: UserService, private authenticationService: AuthenticationService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        //this.currentUser.pendingActivities = userService.getPendingActivities(this.currentRawUser.id);
-        //var currentUser = userService.getStudent(currentRawUser.id);
-        //userServiceObj.subscribe(data => this.currentUser = JSON.parse(data));
     }
 
     logout(){

@@ -7,21 +7,20 @@ import { AlertService, TeacherService } from '../_services/index';
     moduleId: module.id,
     templateUrl: 'teacherCreateActivity.component.html'
 })
-
 export class TeacherCreateActivityComponent {
 
-    measurements = [1,2,3];
+    measurements = [1, 2, 3];
 
-    measAmount = [1,2,3];
+    measAmount = [1, 2, 3];
 
-    mandatory = ['true','false'];
+    mandatory = ['true', 'false'];
 
-    activitiesnames = ['running 2 km','running 100 m'];
+    activitiesnames = ['running 2 km', 'running 100 m'];
 
     classes = [1];
 
-    students =  [245,6];
-    
+    students = [245, 6];
+
     model: any = {};
     loading = false;
 
@@ -34,13 +33,13 @@ export class TeacherCreateActivityComponent {
         this.loading = true;
         this.teacherService.createActivity(this.model)
             .subscribe(
-                data => {
-                    this.alertService.success('New activity created successfully', true);
-                    this.router.navigate(['/teachers/current']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+            data => {
+                this.alertService.success('New activity created successfully', true);
+                this.router.navigate(['/teachers/current']);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
     }
 }
