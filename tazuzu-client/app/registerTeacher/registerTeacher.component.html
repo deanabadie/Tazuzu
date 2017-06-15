@@ -53,8 +53,7 @@
             <div *ngIf="f.submitted && !photoPath.valid" class="help-block">Photo path is required</div>
         </div>
         <div class="form-group">
-            <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Register</button>
-            <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
             <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
         </div>
     </form>

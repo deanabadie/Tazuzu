@@ -108,3 +108,11 @@ h3 {
 customBGColor {
     background-color: #94315d;
 }
+
+[hidden] {
+    display: none !important;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+}

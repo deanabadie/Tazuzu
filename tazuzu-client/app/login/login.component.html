@@ -2,19 +2,23 @@
     <form name="form" (ngSubmit)="f.valid && login()" #f="ngForm" novalidate autocomplete="off">
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !model.idNumber.valid }">
             <label for="idNumber">Id</label>
-            <input type="number" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" minlength="9" maxlength="9" required
-                autocomplete="off" />
-            <div *ngIf="f.submitted && !model.idNumber.valid" class="help-block">Id number is required</div>
+            <input type="text" class="form-control" name="idNumber" [(ngModel)]="model.idNumber" required minlength="9" maxlength="9"
+                value="" #idNumber="ngModel" />
+            <div *ngIf="idNumber.errors && (idNumber.dirty || idNumber.touched)">
+                <div [hidden]="!idNumber.errors.required" class="help-block">Id number is required</div>
+                <div [hidden]="!idNumber.errors.minlength" class="help-block">Id should be 9 digits</div>
+            </div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !model.password.valid }">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" required autocomplete="off" />
-            <div *ngIf="f.submitted && !model.password.valid" class="help-block">Password is required</div>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required minlength="6" />
+            <div *ngIf="password.errors && (password.dirty || password.touched)">
+                <div *ngIf="!password.valid" class="help-block">Password is invalid</div>
+            </div>
         </div>
         <div class="form-group">
-            <button [disabled]="loading" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Login</button>
-            <div *ngIf=loading class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-            <a [routerLink]="['/registerTeacher']" class="btn btn-link">Register</a>
+            <button [disabled]="!f.valid" class="btn btn-primary">Login</button>
+            <a [routerLink]="['/teachers/registration']" class="btn btn-link">Register</a>
         </div>
     </form>
 </div>
