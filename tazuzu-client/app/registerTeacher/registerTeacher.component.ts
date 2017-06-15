@@ -1,31 +1,23 @@
-﻿import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Teacher } from '../_models/index';
-import { AlertService, TeacherService } from '../_services/index';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Teacher, IPayload } from '../_models/index';
+import { AlertService, TeacherService, PayloadService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
     templateUrl: 'registerTeacher.component.html'
 })
-export class RegisterTeacherComponent {
+export class RegisterTeacherComponent implements OnInit {
 
-    schools = ['1', '2', '3', '4', 'Amal'];
+    teacher: Teacher = new Teacher();
 
-    classes = ['1', '2', '3', '4', 'k'];
+    payload: IPayload;
 
-    genders = ['M', 'F'];
-
-    model: any = {};
-    loading = false;
-
-    constructor(
-        private router: Router,
-        private teacherService: TeacherService,
-        private alertService: AlertService) { }
+    constructor(private router: Router, private teacherService: TeacherService, private alertService: AlertService, private route: ActivatedRoute) {
+    }
 
     register() {
-        this.loading = true;
-        this.teacherService.create(this.model)
+        this.teacherService.create(this.teacher)
             .subscribe(
             data => {
                 this.alertService.success('Registration successful', true);
@@ -33,7 +25,10 @@ export class RegisterTeacherComponent {
             },
             error => {
                 this.alertService.error(error);
-                this.loading = false;
             });
+    }
+
+    ngOnInit() {
+        this.payload = this.route.snapshot.data['payload'];
     }
 }

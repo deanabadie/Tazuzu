@@ -10,24 +10,29 @@ import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { AuthGuard } from './_guards/index';
+import { PayloadResolve } from './_resolvers/payload.resolver';
 
 const appRoutes: Routes = [
-    { path: 'login', component: LoginComponent },
+    {
+        path: '', resolve: { payload: PayloadResolve }, children: [
+            { path: 'login', component: LoginComponent },
 
-    //Teachers states
-    { path: 'teachers/students/registration', component: RegisterComponent },
-    { path: 'teachers/registration', component: RegisterTeacherComponent },
-    { path: 'teachers/current', component: HomeTeacherComponent },
-    { path: 'teachers/activities/create', component: TeacherCreateActivityComponent },
+            //Teachers states
+            { path: 'teachers/students/registration', component: RegisterComponent },
+            { path: 'teachers/registration', component: RegisterTeacherComponent },
+            { path: 'teachers/current', component: HomeTeacherComponent },
+            { path: 'teachers/activities/create', component: TeacherCreateActivityComponent },
 
-    //Students states
-    { path: 'students/current', component: HomeComponent },
-    { path: 'students/activities/create', component: StudentCreateActivityComponent },
-    { path: 'students/activities/past', component: StudentPastActivityComponent },
-    { path: 'students/grades', component: StudentGradesComponent },
+            //Students states
+            { path: 'students/current', component: HomeComponent },
+            { path: 'students/activities/create', component: StudentCreateActivityComponent },
+            { path: 'students/activities/past', component: StudentPastActivityComponent },
+            { path: 'students/grades', component: StudentGradesComponent },
 
-    //Default state - redirect to home
-    { path: '**', redirectTo: 'login' }
+            //Default state - redirect to home
+            { path: '**', redirectTo: 'login' }
+        ]
+    }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

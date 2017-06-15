@@ -1,59 +1,93 @@
 ﻿<div class="col-md-6 col-md-offset-3">
-    <h2>Register Teacher</h2>
+    <h2>Teacher Registration</h2>
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+        <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName ngModel required />
-            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
-            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
-            <label for="userName">Username</label>
-            <input type="text" class="form-control" name="userName" [(ngModel)]="model.userName" #userName="ngModel" required />
-            <div *ngIf="f.submitted && !userName.valid" class="help-block">Username is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !govId.valid }">
-            <label for="govId">ID</label>
-            <input type="number" class="form-control" name="govId" [(ngModel)]="model.govId" #govId="ngModel" required />
-            <div *ngIf="f.submitted && !govId.valid" class="help-block">ID is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !gender.valid }">
-            <label for="gender">Gender (M\F)</label>
-            <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required />
-            <div *ngIf="f.submitted && !gender.valid" class="help-block">Gender is required M or F</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
-            <label for="dateOfBirth">Date of birth</label>
-            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required
-            />
-            <div *ngIf="f.submitted && !dateOfBirth.valid" class="help-block">Date of birth is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !schoolName.valid }">
-            <label for="schoolName">School</label>
-            <input type="text" class="form-control" name="schoolName" [(ngModel)]="model.schoolName" #schoolName="ngModel" required />
-            <div *ngIf="f.submitted && !schoolName.valid" class="help-block">school Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !photoPath.valid }">
-            <label for="photoPath">Photo path</label>
-            <input type="text" class="form-control" name="photoPath" [(ngModel)]="model.photoPath" #photoPath="ngModel" required />
-            <div *ngIf="f.submitted && !photoPath.valid" class="help-block">Photo path is required</div>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="teacher.firstName" #firstName="ngModel" minlength="2" maxlength="15" required />
+            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                <div [hidden]="!firstName.errors.required" class="help-block">First name is required</div>
+                <div [hidden]="!firstName.errors.minlength" class="help-block">First name should contain 2-15 characters</div>
+            </div>
         </div>
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="teacher.lastName" #lastName="ngModel" required minlength="2" maxlength="15" required />
+            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                <div [hidden]="!lastName.errors.required" class="help-block">Last name is required</div>
+                <div [hidden]="!lastName.errors.minlength" class="help-block">Last name should contain 2-15 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="userName">Username</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="teacher.userName" #userName="ngModel" minlength="4" maxlength="15" required />
+            <div *ngIf="userName.errors && (userName.dirty || userName.touched)">
+                <div [hidden]="!userName.errors.required" class="help-block">Username is required</div>
+                <div [hidden]="!userName.errors.minlength" class="help-block">Username should contain 4-15 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="teacher.password" #password="ngModel" minlength="6" maxlength="15" required />
+            <div *ngIf="password.errors && (password.dirty || password.touched)">
+                <div [hidden]="!password.errors.required" class="help-block">Password is required</div>
+                <div [hidden]="!password.errors.minlength" class="help-block">Password should contain 6-15 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="govId">ID</label>
+            <input type="text" class="form-control" name="govId" [(ngModel)]="teacher.govId" #govId="ngModel" minlength="9" maxlength="9" required />
+            <div *ngIf="govId.errors && (govId.dirty || govId.touched)">
+                <div [hidden]="!govId.errors.required" class="help-block">Id number is required</div>
+                <div [hidden]="!govId.errors.minlength" class="help-block">Id should be exactly 9 digits</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender (M\F)</label>
+            <select class="form-control" name="gender" [(ngModel)]="teacher.gender" #gender="ngModel" required>
+                <option value="" disabled selected>Select</option>
+                <option value="M">M</option>
+                <option value="M">F</option>
+            </select>
+            <div *ngIf="gender.errors">
+                <div [hidden]="gender.valid" class="help-block">Please select gender</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dateOfBirth">Date of birth</label>
+            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="teacher.dateOfBirth" #dateOfBirth="ngModel" required
+            />
+            <div *ngIf="dateOfBirth.errors && (dateOfBirth.dirty || dateOfBirth.touched)">
+                <div [hidden]="dateOfBirth.valid" class="help-block">Date of birth is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="teacher.email" #email="ngModel" email required />
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+                <div [hidden]="!email.errors.required" class="help-block">Email is required</div>
+                <div [hidden]="email.errors.required || !email.errors.email" class="help-block">Email is not valid</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="schoolName">School</label><br />
+            <select class="form-control" [(ngModel)]="teacher.schoolName" #schoolName="ngModel" name="schoolName" required>
+                <option value="" disabled selected>Select</option>
+                <option *ngFor="let school of payload.schools" [ngValue]="school.id">{{school.name}}</option>
+            </select>
+            <div *ngIf="schoolName.errors">
+                <div [hidden]="!schoolName.errors.required" class="help-block">School is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="photoPath">Profile photo path</label>
+            <input type="text" class="form-control" name="photoPath" [(ngModel)]="teacher.photoPath" #photoPath="ngModel" minlength="10" maxlength="1000" required url />
+            <div *ngIf="photoPath.errors && (photoPath.dirty || photoPath.touched)">
+                <div [hidden]="!photoPath.errors.required" class="help-block">Profile photo is required</div>
+                <div [hidden]="!photoPath.errors.minlength" class="help-block">Profile photo path should contain 10-1000 characters</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="!f.valid" class="btn btn-primary">Register</button>
             <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
         </div>
     </form>

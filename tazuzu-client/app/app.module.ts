@@ -12,7 +12,7 @@ import { routing } from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService, TeacherService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, TeacherService, PayloadService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
@@ -23,6 +23,7 @@ import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { HttpService } from './_services/http.service';
+import { PayloadResolve } from './_resolvers/payload.resolver';
 
 @NgModule({
     imports: [
@@ -50,6 +51,7 @@ import { HttpService } from './_services/http.service';
         AlertService,
         AuthenticationService,
         UserService,
+        PayloadService,
         TeacherService,
         {
             provide: HttpService,
@@ -57,7 +59,8 @@ import { HttpService } from './_services/http.service';
                 return new HttpService(backend, options);
             },
             deps: [XHRBackend, RequestOptions]
-        }
+        },
+        PayloadResolve
     ],
     bootstrap: [AppComponent]
 })
