@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
+@SuppressWarnings("unused")
 public class TeacherRequest extends UserRequest {
 
     @NotEmpty
@@ -38,9 +39,8 @@ public class TeacherRequest extends UserRequest {
 
     private Long id;
 
-    public TeacherRequest(){
+    public TeacherRequest() {}
 
-    }
     public TeacherRequest(Teacher t){
         firstName = t.getFirstName();
         lastName = t.getFirstName();

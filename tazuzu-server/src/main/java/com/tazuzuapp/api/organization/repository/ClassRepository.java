@@ -11,4 +11,5 @@ import java.util.List;
 public interface ClassRepository extends JpaRepository<Class, Long> {
     Class findBySchoolNameAndName(String schoolName, String name);
     List<Class> findBySchool(School school);
+    List<Class> findById(Long id);
 }

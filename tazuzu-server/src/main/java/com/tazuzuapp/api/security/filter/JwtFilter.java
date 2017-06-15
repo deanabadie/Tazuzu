@@ -6,15 +6,14 @@ import com.tazuzuapp.api.user.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Component
 public class JwtFilter extends GenericFilterBean {
@@ -34,13 +33,12 @@ public class JwtFilter extends GenericFilterBean {
         HttpServletRequest httpRequest = (HttpServletRequest) req;
         HttpServletResponse httpResponse = (HttpServletResponse) res;
 
-        Set<String> allowedPaths = new TreeSet<>();
-        allowedPaths.add("/api/login");
-        allowedPaths.add("/api/students");
-        allowedPaths.add("/api/teachers");
+        Map<String, List<String>> allowedPaths = new HashMap<>();
+        allowedPaths.put("/api/login", Collections.singletonList(HttpMethod.POST.toString()));
+        allowedPaths.put("/api/payload", Collections.singletonList(HttpMethod.GET.toString()));
 
         // when authenticate do not check for jwt
-        if ( allowedPaths.contains(httpRequest.getRequestURI()) && httpRequest.getMethod().equals(HttpMethod.POST.toString()) ) {
+        if ( allowedPaths.containsKey(httpRequest.getRequestURI()) && allowedPaths.get(httpRequest.getRequestURI()).contains(httpRequest.getMethod()) ) {
             filterChain.doFilter(httpRequest, res);
             return;
         }

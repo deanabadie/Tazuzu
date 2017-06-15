@@ -38,6 +38,7 @@ public abstract class User extends BaseEntity {
     @Column(length = 1000)
     private String photoPath;
 
+    @Column(unique = true)
     @NotNull
     private Long govId;
 

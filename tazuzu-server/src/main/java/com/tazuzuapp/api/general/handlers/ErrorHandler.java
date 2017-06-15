@@ -1,6 +1,7 @@
 package com.tazuzuapp.api.general.handlers;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import javassist.tools.web.BadHttpRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +34,10 @@ public class ErrorHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Object> handleNotFound(EntityNotFoundException e) {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BadHttpRequest.class)
+    public ResponseEntity<Object> handleBadHttpRequest(BadHttpRequest e) {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

@@ -35,12 +35,6 @@ public class ActivityController {
         this.activityInstanceRepository = activityInstanceRepository;
     }
 
-    @GetMapping(value = "/payload")
-    public ResponseEntity<PayloadResponse> Payload() {
-        PayloadResponse response = new PayloadResponse(activityTypeRepository, activityInstanceRepository);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
     @PostMapping(value = "")
     public ResponseEntity<ActivityInstance> createActivityInstance(@RequestBody ActivityInstanceRequest activityInstanceRequest) {
         try {

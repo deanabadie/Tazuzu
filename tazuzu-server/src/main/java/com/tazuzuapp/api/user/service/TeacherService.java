@@ -11,6 +11,7 @@ import com.tazuzuapp.api.user.domain.Teacher;
 import com.tazuzuapp.api.user.domain.TeacherRequest;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import com.tazuzuapp.api.user.repository.TeacherRepository;
+import javassist.tools.web.BadHttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,9 +46,12 @@ public class TeacherService {
     }
 
     @Transactional
-    public Teacher createTeacher(TeacherRequest teacherRequest) {
+    public Teacher createTeacher(TeacherRequest teacherRequest) throws BadHttpRequest {
         Teacher newTeacher = new Teacher(teacherRequest);
         School school = schoolRepository.findByName(teacherRequest.getSchoolName());
+        if ( school == null ) {
+            throw new BadHttpRequest(new Exception("Could not find the given school"));
+        }
         newTeacher.setSchool(school);
         return teacherRepository.save(newTeacher);
     }

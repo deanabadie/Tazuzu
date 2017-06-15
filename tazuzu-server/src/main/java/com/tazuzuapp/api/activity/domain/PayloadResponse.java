@@ -1,20 +1,16 @@
 package com.tazuzuapp.api.activity.domain;
 
-import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
-import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
+import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.School;
 
 import java.util.List;
+import java.util.Map;
 
+@SuppressWarnings("unused")
 public class PayloadResponse {
     private List<ActivityType> activityTypes;
-    private List<ActivityInstance> activityInstances;
     private List<School> schools;
-
-    public PayloadResponse(ActivityTypeRepository activityTypeRepository, ActivityInstanceRepository activityInstanceRepository) {
-        this.activityTypes = activityTypeRepository.findAll();
-        this.activityInstances = activityInstanceRepository.findAll();
-    }
+    private Map<Long, List<Class>> classes;
 
     public List<ActivityType> getActivityTypes() {
         return activityTypes;
@@ -24,11 +20,19 @@ public class PayloadResponse {
         this.activityTypes = activityTypes;
     }
 
-    public List<ActivityInstance> getActivityInstances() {
-        return activityInstances;
+    public List<School> getSchools() {
+        return schools;
     }
 
-    public void setActivityInstances(List<ActivityInstance> activityInstances) {
-        this.activityInstances = activityInstances;
+    public void setSchools(List<School> schools) {
+        this.schools = schools;
+    }
+
+    public Map<Long, List<Class>> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Map<Long, List<Class>> classes) {
+        this.classes = classes;
     }
 }

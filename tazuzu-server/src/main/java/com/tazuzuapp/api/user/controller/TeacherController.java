@@ -3,6 +3,7 @@ package com.tazuzuapp.api.user.controller;
 import com.tazuzuapp.api.user.domain.Teacher;
 import com.tazuzuapp.api.user.domain.TeacherRequest;
 import com.tazuzuapp.api.user.service.TeacherService;
+import javassist.tools.web.BadHttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,16 +52,9 @@ public class TeacherController {
         return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<Teacher> createTeacher(@RequestBody TeacherRequest teacherRequest) {
+    public ResponseEntity<Teacher> createTeacher(@RequestBody TeacherRequest teacherRequest) throws BadHttpRequest {
         Teacher teacher = service.createTeacher(teacherRequest);
         return new ResponseEntity<>(teacher, HttpStatus.CREATED);
     }
-//
-//    @PostMapping(value = "/send")
-//    public ResponseEntity<ActivityType> sendActivityToClass(@RequestBody ActivityRequest activityRequest,
-//                                                            ClassRequest clsRequest){
-//        ActivityType activity = service.sendActivityToClass(activityRequest, clsRequest);
-//        return new ResponseEntity<>(activity, HttpStatus.OK);
-//    }
 
 }
