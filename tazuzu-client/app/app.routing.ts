@@ -17,11 +17,12 @@ const appRoutes: Routes = [
         path: '', resolve: { payload: PayloadResolve }, children: [
             { path: 'login', component: LoginComponent },
 
+            { path: 'teachers/registration', component: RegisterTeacherComponent },
+            
             //Teachers states
             {
                 path: 'teachers', canActivate: [CanActivateAuthGuard], children: [
                     { path: 'students/registration', component: RegisterComponent },
-                    { path: 'registration', component: RegisterTeacherComponent },
                     { path: 'current', component: HomeTeacherComponent },
                     { path: 'activities/create', component: TeacherCreateActivityComponent },
                 ]

@@ -1,13 +1,13 @@
-﻿import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from '../_models/index';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { User, IPayload } from '../_models/index';
 import { AlertService, UserService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
     templateUrl: 'register.component.html'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
     schools = ['1', '2', '3', '4', 'Amal'];
 
@@ -15,13 +15,16 @@ export class RegisterComponent {
 
     genders = ['M', 'F'];
 
+    private payload: IPayload;
+
     model: any = {};
     loading = false;
 
     constructor(
         private router: Router,
         private userService: UserService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private route: ActivatedRoute) {}
 
     register() {
         this.loading = true;
@@ -39,5 +42,9 @@ export class RegisterComponent {
                 this.alertService.error(error);
                 this.loading = false;
             });
+    }
+
+    ngOnInit() {
+        this.payload = this.route.snapshot.data['payload'];
     }
 }

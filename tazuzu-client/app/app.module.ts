@@ -1,15 +1,12 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-
-// used to create fake backend
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-
 import { AlertComponent } from './_directives/index';
 import { CanActivateAuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, TeacherService, PayloadService } from './_services/index';
@@ -24,13 +21,20 @@ import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { HttpService } from './_services/http.service';
 import { PayloadResolve } from './_resolvers/payload.resolver';
+import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
-        BrowserModule,
+        BrowserModule, 
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
-        routing
+        routing,
+        BrowserAnimationsModule,
+        MdAutocompleteModule,
+        MdCardModule,
+        MdInputModule,
+        MdSelectionModule
     ],
     declarations: [
         AppComponent,

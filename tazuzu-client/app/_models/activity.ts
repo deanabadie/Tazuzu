@@ -1,4 +1,4 @@
-export interface Activity {
+export class Activity {
     activityName: string;
     measurementTypeId: number;
     numOfMeasurements: number;
