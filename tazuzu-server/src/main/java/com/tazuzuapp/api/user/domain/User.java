@@ -6,6 +6,7 @@ import com.tazuzuapp.api.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -16,10 +17,6 @@ public abstract class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true, nullable = false)
-    @NotNull
-    private String userName;
 
     @NotNull
     private String firstName;
@@ -51,17 +48,13 @@ public abstract class User extends BaseEntity {
     private Long govId;
 
     @NotNull
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
+
+    @NotNull
     private char gender;
 
     public User() {}
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -141,5 +134,13 @@ public abstract class User extends BaseEntity {
 
     public void setSchool(School school) {
         this.school = school;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

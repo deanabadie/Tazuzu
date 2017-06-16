@@ -48,7 +48,7 @@ public class TeacherService {
     @Transactional
     public Teacher createTeacher(TeacherRequest teacherRequest) throws BadHttpRequest {
         Teacher newTeacher = new Teacher(teacherRequest);
-        School school = schoolRepository.findByName(teacherRequest.getSchoolName());
+        School school = schoolRepository.findOne(teacherRequest.getSchoolId());
         if ( school == null ) {
             throw new BadHttpRequest(new Exception("Could not find the given school"));
         }
@@ -64,7 +64,7 @@ public class TeacherService {
         newTeacher.setCreatedAt(originalTeacher.getCreatedAt());
         newTeacher.setDeletedAt(originalTeacher.getDeletedAt());
         newTeacher.setId(id);
-        School school = schoolRepository.findByName(teacherRequest.getSchoolName());
+        School school = schoolRepository.findOne(teacherRequest.getSchoolId());
         newTeacher.setSchool(school);
         return teacherRepository.save(newTeacher);
     }

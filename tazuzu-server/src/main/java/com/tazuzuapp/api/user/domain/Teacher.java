@@ -15,15 +15,15 @@ public class Teacher extends User {
     public Teacher() {}
 
     public Teacher(TeacherRequest teacherRequest){
-        this.setEmail(teacherRequest.getEmail());
-        this.setPassword(teacherRequest.getPassword());
-        this.setActivated(true);
         this.setFirstName(teacherRequest.getFirstName());
-        this.setGender(teacherRequest.getGender());
         this.setLastName(teacherRequest.getLastName());
-        this.setUserName(teacherRequest.getUserName());
-        this.setPhotoPath(teacherRequest.getPhotoPath());
+        this.setPassword(teacherRequest.getPassword());
         this.setGovId(teacherRequest.getGovId());
+        this.setGender(teacherRequest.getGender());
+        this.setEmail(teacherRequest.getEmail());
+        this.setActivated(true);
+        this.setPhotoPath(teacherRequest.getPhotoPath());
+        this.setDateOfBirth(teacherRequest.getDateOfBirth());
     }
 
     @Override

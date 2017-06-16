@@ -1,12 +1,11 @@
 export class Teacher {
-    govId: number;
-    userName: string;
-    password: string;
     firstName: string;
     lastName: string;
+    password: string;
+    govId: number;
     gender: string;
     dateOfBirth: Date;
     email: string;
-    schoolName: string;
+    schoolId: string;
     photoPath: string;
 }

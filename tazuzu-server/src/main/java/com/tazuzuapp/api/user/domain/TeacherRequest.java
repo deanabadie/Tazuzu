@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @SuppressWarnings("unused")
 public class TeacherRequest extends UserRequest {
@@ -15,44 +16,26 @@ public class TeacherRequest extends UserRequest {
     private String lastName;
 
     @NotEmpty
-    private String userName;
-
-    @NotEmpty
     private String password;
+
+    @NotNull
+    private Long govId;
 
     @NotEmpty
     private char gender;
+
+    private Date dateOfBirth;
 
     @Email
     @NotEmpty
     private String email;
 
     @NotEmpty
-    private String schoolName;
-
-    @NotNull
-    private Long govId;
+    private long schoolId;
 
     private String photoPath;
 
-    private String type = "teacher";
-
-    private Long id;
-
     public TeacherRequest() {}
-
-    public TeacherRequest(Teacher t){
-        firstName = t.getFirstName();
-        lastName = t.getFirstName();
-        userName = t.getUserName();
-        gender = t.getGender();
-        email = t.getEmail();
-        schoolName = t.getSchool().toString();
-        govId = t.getGovId();
-        photoPath = t.getPhotoPath();
-        id = t.getId();
-
-    }
 
     public String getFirstName() {
         return firstName;
@@ -68,14 +51,6 @@ public class TeacherRequest extends UserRequest {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getPassword() {
@@ -102,12 +77,12 @@ public class TeacherRequest extends UserRequest {
         this.email = email;
     }
 
-    public String getSchoolName() {
-        return schoolName;
+    public long getSchoolId() {
+        return schoolId;
     }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
+    public void setSchoolId(long school) {
+        this.schoolId = school;
     }
 
     public String getPhotoPath() {
@@ -124,5 +99,13 @@ public class TeacherRequest extends UserRequest {
 
     public void setGovId(Long govId) {
         this.govId = govId;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

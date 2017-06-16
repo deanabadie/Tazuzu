@@ -22,9 +22,6 @@ public class Student extends User {
     @NotNull
     private double weight;
 
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateOfBirth;
 
     @NotNull
     @ManyToOne
@@ -38,7 +35,6 @@ public class Student extends User {
     public Student() {}
 
     public Student(StudentRequest sr){
-        this.setUserName(sr.getUserName());
         this.setFirstName(sr.getFirstName());
         this.setLastName(sr.getLastName());
         this.setEmail(sr.getEmail());
@@ -84,14 +80,6 @@ public class Student extends User {
 
     public void setSchoolClass(Class schoolClass) {
         this.schoolClass = schoolClass;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Teacher getTeacher() {

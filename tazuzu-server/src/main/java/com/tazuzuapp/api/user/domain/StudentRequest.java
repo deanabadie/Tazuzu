@@ -19,9 +19,6 @@ public class StudentRequest extends UserRequest{
     private String lastName;
 
     @NotEmpty
-    private String userName;
-
-    @NotEmpty
     private String password;
 
     @NotNull
@@ -66,7 +63,6 @@ public class StudentRequest extends UserRequest{
         id = s.getId();
         firstName = s.getFirstName();
         lastName = s.getLastName();
-        userName = s.getUserName();
         password = s.getPassword();
         govId = s.getGovId();
         gender = s.getGender();
@@ -92,14 +88,6 @@ public class StudentRequest extends UserRequest{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getPassword() {

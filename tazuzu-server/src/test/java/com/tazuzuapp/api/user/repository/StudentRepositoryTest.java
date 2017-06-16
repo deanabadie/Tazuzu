@@ -1,8 +1,5 @@
 package com.tazuzuapp.api.user.repository;
 
-/**
- * Created by deana on 13/03/2017.
- */
 import com.tazuzuapp.api.user.domain.Student;
 import org.junit.*;
 import org.junit.runner.*;
@@ -24,13 +21,6 @@ public class StudentRepositoryTest {
 
     @Autowired
     private StudentRepository repository;
-
-    @Test
-    public void findByUserNameTest() throws Exception {
-        Student s = this.repository.findByUserName("jacky");
-        assertThat(s.getFirstName()).isEqualTo("Jack");
-        assertThat(s.getLastName()).isEqualTo("Sparrow");
-    }
 
     @Test
     public void findAllTest() throws Exception {
