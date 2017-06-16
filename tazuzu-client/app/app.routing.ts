@@ -9,7 +9,7 @@ import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
 import { StudentCreateActivityComponent } from './studentCreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
-import { AuthGuard } from './_guards/index';
+import { CanActivateAuthGuard } from './_guards/index';
 import { PayloadResolve } from './_resolvers/payload.resolver';
 
 const appRoutes: Routes = [
@@ -18,16 +18,24 @@ const appRoutes: Routes = [
             { path: 'login', component: LoginComponent },
 
             //Teachers states
-            { path: 'teachers/students/registration', component: RegisterComponent },
-            { path: 'teachers/registration', component: RegisterTeacherComponent },
-            { path: 'teachers/current', component: HomeTeacherComponent },
-            { path: 'teachers/activities/create', component: TeacherCreateActivityComponent },
+            {
+                path: 'teachers', canActivate: [CanActivateAuthGuard], children: [
+                    { path: 'students/registration', component: RegisterComponent },
+                    { path: 'registration', component: RegisterTeacherComponent },
+                    { path: 'current', component: HomeTeacherComponent },
+                    { path: 'activities/create', component: TeacherCreateActivityComponent },
+                ]
+            },
 
             //Students states
-            { path: 'students/current', component: HomeComponent },
-            { path: 'students/activities/create', component: StudentCreateActivityComponent },
-            { path: 'students/activities/past', component: StudentPastActivityComponent },
-            { path: 'students/grades', component: StudentGradesComponent },
+            {
+                path: 'students', canActivate: [CanActivateAuthGuard], children: [
+                    { path: 'current', component: HomeComponent },
+                    { path: 'activities/create', component: StudentCreateActivityComponent },
+                    { path: 'activities/past', component: StudentPastActivityComponent },
+                    { path: 'grades', component: StudentGradesComponent },
+                ]
+            },
 
             //Default state - redirect to home
             { path: '**', redirectTo: 'login' }

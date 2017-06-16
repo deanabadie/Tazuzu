@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
 import { AlertComponent } from './_directives/index';
-import { AuthGuard } from './_guards/index';
+import { CanActivateAuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, TeacherService, PayloadService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { HomeTeacherComponent } from './homeTeacher/index';
@@ -44,10 +44,9 @@ import { PayloadResolve } from './_resolvers/payload.resolver';
         StudentCreateActivityComponent,
         StudentPastActivityComponent,
         StudentGradesComponent,
-
     ],
     providers: [
-        AuthGuard,
+        CanActivateAuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
