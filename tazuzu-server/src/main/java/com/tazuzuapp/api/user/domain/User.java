@@ -1,6 +1,8 @@
 package com.tazuzuapp.api.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tazuzuapp.api.general.domain.BaseEntity;
+import com.tazuzuapp.api.organization.domain.School;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,9 +30,15 @@ public abstract class User extends BaseEntity {
     @NotNull
     private String email;
 
+    @JsonIgnore
     @NotNull
     private String password;
 
+    @NotNull
+    @ManyToOne
+    private School school;
+
+    @JsonIgnore
     @NotNull
     private boolean isActivated = true;
 
@@ -125,5 +133,13 @@ public abstract class User extends BaseEntity {
 
     public void setGovId(Long govId) {
         this.govId = govId;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 }

@@ -1,5 +1,6 @@
 package com.tazuzuapp.api.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tazuzuapp.api.organization.domain.Class;
 import com.tazuzuapp.api.organization.domain.School;
 
@@ -27,12 +28,9 @@ public class Student extends User {
 
     @NotNull
     @ManyToOne
-    private School school;
-
-    @NotNull
-    @ManyToOne
     private Class schoolClass;
 
+    @JsonIgnore
     @NotNull
     @ManyToOne
     private Teacher teacher;
@@ -78,14 +76,6 @@ public class Student extends User {
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
     }
 
     public Class getSchoolClass() {

@@ -12,10 +12,6 @@ public class Teacher extends User {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @ManyToOne
-    private School school;
-
     public Teacher() {}
 
     public Teacher(TeacherRequest teacherRequest){
@@ -28,14 +24,6 @@ public class Teacher extends User {
         this.setUserName(teacherRequest.getUserName());
         this.setPhotoPath(teacherRequest.getPhotoPath());
         this.setGovId(teacherRequest.getGovId());
-    }
-
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
     }
 
     @Override

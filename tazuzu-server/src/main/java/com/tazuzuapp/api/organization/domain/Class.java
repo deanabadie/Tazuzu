@@ -1,5 +1,6 @@
 package com.tazuzuapp.api.organization.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tazuzuapp.api.general.domain.BaseEntity;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Class extends BaseEntity {
     @NotNull
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     private School school;
 
