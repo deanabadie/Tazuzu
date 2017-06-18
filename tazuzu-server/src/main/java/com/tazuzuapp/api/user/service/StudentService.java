@@ -19,15 +19,13 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final ClassRepository classRepository;
-    private final SchoolRepository schoolRepository;
     private final TeacherRepository teacherRepository;
 
     @Autowired
     public StudentService(StudentRepository studentRepository, ClassRepository classRepository,
-                          SchoolRepository schoolRepository, TeacherRepository teacherRepository) {
+                          TeacherRepository teacherRepository) {
         this.studentRepository = studentRepository;
         this.classRepository = classRepository;
-        this.schoolRepository = schoolRepository;
         this.teacherRepository = teacherRepository;
     }
 
@@ -43,28 +41,23 @@ public class StudentService {
     public Student createStudent(StudentRequest s) {
         Student newStudent = new Student(s);
         newStudent.setTeacher(teacherRepository.findOne(s.getTeacherId()));
-        School school = schoolRepository.findByName(s.getSchoolName());
-        newStudent.setSchool(school);
-        Class schoolClass = classRepository.findBySchoolNameAndName(s.getSchoolName(), s.getSchoolClass());
+        Class schoolClass = classRepository.findOne(s.getClassId());
+        newStudent.setSchool(schoolClass.getSchool());
         newStudent.setSchoolClass(schoolClass);
+
         return studentRepository.save(newStudent);
     }
 
     @Transactional
     public Student updateStudent(Long id, StudentRequest studentRequest) {
+        Student student = studentRepository.findOne(id);
+        student.setTeacher(teacherRepository.findOne(studentRequest.getTeacherId()));
+        student.setId(id);
+        Class schoolClass = classRepository.findOne(studentRequest.getClassId());
+        student.setSchoolClass(schoolClass);
+        student.setSchool(schoolClass.getSchool());
 
-        Student originalStudent = studentRepository.findOne(id);
-
-        Student newStudent = new Student(studentRequest);
-        newStudent.setTeacher(teacherRepository.findOne(studentRequest.getTeacherId()));
-        newStudent.setCreatedAt(originalStudent.getCreatedAt());
-        newStudent.setDeletedAt(originalStudent.getDeletedAt());
-        newStudent.setId(id);
-        School school = schoolRepository.findByName(studentRequest.getSchoolName());
-        newStudent.setSchool(school);
-        Class schoolClass = classRepository.findBySchoolNameAndName(studentRequest.getSchoolName(), studentRequest.getSchoolClass());
-        newStudent.setSchoolClass(schoolClass);
-        return studentRepository.save(newStudent);
+        return studentRepository.save(student);
     }
 
     public Boolean exists(Long id) {

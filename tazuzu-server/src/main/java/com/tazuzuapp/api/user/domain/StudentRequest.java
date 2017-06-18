@@ -39,10 +39,7 @@ public class StudentRequest extends UserRequest{
     private String email;
 
     @NotEmpty
-    private String schoolName;
-
-    @NotEmpty
-    private String schoolClass;
+    private long classId;
 
     @NotNull
     private double height;
@@ -67,8 +64,7 @@ public class StudentRequest extends UserRequest{
         govId = s.getGovId();
         gender = s.getGender();
         email = s.getEmail();
-        schoolName = s.getSchool().toString();
-        schoolClass = s.getSchoolClass().getName();
+        classId = s.getSchoolClass().getId();
         height = s.getHeight();
         weight = s.getWeight();
         photoPath = s.getPhotoPath();
@@ -138,22 +134,6 @@ public class StudentRequest extends UserRequest{
         this.email = email;
     }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
-
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
-
-    public String getSchoolClass() {
-        return schoolClass;
-    }
-
-    public void setSchoolClass(String schoolClass) {
-        this.schoolClass = schoolClass;
-    }
-
     public double getHeight() {
         return height;
     }
@@ -192,5 +172,13 @@ public class StudentRequest extends UserRequest{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public long getClassId() {
+        return classId;
+    }
+
+    public void setClassId(long classId) {
+        this.classId = classId;
     }
 }

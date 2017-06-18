@@ -9,30 +9,29 @@ import { AlertService, UserService } from '../_services/index';
 })
 export class RegisterComponent implements OnInit {
 
-    schools = ['1', '2', '3', '4', 'Amal'];
-
-    classes = ['1', '2', '3', '4', 'k'];
-
     genders = ['M', 'F'];
 
     private payload: IPayload;
 
-    model: any = {};
+    student: any = {};
     loading = false;
+
+    classes: Array<{id: number; name: string; }>;
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
-        private route: ActivatedRoute) {}
+        private route: ActivatedRoute) {
+        }
 
     register() {
         this.loading = true;
 
-        const modelValue = { ...this.model };
-        modelValue.teacherId = JSON.parse(localStorage.getItem('currentUser')).id;
+        const studentValue = { ...this.student };
+        studentValue.teacherId = JSON.parse(localStorage.getItem('currentUser')).id;
 
-        this.userService.create(modelValue)
+        this.userService.create(studentValue)
             .subscribe(
             (data) => {
                 this.alertService.success('Registration successful', true);
@@ -46,5 +45,7 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.payload = this.route.snapshot.data['payload'];
+        const schoolId = +JSON.parse(localStorage.getItem('currentUser')).schoolId;
+        this.classes = this.payload.classes[schoolId];
     }
 }
