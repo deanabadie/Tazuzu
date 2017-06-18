@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
     private payload: IPayload;
 
-    currentUser: {school: {id: number; name: string;}; teacherId?: number;};
+    currentUser: {id: number; school: {id: number; name: string;}; teacherId?: number;};
     student: any = {};
     loading = false;
 
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
         this.loading = true;
 
         const studentValue = { ...this.student };
-        studentValue.teacherId = JSON.parse(localStorage.getItem('currentUser')).id;
+        studentValue.teacherId = this.currentUser.id;
 
         this.userService.create(studentValue)
             .subscribe(

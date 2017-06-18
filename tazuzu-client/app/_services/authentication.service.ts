@@ -19,6 +19,7 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('Authorization', response.headers.get("Authorization"));
                 }
+                return user;
             });
     }
 

@@ -1,48 +1,26 @@
 package com.tazuzuapp.api.activity.domain;
 
-import com.tazuzuapp.api.user.domain.Student;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ActivityInstanceRequest {
-    
+
     @NotNull
     private Long activityTypeId;
 
     @NotNull
-    private Long numOfMeasurements;
-
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date activityDate;
+    private Date time;
 
     @NotNull
     private boolean isMandatory;
-
-    @NotNull
-    private String activityName;
-
-    @NotNull
-    private MeasurementType measurementType;
-
-    /*public ActivityInstanceRequest(ActivityInstance ai){
-        activityDate = ai.getActivityDate();
-        numOfMeasurements = ai.getNumOfMeasurements();
-        isMandatory = ai.isMandatory();
-        activityTypeId = ai.getActivityType().getId();
-        activityName = ai.getActivityType().getActivityName();
-        measurementType = ai.getActivityType().getMeasurementTypeId();
-    }*/
 
     private Long classId;
 
     private Long activityInstanceMeasurementId;
 
-    private List<Long> studentIdList;
+    private List<Long> studentIds;
 
     public Long getActivityTypeId() {
         return activityTypeId;
@@ -52,20 +30,12 @@ public class ActivityInstanceRequest {
         this.activityTypeId = activityTypeId;
     }
 
-    public Long getNumOfMeasurements() {
-        return numOfMeasurements;
+    public Date getTime() {
+        return time;
     }
 
-    public void setNumOfMeasurements(Long numOfMeasurements) {
-        this.numOfMeasurements = numOfMeasurements;
-    }
-
-    public Date getActivityDate() {
-        return activityDate;
-    }
-
-    public void setActivityDate(Date activityDate) {
-        this.activityDate = activityDate;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public boolean isMandatory() {
@@ -84,28 +54,20 @@ public class ActivityInstanceRequest {
         this.classId = classId;
     }
 
-    public List<Long> getStudentIdList() {
-        return studentIdList;
-    }
-
-    public void setStudentIdList(List<Long> studentIdList) {
-        this.studentIdList = studentIdList;
-    }
-
     public Long getActivityInstanceMeasurementId() {
         return activityInstanceMeasurementId;
     }
 
-    public void setAimId(Long aimId) {
-        this.activityInstanceMeasurementId = aimId;
+    public void setActivityInstanceMeasurementId(Long activityInstanceMeasurementId) {
+        this.activityInstanceMeasurementId = activityInstanceMeasurementId;
     }
 
-    public String getActivityName() {
-        return activityName;
+    public List<Long> getStudentIds() {
+        return studentIds;
     }
 
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
+    public void setStudentIds(List<Long> studentIds) {
+        this.studentIds = studentIds;
     }
 }
 

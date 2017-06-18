@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@SuppressWarnings("unused")
 @Entity
 public class ActivityInstance {
 
@@ -16,9 +17,6 @@ public class ActivityInstance {
     private ActivityType activityType;
 
     @NotNull
-    private Long numOfMeasurements;
-
-    @NotNull
     private boolean isMandatory;
 
     @NotNull
@@ -26,14 +24,11 @@ public class ActivityInstance {
     private Date activityDate;
 
     public ActivityInstance(ActivityInstanceRequest activityInstanceRequest) {
-        activityDate = activityInstanceRequest.getActivityDate();
-        numOfMeasurements = activityInstanceRequest.getNumOfMeasurements();
+        activityDate = activityInstanceRequest.getTime();
         isMandatory = activityInstanceRequest.isMandatory();
     }
 
-    public ActivityInstance() {
-
-    }
+    public ActivityInstance() {}
 
     public Long getId() {
         return id;
@@ -65,13 +60,5 @@ public class ActivityInstance {
 
     public void setActivityDate(Date activityDate) {
         this.activityDate = activityDate;
-    }
-
-    public Long getNumOfMeasurements() {
-        return numOfMeasurements;
-    }
-
-    public void setNumOfMeasurements(Long numOfMeasurements) {
-        this.numOfMeasurements = numOfMeasurements;
     }
 }

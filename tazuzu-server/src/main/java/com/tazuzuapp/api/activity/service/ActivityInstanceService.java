@@ -47,6 +47,7 @@ public class ActivityInstanceService {
     public ActivityInstance createActivityInstance(ActivityInstanceRequest activityInstanceRequest) throws Exception {
         ActivityInstance activityInstance = new ActivityInstance(activityInstanceRequest);
         activityInstance.setActivityType(activityTypeRepository.findOne(activityInstanceRequest.getActivityTypeId()));
+        activityInstance.setMandatory(activityInstanceRequest.isMandatory());
         activityInstanceRepository.save(activityInstance);
 
         Long classId = activityInstanceRequest.getClassId();
@@ -55,12 +56,12 @@ public class ActivityInstanceService {
         if (classId != null){
             students = studentRepository.findBySchoolClassId(classId);
         }else{
-            List<Long> studentsIds = activityInstanceRequest.getStudentIdList();
+            List<Long> studentsIds = activityInstanceRequest.getStudentIds();
             if ( studentsIds == null || studentsIds.isEmpty() ) {
                 throw new Exception("Must have at least one student in order to create activity");
             }
 
-            for (Long studentId : activityInstanceRequest.getStudentIdList()){
+            for (Long studentId : activityInstanceRequest.getStudentIds()){
                 students.add(studentRepository.findOne(studentId));
             }
         }
@@ -71,15 +72,15 @@ public class ActivityInstanceService {
             activityInstanceMeasurement.setActivityInstance(activityInstance);
             activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
 
-            if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
-                //Send notification
-                try {
-                    notificationService.sendActivityNotification(s, activityInstance);
-                } catch (UnsupportedEncodingException e) {
-                    //@TODO
-                    // What to do in case couldn't send the email?
-                }
-            }
+//            if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
+//                //Send notification
+//                try {
+//                    notificationService.sendActivityNotification(s, activityInstance);
+//                } catch (UnsupportedEncodingException e) {
+//                    //@TODO
+//                    // What to do in case couldn't send the email?
+//                }
+//            }
         }
 
         return activityInstance;

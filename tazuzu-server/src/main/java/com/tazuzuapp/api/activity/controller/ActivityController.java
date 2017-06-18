@@ -1,8 +1,6 @@
 package com.tazuzuapp.api.activity.controller;
 
 import com.tazuzuapp.api.activity.domain.*;
-import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
-import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,19 +18,11 @@ public class ActivityController {
 
     private final ActivityInstanceService service;
 
-    private final ActivityTypeRepository activityTypeRepository;
-
-    private final ActivityInstanceRepository activityInstanceRepository;
-
     @Autowired
     public ActivityController(
-            ActivityInstanceService activityInstanceService,
-            ActivityTypeRepository activityTypeRepository,
-            ActivityInstanceRepository activityInstanceRepository
+            ActivityInstanceService activityInstanceService
     ) {
         this.service = activityInstanceService;
-        this.activityTypeRepository = activityTypeRepository;
-        this.activityInstanceRepository = activityInstanceRepository;
     }
 
     @PostMapping(value = "")
@@ -43,17 +33,6 @@ public class ActivityController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
-
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<ActivityInstance> updateActivityInstance(@PathVariable Long id, @RequestBody ActivityInstanceRequest activityInstanceRequest) {
-        if ( !service.exists(id) ) {
-            throw new EntityNotFoundException("Could not find test distance with given id: " + id);
-        }
-
-        ActivityInstance activityInstance = null;
-
-        return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
     @GetMapping
