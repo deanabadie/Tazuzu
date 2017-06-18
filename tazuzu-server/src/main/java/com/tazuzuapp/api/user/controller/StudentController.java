@@ -2,6 +2,8 @@ package com.tazuzuapp.api.user.controller;
 
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.StudentRequest;
+import com.tazuzuapp.api.user.domain.Teacher;
+import com.tazuzuapp.api.user.domain.User;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import com.tazuzuapp.api.user.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,17 @@ public class StudentController {
     @GetMapping
     public List<Student> getStudents() {
         return service.getAllStudents();
+    }
+
+    @SuppressWarnings("unused")
+    @GetMapping(value = "/current", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Student> getCurrentUser(@RequestAttribute("user") User requestUser) {
+        Student teacher = service.findOneById(requestUser.getId());
+        if (teacher == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}")

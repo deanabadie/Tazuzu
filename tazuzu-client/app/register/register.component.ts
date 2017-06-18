@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
     private payload: IPayload;
 
+    currentUser: {school: {id: number; name: string;}; teacherId?: number;};
     student: any = {};
     loading = false;
 
@@ -45,7 +46,8 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.payload = this.route.snapshot.data['payload'];
-        const schoolId = +JSON.parse(localStorage.getItem('currentUser')).schoolId;
+        this.currentUser = this.route.snapshot.data['user'];
+        const schoolId = this.currentUser.school.id;
         this.classes = this.payload.classes[schoolId];
     }
 }

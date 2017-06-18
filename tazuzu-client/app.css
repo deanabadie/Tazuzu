@@ -8,7 +8,7 @@
 body {
     color: white;
     background-color: rgb(148, 49, 93);
-    font-family: "Open Sans" sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size:16px;
 }
 
@@ -26,4 +26,12 @@ button[disabled] {
 
 .list-group li {
     color: black;
+}
+
+.profile-image {
+    border: 1px solid #eee;
+    display: inline-block;
+    width: 165px;
+    height: 165px;
+    border-radius: 5px;
 }

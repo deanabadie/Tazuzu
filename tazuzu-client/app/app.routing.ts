@@ -5,12 +5,11 @@ import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
-import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
-import { StudentCreateActivityComponent } from './studentCreateActivity/index';
+import { CreateActivityComponent } from './CreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { CanActivateAuthGuard } from './_guards/index';
-import { PayloadResolve } from './_resolvers/payload.resolver';
+import { PayloadResolve, UserResolve } from './_resolvers/index';
 
 const appRoutes: Routes = [
     {
@@ -21,18 +20,24 @@ const appRoutes: Routes = [
             
             //Teachers states
             {
-                path: 'teachers', canActivate: [CanActivateAuthGuard], children: [
+                path: 'teachers', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
                     { path: 'students/registration', component: RegisterComponent },
-                    { path: 'current', component: HomeTeacherComponent },
-                    { path: 'activities/create', component: TeacherCreateActivityComponent },
+                    { path: 'current', component: HomeTeacherComponent }
                 ]
             },
 
-            //Students states
+            //Activities
             {
-                path: 'students', canActivate: [CanActivateAuthGuard], children: [
+                path: 'activities', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
+                    { path: 'create', component: CreateActivityComponent }
+                ]
+            },
+
+            //Students statesya
+            {
+                path: 'students', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
                     { path: 'current', component: HomeComponent },
-                    { path: 'activities/create', component: StudentCreateActivityComponent },
+                    
                     { path: 'activities/past', component: StudentPastActivityComponent },
                     { path: 'grades', component: StudentGradesComponent },
                 ]

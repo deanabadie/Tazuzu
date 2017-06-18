@@ -6,6 +6,7 @@ import com.tazuzuapp.api.organization.repository.ClassRepository;
 import com.tazuzuapp.api.organization.repository.SchoolRepository;
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.StudentRequest;
+import com.tazuzuapp.api.user.domain.Teacher;
 import com.tazuzuapp.api.user.repository.StudentRepository;
 import com.tazuzuapp.api.user.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ public class StudentService {
 
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
+    }
+
+    public Student findOneById(long id) {
+        return studentRepository.findOne(id);
     }
 
     @Transactional

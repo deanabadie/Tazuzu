@@ -9,23 +9,22 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { CanActivateAuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService, TeacherService, PayloadService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, PayloadService, ActivityService, StudentService, TeacherService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
-import { TeacherCreateActivityComponent } from './teacherCreateActivity/index';
-import { StudentCreateActivityComponent } from './studentCreateActivity/index';
+import { CreateActivityComponent } from './CreateActivity/index';
 import { StudentPastActivityComponent } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { HttpService } from './_services/http.service';
-import { PayloadResolve } from './_resolvers/payload.resolver';
+import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } from '@angular/material';
 
 @NgModule({
     imports: [
-        BrowserModule, 
+        BrowserModule,  
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
@@ -44,8 +43,7 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
         LoginComponent,
         RegisterComponent,
         RegisterTeacherComponent,
-        TeacherCreateActivityComponent,
-        StudentCreateActivityComponent,
+        CreateActivityComponent,
         StudentPastActivityComponent,
         StudentGradesComponent,
     ],
@@ -55,7 +53,9 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
         AuthenticationService,
         UserService,
         PayloadService,
+        ActivityService,
         TeacherService,
+        StudentService,
         {
             provide: HttpService,
             useFactory: (backend: XHRBackend, options: RequestOptions) => {
@@ -63,7 +63,8 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
             },
             deps: [XHRBackend, RequestOptions]
         },
-        PayloadResolve
+        PayloadResolve,
+        UserResolve
     ],
     bootstrap: [AppComponent]
 })

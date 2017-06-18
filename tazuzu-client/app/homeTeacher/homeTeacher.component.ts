@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../_models/index';
 import { UserService, TeacherService, AuthenticationService } from '../_services/index';
 
@@ -7,15 +8,14 @@ import { UserService, TeacherService, AuthenticationService } from '../_services
     templateUrl: 'homeTeacher.component.html'
 })
 export class HomeTeacherComponent implements OnInit {
-    currentUser: User;
+    currentUser: {school: {id: number; name: string;}};
     users: User[] = [];
 
-    constructor(private teacherService: UserService, private authenticationService: AuthenticationService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    constructor(private teacherService: UserService, private authenticationService: AuthenticationService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
+        this.currentUser = this.route.snapshot.data['user'];
     }
 
     logout() {

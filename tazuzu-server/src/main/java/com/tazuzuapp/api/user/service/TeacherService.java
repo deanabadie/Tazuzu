@@ -1,15 +1,9 @@
 package com.tazuzuapp.api.user.service;
 
-import com.tazuzuapp.api.activity.domain.ActivityType;
-import com.tazuzuapp.api.organization.domain.Class;
-import com.tazuzuapp.api.organization.domain.ClassRequest;
 import com.tazuzuapp.api.organization.domain.School;
 import com.tazuzuapp.api.organization.repository.SchoolRepository;
-import com.tazuzuapp.api.organization.service.ClassService;
-import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.Teacher;
 import com.tazuzuapp.api.user.domain.TeacherRequest;
-import com.tazuzuapp.api.user.repository.StudentRepository;
 import com.tazuzuapp.api.user.repository.TeacherRepository;
 import javassist.tools.web.BadHttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +17,13 @@ import java.util.List;
 public class TeacherService {
 
     private final TeacherRepository teacherRepository;
-    private final StudentRepository studentRepository;
     private final SchoolRepository schoolRepository;
-    private final ClassService classService;
-
 
     @Autowired
-    public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository,
-                          SchoolRepository schoolRepository, ClassService classService) {
+    public TeacherService(TeacherRepository teacherRepository,
+                          SchoolRepository schoolRepository) {
         this.teacherRepository = teacherRepository;
-        this.studentRepository = studentRepository;
         this.schoolRepository = schoolRepository;
-        this.classService = classService;
     }
 
     public Teacher getTeacher(Long teacherId) {
@@ -43,6 +32,10 @@ public class TeacherService {
 
     public List<Teacher> getAllTeachers() {
         return teacherRepository.findAll();
+    }
+
+    public Teacher findOneById(long id) {
+        return this.teacherRepository.findOne(id);
     }
 
     @Transactional
@@ -78,24 +71,4 @@ public class TeacherService {
         return teacherRepository.exists(id);
     }
 
-    @Transactional
-    public List<Student> getTeachersClassStudents(Class cls){
-        return studentRepository.findBySchoolClass(cls);
-    }
-
-//    public ActivityType sendActivityToClass(ActivityRequest activityRequest, ClassRequest clsRequest){
-//        Class cls = new Class();
-//        Class newClass = new Class();
-//        newClass.setName(clsRequest.getName());
-//        newClass.setSchool(schoolRepository.findOne(clsRequest.getSchoolId()));
-//        classService.sendActivityToAll(cls);
-//
-//        ActivityType activity = new ActivityType(activityRequest);
-////        activity.setActivityName(activityRequest.getActivityName());
-//////        activity.setActivityTypeId(activityRequest.getActivityTypeId());
-////        activity.setNumOfMeasurements(activityRequest.getNumOfMeasurements());
-//
-//        classService.sendActivityToAll(cls);
-//        return activity;
-//    }
 }

@@ -2,40 +2,38 @@
   <div class="text-center">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default"><a [routerLink]="['/students/activities/past']">My Past Activities</a></button>
-      <button type="button" class="btn btn-default"><a [routerLink]="['/students/activities/create']">Create Activity</a></button>
+      <button type="button" class="btn btn-default"><a [routerLink]="['/activities/create']">Create Activity</a></button>
       <button type="button" class="btn btn-default"><a [routerLink]="['/students/current/grades']">My Grades</a></button>
       <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
     </div>
   </div>
-
   <br>
   <div class="row">
     <div id="generalInfor">
       <div class="col-md-6">
         <div class="panel panel-info">
-          <div class="panel-heading">General Information</div>
+          <div class="panel-heading">Student - general Information</div>
           <div class="panel-body">
-            <ul class="list-group" style="background-color: #94315d;">
-              <li class="list-group-item" style="background-color: #94315d; border: none">First Name: {{currentUser.firstName}} </li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Last Name: {{currentUser.lastName}}</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Gender: {{currentUser.gender}}</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Email: {{currentUser.email}}</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Id: {{currentUser.govId}}</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">School: </li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Class:</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Height:</li>
-              <li class="list-group-item" style="background-color: #94315d; border: none">Weight:</li>
+            <ul class="list-group">
+              <li class="list-group-item">First Name: {{currentUser.firstName}} </li>
+              <li class="list-group-item">Last Name: {{currentUser.lastName}}</li>
+              <li class="list-group-item">Gender: {{currentUser.gender === 'M' ? 'Male' : 'Female'}}</li>
+              <li class="list-group-item">Email: {{currentUser.email}}</li>
+              <li class="list-group-item">Id: {{currentUser.govId}}</li>
+              <li class="list-group-item">School: {{currentUser.school.name}}</li>
+              <li class="list-group-item">Class: {{currentUser.schoolClass.name}}</li>
+              <li class="list-group-item">Height: {{currentUser.height}}</li>
+              <li class="list-group-item">Weight: {{currentUser.weight}}</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <img src="https://upload.wikimedia.org/wikipedia/he/7/70/%D7%90%D7%A8%D7%AA%D7%95%D7%A8.png" style="background-color:#3b5998"
-          width="165" height="165">
+        <img [src]="currentUser.photoPath" class="profile-image" />
       </div>
     </div>
   </div>
-  <div class="panel panel-info" style="background-color:white">
+  <!--<div class="panel panel-info" style="background-color:white">
     <div class="panel-heading">Upcoming Activities</div>
     <div class="panel-body" style="background-color:white">
       <div id="upcomingActivitiesTable">
@@ -61,5 +59,5 @@
         </table>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
