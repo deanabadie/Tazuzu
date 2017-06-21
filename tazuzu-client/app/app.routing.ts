@@ -11,6 +11,8 @@ import { StudentActivities } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { CanActivateAuthGuard } from './_guards/index';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
+import { StudentLayout } from './studentLayout/index';
+import { TeacherLayout } from './teacherLayout/index';
 
 const appRoutes: Routes = [
     {
@@ -21,26 +23,22 @@ const appRoutes: Routes = [
             
             //Teachers states
             {
-                path: 'teachers', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
-                    { path: 'students/registration', component: RegisterComponent },
-                    { path: 'current', component: HomeTeacherComponent }
-                ]
-            },
-
-            //Activities
-            {
-                path: 'activities', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
-                    { path: 'create', component: CreateActivityComponent },
-                    { path: ':id', component: ActivityComponent }
+                path: 'teachers', component: TeacherLayout, canActivate: [CanActivateAuthGuard], children: [
+                    { path: 'current', component: HomeTeacherComponent, resolve: { user: UserResolve } },
+                    { path: 'students/registration', component: RegisterComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
+                    { path: 'activities/create', component: CreateActivityComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
+                    { path: 'activities/list/:id', component: ActivityComponent, resolve: { user: UserResolve } }
                 ]
             },
 
             //Students statesya
             {
-                path: 'students', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
-                    { path: 'current', component: HomeComponent },
-                    { path: 'activities', component: StudentActivities },
-                    { path: 'grades', component: StudentGradesComponent },
+                path: 'students', component: StudentLayout, canActivate: [CanActivateAuthGuard], children: [
+                    { path: 'current', component: HomeComponent, resolve: { user: UserResolve } },
+                    { path: 'activities/create', component: CreateActivityComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
+                    { path: 'activities/list', component: StudentActivities, resolve: { user: UserResolve } },
+                    { path: 'grades', component: StudentGradesComponent, resolve: { user: UserResolve } },
+                    { path: 'activities/list/:id', component: ActivityComponent, resolve: { user: UserResolve } }
                 ]
             },
 

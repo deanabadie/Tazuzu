@@ -12,12 +12,10 @@ export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 
-    constructor(private userService: UserService, private authenticationService: AuthenticationService, private route: ActivatedRoute) {
-    }
-
-    logout(){
-        this.authenticationService.logout();
-    }
+    constructor(
+        private userService: UserService, 
+        private authenticationService: AuthenticationService, 
+        private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.currentUser = this.route.snapshot.data['user'];

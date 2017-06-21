@@ -23,6 +23,8 @@ import { HttpService } from './_services/http.service';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
+import { StudentLayout } from './studentLayout/index';
+import { TeacherLayout } from './teacherLayout/index';
 
 @NgModule({
     imports: [
@@ -50,6 +52,8 @@ import { ChartsModule } from 'ng2-charts';
         ActivityComponent,
         StudentActivities,
         StudentGradesComponent,
+        StudentLayout,
+        TeacherLayout
     ],
     providers: [
         CanActivateAuthGuard,

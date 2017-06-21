@@ -28,7 +28,7 @@ export class StudentActivities implements OnInit {
     ) { }
 
     goToActivityPage(activity) {
-        this.router.navigate([`/activities/${activity.activityInstance.id}`]);
+        this.router.navigate([`/students/activities/list/${activity.activityInstance.id}`]);
     }
 
     ngOnInit() {

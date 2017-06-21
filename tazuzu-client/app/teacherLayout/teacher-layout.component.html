@@ -1,0 +1,12 @@
+<div>
+    <div class="text-center">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/current']">Home</a></button>
+            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/activities/create']">Create Activity</a></button>
+            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/students/registration']">Register Student</a></button>
+            <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+        </div>
+    </div>
+    <br />
+    <router-outlet></router-outlet>
+</div>

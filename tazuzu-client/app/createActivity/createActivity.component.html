@@ -15,8 +15,8 @@
 
         <div class="form-group">
             <label for="time">Date and Time for Activity</label>
-            <input type="datetime-local" [min]="minDateTime" class="form-control" name="time" (blur)="validations.time = true"
-                [(ngModel)]="activity.time" #time="ngModel" required />
+            <input type="datetime-local" [min]="minDateTime" class="form-control" name="time" (blur)="validations.time = true" [(ngModel)]="activity.time"
+                #time="ngModel" required />
             <div *ngIf="time.errors && validations.time">
                 <div [hidden]="!time.errors.required" class="help-block">Date and time are required</div>
                 <div [hidden]="!time.errors.min" class="help-block">Min date: {{minDateTime}}</div>
@@ -72,7 +72,6 @@
         <div class="form-group">
             <button [disabled]="!f.form.valid || (activity.target == 0 && !activity.classId) || (activity.target == 1 && studentsList.length == 0)"
                 class="btn btn-primary">Create</button>
-            <a [routerLink]="['/teachers/current']" class="btn btn-link">Cancel</a>
         </div>
     </form>
 </div>
