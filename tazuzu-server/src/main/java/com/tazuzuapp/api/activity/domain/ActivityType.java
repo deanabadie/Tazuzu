@@ -14,7 +14,7 @@ public class ActivityType extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long activityId;
+    private Long id;
 
     @NotNull
     private String activityName;
@@ -24,9 +24,9 @@ public class ActivityType extends BaseEntity {
 
     private int numOfMeasurements;
 
-    public Long getId() { return activityId; }
+    public Long getId() { return id; }
 
-    public void setId(Long id) { this.activityId = id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getActivityName() { return activityName; }
 
@@ -38,14 +38,6 @@ public class ActivityType extends BaseEntity {
 
     public void setMeasurementTypeId(MeasurementType measurementTypeId) {
         this.measurementTypeId = measurementTypeId;
-    }
-
-    public Long getActivityId() {
-        return activityId;
-    }
-
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
     }
 
     public int getNumOfMeasurements() {

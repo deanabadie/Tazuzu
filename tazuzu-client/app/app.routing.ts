@@ -37,7 +37,6 @@ const appRoutes: Routes = [
             {
                 path: 'students', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
                     { path: 'current', component: HomeComponent },
-                    
                     { path: 'activities/past', component: StudentPastActivityComponent },
                     { path: 'grades', component: StudentGradesComponent },
                 ]

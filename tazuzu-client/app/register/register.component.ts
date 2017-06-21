@@ -13,18 +13,18 @@ export class RegisterComponent implements OnInit {
 
     private payload: IPayload;
 
-    currentUser: {id: number; school: {id: number; name: string;}; teacherId?: number;};
+    currentUser: { id: number; school: { id: number; name: string; }; teacherId?: number; };
     student: any = {};
     loading = false;
 
-    classes: Array<{id: number; name: string; }>;
+    classes: Array<{ id: number; name: string; }>;
 
     constructor(
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
         private route: ActivatedRoute) {
-        }
+    }
 
     register() {
         this.loading = true;

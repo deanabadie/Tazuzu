@@ -20,15 +20,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
         this.currentUser = this.route.snapshot.data['user'];
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
 }

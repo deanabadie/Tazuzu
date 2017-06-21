@@ -22,11 +22,4 @@ export class HomeTeacherComponent implements OnInit {
         this.authenticationService.logout();
     }
 
-    deleteUser(id: number) {
-        this.teacherService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        this.teacherService.getAll().subscribe(users => { this.users = users; });
-    }
 }

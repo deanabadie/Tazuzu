@@ -18,7 +18,5 @@ export class StudentGradesComponent {
         private alertService: AlertService) { }
 
     getPastActivities() {
-        this.loading = true;
-        this.studentService.getStudentGrades(this.model)
     }
 }

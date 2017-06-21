@@ -19,6 +19,5 @@ export class StudentPastActivityComponent {
 
     getPastActivities() {
         this.loading = true;
-        this.studentService.getPastActivities(this.model)
     }
 }
