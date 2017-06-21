@@ -10,7 +10,7 @@ import { routing } from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { CanActivateAuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, PayloadService, ActivityService, StudentService, TeacherService } from './_services/index';
-import { HomeComponent } from './home/index';
+import { HomeComponent } from './homeStudent/index';
 import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
