@@ -1,1 +1,1 @@
-export * from './StudentActivities.component';
+export * from './student-activities.component';

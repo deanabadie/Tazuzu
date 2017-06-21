@@ -6,7 +6,7 @@ import * as moment from 'moment';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'studentActivities.component.html'
+    templateUrl: 'student-activities.component.html'
 })
 export class StudentActivities implements OnInit {
 
