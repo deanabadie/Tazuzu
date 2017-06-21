@@ -17,8 +17,7 @@ import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
 import { CreateActivityComponent } from './createActivity/index';
 import { ActivityComponent } from './activity/index';
-import { StudentActivities } from './studentPastActivity/index';
-import { StudentGradesComponent } from './studentGrades/index';
+import { StudentActivities } from './studentActivities/index';
 import { HttpService } from './_services/http.service';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } from '@angular/material';
@@ -32,13 +31,13 @@ import { TeacherLayout } from './teacherLayout/index';
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
-        routing,
         BrowserAnimationsModule,
         MdAutocompleteModule,
         MdCardModule,
         MdInputModule,
         MdSelectionModule,
-        ChartsModule
+        ChartsModule,
+        routing,
     ],
     declarations: [
         AppComponent,
@@ -51,7 +50,6 @@ import { TeacherLayout } from './teacherLayout/index';
         CreateActivityComponent,
         ActivityComponent,
         StudentActivities,
-        StudentGradesComponent,
         StudentLayout,
         TeacherLayout
     ],

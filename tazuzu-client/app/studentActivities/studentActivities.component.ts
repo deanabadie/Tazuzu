@@ -35,12 +35,15 @@ export class StudentActivities implements OnInit {
         const activityMapper = (activity) => {
             switch (activity.activityInstance.activityType.measurementTypeId) {
                 case 'TIME':
+                    //Minutes
                     activity.measurement = activity.resultTimeSeconds / 60;
                     break;
                 case 'QUANTITY':
+                    //Scalar
                     activity.measurement = activity.resultQuantity;
                     break;
                 case 'DISTANCE':
+                    //Meter
                     activity.measurement = activity.resultDistance;
                     break;
             }

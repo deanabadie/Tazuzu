@@ -13,8 +13,10 @@ export class RegisterTeacherComponent implements OnInit {
 
     payload: IPayload;
 
-    constructor(private router: Router, private teacherService: TeacherService, private alertService: AlertService, private route: ActivatedRoute) {
-    }
+    constructor(private router: Router,
+        private teacherService: TeacherService,
+        private alertService: AlertService, 
+        private route: ActivatedRoute) {}
 
     register() {
         this.teacherService.create(this.teacher)

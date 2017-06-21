@@ -7,8 +7,7 @@ import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
 import { CreateActivityComponent } from './createActivity/index';
 import { ActivityComponent } from './activity/index';
-import { StudentActivities } from './studentPastActivity/index';
-import { StudentGradesComponent } from './studentGrades/index';
+import { StudentActivities } from './studentActivities/index';
 import { CanActivateAuthGuard } from './_guards/index';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { StudentLayout } from './studentLayout/index';
@@ -20,7 +19,7 @@ const appRoutes: Routes = [
             { path: 'login', component: LoginComponent },
 
             { path: 'teachers/registration', component: RegisterTeacherComponent },
-            
+
             //Teachers states
             {
                 path: 'teachers', component: TeacherLayout, canActivate: [CanActivateAuthGuard], children: [
@@ -31,13 +30,12 @@ const appRoutes: Routes = [
                 ]
             },
 
-            //Students statesya
+            //Students states
             {
                 path: 'students', component: StudentLayout, canActivate: [CanActivateAuthGuard], children: [
                     { path: 'current', component: HomeComponent, resolve: { user: UserResolve } },
                     { path: 'activities/create', component: CreateActivityComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
                     { path: 'activities/list', component: StudentActivities, resolve: { user: UserResolve } },
-                    { path: 'grades', component: StudentGradesComponent, resolve: { user: UserResolve } },
                     { path: 'activities/list/:id', component: ActivityComponent, resolve: { user: UserResolve } }
                 ]
             },

@@ -16,41 +16,62 @@ import * as moment from 'moment';
 })
 export class CreateActivityComponent implements OnInit {
 
+    //Activity object, holds all the data the user enters to the form (using binding)
     activity = new NewActivity();
 
+    //Payload used to populate some of the fields on the client side
     private payload: IPayload;
 
+    //Object that holds the current logged in user
     currentUser: { school: School };
 
+    //Angular form control used to interact with the auto complete component API
     studentsSuggestionCtrl: FormControl;
 
+    //Autocomplete suggestions list, populated with values from the server side
     suggestedStudents = [];
 
+    //Only classes relevant for the current user school
+    //In order to avoid mutating the payload object
     schoolClasses: Array<SchoolClass>;
 
+    //Chosen students
     studentsList = [];
 
+    //Helper object
     validations = {
         time: false
     };
 
+    //The minimum date for the activity
     private minDateTime: string;
 
-    constructor(private router: Router, private studentService: StudentService, private alertService: AlertService, private route: ActivatedRoute, private activityService: ActivityService) {
+    constructor(
+        private router: Router,
+        private studentService: StudentService,
+        private alertService: AlertService,
+        private route: ActivatedRoute,
+        private activityService: ActivityService) {
+            
         this.studentsSuggestionCtrl = new FormControl();
 
-        this.minDateTime = moment().add(1, 'day').format("YYYY-MM-DD");
+        this.minDateTime = moment().add(0, 'day').format("YYYY-MM-DD");
 
+        //studentsSuggestionCtrl emits all input changes on the observable stream
         this.studentsSuggestionCtrl.valueChanges
             .startWith(null)
-            .filter((v) => {
+            .filter(v => {
                 this.suggestedStudents = [];
                 return v != null && v.length > 1;
             })
+            //Debounce prevents calling the server multiple times
             .debounceTime(250)
-            .flatMap(name => this.getSuggestions(name))
+            //getSuggestions returns observable (async http call)
+            .flatMap(v => this.getSuggestions(v))
+            //
             .map(suggestions => {
                 return suggestions.filter(suggestion => {
+                    //`some` stops on the first time it finds the condition to be true
                     return !this.studentsList.some(student => student.id === suggestion.id);
                 });
             })
@@ -82,9 +103,11 @@ export class CreateActivityComponent implements OnInit {
             isMandatory: +this.activity.isMandatory
         };
 
-        if ( this.activity.target === 0 ) {
+        if (this.activity.target === 0) {
+            //Class
             activity.classId = +this.activity.classId;
         } else {
+            //Individuals
             activity.studentIds = this.studentsList.map(s => s.id);
         }
 
