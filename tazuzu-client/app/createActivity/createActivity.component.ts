@@ -12,7 +12,7 @@ import * as moment from 'moment';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'CreateActivity.component.html'
+    templateUrl: 'createActivity.component.html'
 })
 export class CreateActivityComponent implements OnInit {
 
