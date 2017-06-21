@@ -19,7 +19,6 @@ public class ActivityInstanceMeasurement extends BaseEntity{
     @ManyToOne
     private ActivityInstance activityInstance;
 
-    @JsonIgnore
     @ManyToOne
     private Student student;
 
@@ -27,7 +26,7 @@ public class ActivityInstanceMeasurement extends BaseEntity{
 
     private Integer resultQuantity;
 
-    private Duration resultTime;
+    private Long resultTimeSeconds;
 
     private Double grade;
 
@@ -71,12 +70,12 @@ public class ActivityInstanceMeasurement extends BaseEntity{
         this.resultQuantity = resultQuantity;
     }
 
-    public Duration getResultTime() {
-        return resultTime;
+    public Long getResultTimeSeconds() {
+        return resultTimeSeconds;
     }
 
-    public void setResultTime(Duration resultTime) {
-        this.resultTime = resultTime;
+    public void setResultTimeSeconds(Long resultTimeSeconds) {
+        this.resultTimeSeconds = resultTimeSeconds;
     }
 
     public Double getGrade() {
@@ -86,4 +85,5 @@ public class ActivityInstanceMeasurement extends BaseEntity{
     public void setGrade(Double grade) {
         this.grade = grade;
     }
+
 }

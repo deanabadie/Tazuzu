@@ -15,7 +15,7 @@ public class ActivityInstanceMeasurementRequest {
     private Integer resultQuantity;
 
     @NotNull
-    private Duration resultTime;
+    private Long resultTime;
 
     @NotNull
     private Long activityInstanceId;
@@ -23,45 +23,57 @@ public class ActivityInstanceMeasurementRequest {
     @NotNull
     private Long studentId;
 
-    public Double getGrade() { return grade; }
+    public Double getGrade() {
+        return grade;
+    }
 
-    public void setGrade(Double grade) {
+    public ActivityInstanceMeasurementRequest setGrade(Double grade) {
         this.grade = grade;
+        return this;
     }
 
     public Double getResultDistance() {
         return resultDistance;
     }
 
-    public void setResultDistance(Double resultDistance) {
+    public ActivityInstanceMeasurementRequest setResultDistance(Double resultDistance) {
         this.resultDistance = resultDistance;
+        return this;
     }
 
     public Integer getResultQuantity() {
         return resultQuantity;
     }
 
-    public void setResultQuantity(Integer resultQuantity) {
+    public ActivityInstanceMeasurementRequest setResultQuantity(Integer resultQuantity) {
         this.resultQuantity = resultQuantity;
+        return this;
     }
 
-    public Duration getResultTime() { return resultTime; }
+    public Long getResultTime() {
+        return resultTime;
+    }
 
-    public void setResultTime(Duration resultTime) { this.resultTime = resultTime; }
+    public ActivityInstanceMeasurementRequest setResultTime(Long resultTime) {
+        this.resultTime = resultTime;
+        return this;
+    }
 
     public Long getActivityInstanceId() {
         return activityInstanceId;
     }
 
-    public void setActivityInstanceId(Long activityInstanceId) {
+    public ActivityInstanceMeasurementRequest setActivityInstanceId(Long activityInstanceId) {
         this.activityInstanceId = activityInstanceId;
+        return this;
     }
 
     public Long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public ActivityInstanceMeasurementRequest setStudentId(Long studentId) {
         this.studentId = studentId;
+        return this;
     }
 }

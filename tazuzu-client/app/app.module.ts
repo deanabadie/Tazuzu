@@ -22,6 +22,7 @@ import { StudentGradesComponent } from './studentGrades/index';
 import { HttpService } from './_services/http.service';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
         MdAutocompleteModule,
         MdCardModule,
         MdInputModule,
-        MdSelectionModule
+        MdSelectionModule,
+        ChartsModule
     ],
     declarations: [
         AppComponent,

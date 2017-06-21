@@ -10,6 +10,7 @@ import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.User;
 import com.tazuzuapp.api.user.repository.StudentRepository;
+import com.tazuzuapp.api.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,7 @@ public class ActivityInstanceService {
     public ActivityInstanceService(
         ActivityTypeRepository activityTypeRepository,
         ActivityInstanceRepository activityInstanceRepository,
+        UserRepository userRepository,
         StudentRepository studentRepository,
         ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository,
         NotificationService notificationService
@@ -104,6 +106,10 @@ public class ActivityInstanceService {
         return activityInstanceMeasurementRepository.findByStudentAndActivityInstanceActivityDateBefore(s, new Date());
     }
 
+    public List<ActivityInstanceMeasurement> getMeasurementsByInstanceId(Long id) {
+        return activityInstanceMeasurementRepository.findByActivityInstanceId(id);
+    }
+
     public List<ActivityInstance> getTeacherPendingActivities(Long id) {
         return activityInstanceRepository.findByUserIdAndActivityDateAfter(id, new Date());
     }
@@ -116,7 +122,7 @@ public class ActivityInstanceService {
         ActivityInstanceMeasurement activityInstanceMeasurement = activityInstanceMeasurementRepository.findOne(id);
         activityInstanceMeasurement.setGrade(activityInstanceMeasurementRequest.getGrade());
         activityInstanceMeasurement.setResultDistance(activityInstanceMeasurementRequest.getResultDistance());
-        activityInstanceMeasurement.setResultTime(activityInstanceMeasurementRequest.getResultTime());
+        activityInstanceMeasurement.setResultTimeSeconds(activityInstanceMeasurementRequest.getResultTime());
         activityInstanceMeasurement.setResultQuantity(activityInstanceMeasurementRequest.getResultQuantity());
         activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
         return  activityInstanceMeasurement;

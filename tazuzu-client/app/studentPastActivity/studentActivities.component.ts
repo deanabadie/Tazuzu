@@ -27,11 +27,15 @@ export class StudentActivities implements OnInit {
         private ActivityService: ActivityService
     ) { }
 
+    goToActivityPage(activity) {
+        this.router.navigate([`/activities/${activity.activityInstance.id}`]);
+    }
+
     ngOnInit() {
         const activityMapper = (activity) => {
             switch (activity.activityInstance.activityType.measurementTypeId) {
                 case 'TIME':
-                    activity.measurement = activity.resultTime;
+                    activity.measurement = activity.resultTimeSeconds / 60;
                     break;
                 case 'QUANTITY':
                     activity.measurement = activity.resultQuantity;

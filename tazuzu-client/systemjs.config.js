@@ -25,6 +25,8 @@
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             'jwt-decode': 'npm:jwt-decode/build/jwt-decode.min.js',
             'moment': 'npm:moment/min/moment.min.js',
+            'chart-js': 'node_modules/chart.js/dist/Chart.bundle.min.js',
+            'ng2-charts': 'node_modules/ng2-charts/bundles/ng2-charts.umd.min.js',
 
             // other libraries
             'rxjs': 'npm:rxjs'

@@ -27,4 +27,9 @@ export class ActivityService {
             .map(response => response.json());
     }
 
+    getMeasurementsByActivityInstanceId(instanceId: number) {
+        return this.http.get(`/api/activities/instances/${instanceId}/measurements`)
+            .map(response => response.json());
+    }
+
 }

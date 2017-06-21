@@ -56,5 +56,18 @@ table {
 
 .student-activities-page h3 {
     color: #fff;
-    font-size: 25px;
+}
+
+.student-activities-page h4 {
+    color: #fff;
+    font-size: 15px;
+}
+
+.activity-statistics {
+    background: #fff;
+    padding:4em;
+}
+
+.pointer {
+    cursor: pointer;
 }

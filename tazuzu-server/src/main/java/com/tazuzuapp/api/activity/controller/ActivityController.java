@@ -1,6 +1,7 @@
 package com.tazuzuapp.api.activity.controller;
 
 import com.tazuzuapp.api.activity.domain.*;
+import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
 import com.tazuzuapp.api.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +25,15 @@ public class ActivityController {
 
     private final ActivityInstanceService service;
 
+    private final ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository;
+
     @Autowired
     public ActivityController(
-            ActivityInstanceService activityInstanceService
+            ActivityInstanceService activityInstanceService,
+            ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository
     ) {
         this.service = activityInstanceService;
+        this.activityInstanceMeasurementRepository = activityInstanceMeasurementRepository;
     }
 
     @PostMapping(value = "")
@@ -78,6 +86,11 @@ public class ActivityController {
         activities.put("pending", service.getTeacherPendingActivities(requestUser.getId()));
 
         return new ResponseEntity<>(activities, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/instances/{instanceId}/measurements")
+    public ResponseEntity<List<ActivityInstanceMeasurement>> getActivityInstanceResults(@PathVariable("instanceId") Long instanceId) {
+        return new ResponseEntity<>(service.getMeasurementsByInstanceId(instanceId), HttpStatus.OK);
     }
 
     @PutMapping(value = "/measurements/{id}")
