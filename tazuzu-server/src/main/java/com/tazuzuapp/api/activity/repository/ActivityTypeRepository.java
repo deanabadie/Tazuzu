@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ActivityTypeRepository extends JpaRepository<ActivityType, Long> {
 
-    Long findActivityIdByActivityName(String activityName);
+    Long findActivityIdByName(String activityName);
 
 }

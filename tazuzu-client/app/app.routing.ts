@@ -6,7 +6,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
 import { CreateActivityComponent } from './CreateActivity/index';
-import { StudentPastActivityComponent } from './studentPastActivity/index';
+import { StudentActivities } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { CanActivateAuthGuard } from './_guards/index';
 import { PayloadResolve, UserResolve } from './_resolvers/index';
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
             {
                 path: 'students', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
                     { path: 'current', component: HomeComponent },
-                    { path: 'activities/past', component: StudentPastActivityComponent },
+                    { path: 'activities', component: StudentActivities },
                     { path: 'grades', component: StudentGradesComponent },
                 ]
             },

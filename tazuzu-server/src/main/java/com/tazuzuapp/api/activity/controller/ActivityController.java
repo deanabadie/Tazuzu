@@ -2,13 +2,16 @@ package com.tazuzuapp.api.activity.controller;
 
 import com.tazuzuapp.api.activity.domain.*;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
+import com.tazuzuapp.api.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -51,16 +54,17 @@ public class ActivityController {
         return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/students/{id}/activities/pending")
-    public ResponseEntity<List<ActivityInstanceMeasurement>> getPendingActivities(@PathVariable Long id) {
-        List<ActivityInstanceMeasurement> activityInstanceMeasurements = service.getPendingMeasurements(id);
-        return new ResponseEntity<>(activityInstanceMeasurements, HttpStatus.OK);
-    }
+    @GetMapping(value = "/students/{studentId}")
+    public ResponseEntity<Map<String, List<ActivityInstanceMeasurement>>> getStudentActivities(@RequestAttribute("user") User requestUser, @PathVariable Long studentId) {
+        if ( !requestUser.getId().equals(studentId) ) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
 
-    @GetMapping(value = "/students/{id}/activities/past")
-    public ResponseEntity<List<ActivityInstanceMeasurement>> getPastMeasurements(@PathVariable Long id) {
-        List<ActivityInstanceMeasurement> activityInstancesMeasurements = service.getPastMeasurements(id);
-        return new ResponseEntity<>(activityInstancesMeasurements, HttpStatus.OK);
+        Map<String, List<ActivityInstanceMeasurement>> activities = new HashMap<>(2);
+        activities.put("past", service.getPastMeasurements(requestUser.getId()));
+        activities.put("pending", service.getPendingMeasurements(requestUser.getId()));
+
+        return new ResponseEntity<>(activities, HttpStatus.OK);
     }
 
     @PutMapping(value = "/measurements/{id}")

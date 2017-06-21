@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User, IPayload } from '../_models/index';
+import { User, IPayload, School } from '../_models/index';
 import { AlertService, UserService } from '../_services/index';
 
 @Component({
@@ -9,13 +9,10 @@ import { AlertService, UserService } from '../_services/index';
 })
 export class RegisterComponent implements OnInit {
 
-    genders = ['M', 'F'];
-
     private payload: IPayload;
 
-    currentUser: { id: number; school: { id: number; name: string; }; teacherId?: number; };
+    currentUser: { id: number; school: School; };
     student: any = {};
-    loading = false;
 
     classes: Array<{ id: number; name: string; }>;
 
@@ -27,8 +24,6 @@ export class RegisterComponent implements OnInit {
     }
 
     register() {
-        this.loading = true;
-
         const studentValue = { ...this.student };
         studentValue.teacherId = this.currentUser.id;
 
@@ -40,7 +35,6 @@ export class RegisterComponent implements OnInit {
             },
             (error) => {
                 this.alertService.error(error);
-                this.loading = false;
             });
     }
 

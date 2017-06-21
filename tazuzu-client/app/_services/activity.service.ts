@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { Activity, NewActivity } from '../_models/index';
 import { HttpService } from './http.service';
@@ -10,7 +9,12 @@ export class ActivityService {
 
     create(activity: NewActivity) {
         return this.http.post('/api/activities', activity)
-            .map((response: Response) => response.json());
+            .map( response => response.json());
+    }
+
+    getStudentActivities(studentId: number) {
+        return this.http.get(`/api/activities/students/${studentId}`)
+            .map(response => response.json());
     }
 
 }

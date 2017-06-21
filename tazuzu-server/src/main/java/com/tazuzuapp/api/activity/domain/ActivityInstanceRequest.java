@@ -26,48 +26,54 @@ public class ActivityInstanceRequest {
         return activityTypeId;
     }
 
-    public void setActivityTypeId(Long activityTypeId) {
+    public ActivityInstanceRequest setActivityTypeId(Long activityTypeId) {
         this.activityTypeId = activityTypeId;
+        return this;
     }
 
     public Date getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public ActivityInstanceRequest setTime(Date time) {
         this.time = time;
+        return this;
     }
 
     public boolean isMandatory() {
         return isMandatory;
     }
 
-    public void setMandatory(boolean mandatory) {
+    public ActivityInstanceRequest setMandatory(boolean mandatory) {
         isMandatory = mandatory;
+        return this;
     }
 
     public Long getClassId() {
         return classId;
     }
 
-    public void setClassId(Long classId) {
+    public ActivityInstanceRequest setClassId(Long classId) {
         this.classId = classId;
+        return this;
     }
 
     public Long getActivityInstanceMeasurementId() {
         return activityInstanceMeasurementId;
     }
 
-    public void setActivityInstanceMeasurementId(Long activityInstanceMeasurementId) {
+    public ActivityInstanceRequest setActivityInstanceMeasurementId(Long activityInstanceMeasurementId) {
         this.activityInstanceMeasurementId = activityInstanceMeasurementId;
+        return this;
     }
 
     public List<Long> getStudentIds() {
         return studentIds;
     }
 
-    public void setStudentIds(List<Long> studentIds) {
+    public ActivityInstanceRequest setStudentIds(List<Long> studentIds) {
         this.studentIds = studentIds;
+        return this;
     }
 }
 

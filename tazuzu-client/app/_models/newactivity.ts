@@ -1,7 +1,8 @@
 export class NewActivity {
-    type: object;
-    activityDate: Date;
+    type: {id: number; name: string; measurementTypeId: number, numOfMeasurements: number;};
+    time: Date;
     isMandatory: boolean;
     classId: number;
     students: string;
+    target: number;
 }

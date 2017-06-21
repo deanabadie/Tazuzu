@@ -1,56 +1,77 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-3 create-activity">
     <h3>Create New Activity - Teacher</h3>
     <form name="form" (ngSubmit)="f.form.valid && createActivity()" #f="ngForm" novalidate>
         <div class="form-group">
             <label for="type">Activity type</label>
             <select class="form-control" id="type" name="type" [(ngModel)]="activity.type" #activityType="ngModel" required>
                 <option value="" disabled>Select</option>
-            <option *ngFor="let at of this.payload.activityTypes" [ngValue]="at">{{at.activityName}}</option>
+                <option *ngFor="let at of this.payload.activityTypes" [ngValue]="at">{{at.activityName}}</option>
             </select>
         </div>
+
         <div *ngIf="activity.type">Measurements type: {{activity.type.measurementTypeId.charAt(0).toUpperCase().concat(activity.type.measurementTypeId.substr(1).toLowerCase())}}</div>
         <div *ngIf="activity.type">Num measurements: {{activity.type.numOfMeasurements}}</div>
         <br />
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !activityDate.valid }">
-            <label for="activityDate">Date and Time for Activity</label>
-            <input type="datetime-local" class="form-control" name="activityDate" [(ngModel)]="activity.activityDate" #activityDate="ngModel"
-                required />
-            <div *ngIf="f.submitted && !activityDate.valid" class="help-block">Date and Time are required</div>
-        </div>
+
         <div class="form-group">
-            <label for="isMandatory">is Mandatory</label>
-            <input type="radio" name="isMandatory" id="isMandatory" [(ngModel)]="activity.isMandatory" value="true" />&nbsp;True
-            <input type="radio" name="isMandatory" id="isMandatory" [(ngModel)]="activity.isMandatory" value="false" />&nbsp;False
+            <label for="time">Date and Time for Activity</label>
+            <input type="datetime-local" [min]="minDateTime" class="form-control" name="time" (blur)="validations.time = true"
+                [(ngModel)]="activity.time" #time="ngModel" required />
+            <div *ngIf="time.errors && validations.time">
+                <div [hidden]="!time.errors.required" class="help-block">Date and time are required</div>
+                <div [hidden]="!time.errors.min" class="help-block">Min date: {{minDateTime}}</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="isMandatory">Is mandatory</label>
+            <input type="radio" name="isMandatory" id="isMandatory" required="required" [(ngModel)]="activity.isMandatory" [value]="true"
+            />&nbsp;True
+            <input type="radio" name="isMandatory" id="isMandatory" required="required" [(ngModel)]="activity.isMandatory" [value]="false"
+            />&nbsp;False
         </div>
 
         <div class="form-group">
             <label for="target">Target</label>
-            <input type="radio" name="target" id="target" [(ngModel)]="activity.target" value="0" />&nbsp;Class
-            <input type="radio" name="target" id="target" [(ngModel)]="activity.target" value="1" />&nbsp;Individuals
+            <span *ngFor="let type of ['Class', 'Individuals']; let typeId = index">
+                <input type="radio" name="target" id="target" required="required" [(ngModel)]="activity.target" [value]="typeId" />&nbsp;{{type}}
+            </span>
         </div>
 
-        <div *ngIf="activity.target==0" class="form-group">
-            <label for="class">Choose class</label>
-            <select class="form-control" id="class" name="class" [(ngModel)]="activity.class" #class="ngModel">
-                <option disabled value="">Select</option>
-                <option *ngFor="let c of payload.classes" [value]="c">{{c.name}}</option>
-            </select>
-        </div>
-        <div *ngIf="activity.target==1" class="form-group">
-            <label for="studentIdList">Choose individual students</label>
-            <br />
-            <md-input-container>
-                <input mdInput placeholder="Enter name" [mdAutocomplete]="auto" [formControl]="stateCtrl">
-            </md-input-container>
+        <div class="choose-activity-participants">
+            <div *ngIf="activity.target==0" class="form-group">
+                <label for="classId">Choose class</label>
+                <select class="form-control" id="classId" name="classId" [(ngModel)]="activity.classId" #classId="ngModel">
+                    <option disabled value="">Select</option>
+                    <option *ngFor="let c of schoolClasses" [value]="c.id">{{c.name}}</option>
+                </select>
+            </div>
+            <div *ngIf="activity.target==1" class="form-group">
+                <label for="studentIdList">Choose individual students</label>
+                <br />
+                <md-input-container>
+                    <input mdInput placeholder="Enter student name" [mdAutocomplete]="auto" [formControl]="studentsSuggestionCtrl">
+                </md-input-container>
 
-            <md-autocomplete #auto="mdAutocomplete">
-                <md-option *ngFor="let state of filteredStates | async" [value]="state">
-                    {{ state }}
-                </md-option>
-            </md-autocomplete>
+                <md-autocomplete #auto="mdAutocomplete" [displayWith]="studentSuggestionDisplayFunction">
+                    <md-option *ngFor="let student of suggestedStudents" [value]="student" (onSelectionChange)="selection($event)">
+                        {{ student.firstName + ' ' + student.lastName }}
+                    </md-option>
+                </md-autocomplete>
+                <div *ngIf="studentsList.length > 0" class="students-list-container">
+                    <div class="students-list-title">Invited students:</div>
+                    <ul class="students-list">
+                        <li *ngFor="let student of studentsList">
+                            <button (click)="removeStudent(student)" class="btn btn-secondary invited-student">Remove</button>                            - {{student.firstName + ' ' + student.lastName}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Create</button>
+            <button [disabled]="!f.form.valid || (activity.target == 0 && !activity.classId) || (activity.target == 1 && studentsList.length == 0)"
+                class="btn btn-primary">Create</button>
             <a [routerLink]="['/teachers/current']" class="btn btn-link">Cancel</a>
         </div>
     </form>

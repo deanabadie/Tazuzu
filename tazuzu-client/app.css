@@ -35,3 +35,21 @@ button[disabled] {
     height: 165px;
     border-radius: 5px;
 }
+
+.create-activity .invited-student {
+    margin-bottom: 3px;
+    margin-top:3px;
+}
+
+table {
+    background: #fff;
+}
+
+.student-activities-page {
+    color: #000;
+}
+
+.student-activities-page h3 {
+    color: #fff;
+    font-size:25px;
+}

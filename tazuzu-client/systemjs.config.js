@@ -24,6 +24,7 @@
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             'jwt-decode': 'npm:jwt-decode/build/jwt-decode.min.js',
+            'moment': 'npm:moment/min/moment.min.js',
 
             // other libraries
             'rxjs': 'npm:rxjs'

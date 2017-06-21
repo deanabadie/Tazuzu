@@ -93,8 +93,10 @@
                 <div [hidden]="!photoPath.errors.minlength" class="help-block">Profile photo path should contain 10-1000 characters</div>
             </div>
         </div>
+        {{f.form.valid}}
+
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <button [disabled]="!f.form.valid" class="btn btn-primary">Register</button>
             <a [routerLink]="['/teachers/current']" class="btn btn-link">Cancel</a>
         </div>
     </form>

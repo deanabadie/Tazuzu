@@ -47,7 +47,6 @@ public class ActivityInstanceService {
     public ActivityInstance createActivityInstance(ActivityInstanceRequest activityInstanceRequest) throws Exception {
         ActivityInstance activityInstance = new ActivityInstance(activityInstanceRequest);
         activityInstance.setActivityType(activityTypeRepository.findOne(activityInstanceRequest.getActivityTypeId()));
-        activityInstance.setMandatory(activityInstanceRequest.isMandatory());
         activityInstanceRepository.save(activityInstance);
 
         Long classId = activityInstanceRequest.getClassId();
@@ -72,15 +71,10 @@ public class ActivityInstanceService {
             activityInstanceMeasurement.setActivityInstance(activityInstance);
             activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
 
-//            if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
-//                //Send notification
-//                try {
-//                    notificationService.sendActivityNotification(s, activityInstance);
-//                } catch (UnsupportedEncodingException e) {
-//                    //@TODO
-//                    // What to do in case couldn't send the email?
-//                }
-//            }
+            if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
+                //Send notification
+//                notificationService.sendActivityNotification(s, activityInstance);
+            }
         }
 
         return activityInstance;

@@ -1,5 +1,6 @@
 package com.tazuzuapp.api.activity.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tazuzuapp.api.general.domain.BaseEntity;
 import com.tazuzuapp.api.user.domain.Student;
 
@@ -18,6 +19,7 @@ public class ActivityInstanceMeasurement extends BaseEntity{
     @ManyToOne
     private ActivityInstance activityInstance;
 
+    @JsonIgnore
     @ManyToOne
     private Student student;
 

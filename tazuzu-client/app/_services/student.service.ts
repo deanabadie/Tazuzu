@@ -18,4 +18,9 @@ export class StudentService {
             .map((response: Response) => response.json());
     }
 
+    suggest(value: string) {
+        return this.http.get(`/api/students/suggestions?search=${value}`)
+            .map((response: Response) => response.json());
+    }
+
 }

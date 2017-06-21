@@ -1,12 +1,9 @@
 package com.tazuzuapp.api.activity.domain;
 
 import com.tazuzuapp.api.general.domain.BaseEntity;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @SuppressWarnings("unused")
@@ -17,7 +14,7 @@ public class ActivityType extends BaseEntity {
     private Long id;
 
     @NotNull
-    private String activityName;
+    private String name;
 
     @NotNull
     private MeasurementType measurementTypeId;
@@ -28,9 +25,9 @@ public class ActivityType extends BaseEntity {
 
     public void setId(Long id) { this.id = id; }
 
-    public String getActivityName() { return activityName; }
+    public String getName() { return name; }
 
-    public void setActivityName(String activityName) { this.activityName = activityName; }
+    public void setName(String name) { this.name = name; }
 
     public MeasurementType getMeasurementTypeId() {
         return measurementTypeId;
