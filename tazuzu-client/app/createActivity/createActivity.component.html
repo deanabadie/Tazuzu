@@ -5,7 +5,7 @@
             <label for="type">Activity type</label>
             <select class="form-control" id="type" name="type" [(ngModel)]="activity.type" #activityType="ngModel" required>
                 <option value="" disabled>Select</option>
-                <option *ngFor="let at of this.payload.activityTypes" [ngValue]="at">{{at.activityName}}</option>
+                <option *ngFor="let at of this.payload.activityTypes" [ngValue]="at">{{at.name}}</option>
             </select>
         </div>
 

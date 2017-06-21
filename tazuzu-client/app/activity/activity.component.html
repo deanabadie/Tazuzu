@@ -1,0 +1,19 @@
+<div class="row" *ngIf="activity!=null">
+    <div class="col-md-5 activity-general-information">
+        <div class="panel panel-info">
+            <div class="panel-heading">Activity information</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Name: {{activity.activityType.name}} </li>
+                    <li class="list-group-item">Type: {{activity.activityType.measurementTypeId}} </li>
+                    <li class="list-group-item">Date: {{activity.formattedDate}}</li>
+                    <li class="list-group-item">Number of participans: {{activity.numParticipants}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7 activity-statistics">
+
+    </div>
+</div>

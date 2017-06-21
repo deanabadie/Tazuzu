@@ -1,5 +1,7 @@
 package com.tazuzuapp.api.activity.domain;
 
+import com.tazuzuapp.api.user.domain.User;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -22,6 +24,10 @@ public class ActivityInstance {
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date activityDate;
+
+    @ManyToOne
+    @NotNull
+    private User user;
 
     public ActivityInstance(ActivityInstanceRequest activityInstanceRequest) {
         activityDate = activityInstanceRequest.getTime();
@@ -60,5 +66,14 @@ public class ActivityInstance {
 
     public void setActivityDate(Date activityDate) {
         this.activityDate = activityDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public ActivityInstance setUser(User user) {
+        this.user = user;
+        return this;
     }
 }

@@ -29,9 +29,9 @@ public class ActivityController {
     }
 
     @PostMapping(value = "")
-    public ResponseEntity<ActivityInstance> createActivityInstance(@RequestBody ActivityInstanceRequest activityInstanceRequest) {
+    public ResponseEntity<ActivityInstance> createActivityInstance(@RequestBody ActivityInstanceRequest activityInstanceRequest, @RequestAttribute("user") User requestUser) {
         try {
-            ActivityInstance activityInstance = service.createActivityInstance(activityInstanceRequest);
+            ActivityInstance activityInstance = service.createActivityInstance(activityInstanceRequest, requestUser);
             return new ResponseEntity<>(activityInstance, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -61,8 +61,21 @@ public class ActivityController {
         }
 
         Map<String, List<ActivityInstanceMeasurement>> activities = new HashMap<>(2);
-        activities.put("past", service.getPastMeasurements(requestUser.getId()));
-        activities.put("pending", service.getPendingMeasurements(requestUser.getId()));
+        activities.put("past", service.getStudentPastMeasurements(requestUser.getId()));
+        activities.put("pending", service.getStudentPendingMeasurements(requestUser.getId()));
+
+        return new ResponseEntity<>(activities, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/teachers/{studentId}")
+    public ResponseEntity<Map<String, List<ActivityInstance>>> getTeacherActivities(@RequestAttribute("user") User requestUser, @PathVariable Long studentId) {
+        if ( !requestUser.getId().equals(studentId) ) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        Map<String, List<ActivityInstance>> activities = new HashMap<>(2);
+        activities.put("past", service.getTeacherPastActivities(requestUser.getId()));
+        activities.put("pending", service.getTeacherPendingActivities(requestUser.getId()));
 
         return new ResponseEntity<>(activities, HttpStatus.OK);
     }

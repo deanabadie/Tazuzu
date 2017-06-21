@@ -15,7 +15,8 @@ import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
-import { CreateActivityComponent } from './CreateActivity/index';
+import { CreateActivityComponent } from './createActivity/index';
+import { ActivityComponent } from './activity/index';
 import { StudentActivities } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { HttpService } from './_services/http.service';
@@ -44,6 +45,7 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
         RegisterComponent,
         RegisterTeacherComponent,
         CreateActivityComponent,
+        ActivityComponent,
         StudentActivities,
         StudentGradesComponent,
     ],

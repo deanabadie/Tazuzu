@@ -1,5 +1,7 @@
 package com.tazuzuapp.api.activity.domain;
 
+import com.tazuzuapp.api.user.domain.User;
+
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,8 @@ public class ActivityInstanceRequest {
 
     @NotNull
     private boolean isMandatory;
+
+    private User user;
 
     private Long classId;
 

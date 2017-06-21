@@ -5,7 +5,8 @@ import { HomeTeacherComponent } from './homeTeacher/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { RegisterTeacherComponent } from './registerTeacher/index';
-import { CreateActivityComponent } from './CreateActivity/index';
+import { CreateActivityComponent } from './createActivity/index';
+import { ActivityComponent } from './activity/index';
 import { StudentActivities } from './studentPastActivity/index';
 import { StudentGradesComponent } from './studentGrades/index';
 import { CanActivateAuthGuard } from './_guards/index';
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
             //Activities
             {
                 path: 'activities', canActivate: [CanActivateAuthGuard], resolve: { user: UserResolve }, children: [
-                    { path: 'create', component: CreateActivityComponent }
+                    { path: 'create', component: CreateActivityComponent },
+                    { path: ':id', component: ActivityComponent }
                 ]
             },
 

@@ -6,7 +6,6 @@ import com.tazuzuapp.api.user.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 import javax.servlet.*;
@@ -35,6 +34,7 @@ public class JwtFilter extends GenericFilterBean {
 
         Map<String, List<String>> allowedPaths = new HashMap<>();
         allowedPaths.put("/api/login", Collections.singletonList(HttpMethod.POST.toString()));
+        allowedPaths.put("/api/teachers", Collections.singletonList(HttpMethod.POST.toString()));
         allowedPaths.put("/api/payload", Collections.singletonList(HttpMethod.GET.toString()));
 
         // when authenticate do not check for jwt

@@ -7,6 +7,16 @@ import { HttpService } from './http.service';
 export class ActivityService {
     constructor(private http: HttpService) { }
 
+    get(id: number) {
+        return this.http.get(`/api/activities/${id}`)
+            .map( response => response.json());
+    }
+
+    getStatistics(id: number) {
+        return this.http.get(`/api/activities/${id}/statistics`)
+            .map( response => response.json());
+    }
+
     create(activity: NewActivity) {
         return this.http.post('/api/activities', activity)
             .map( response => response.json());
