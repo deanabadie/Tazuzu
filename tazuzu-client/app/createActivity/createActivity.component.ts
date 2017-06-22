@@ -115,7 +115,7 @@ export class CreateActivityComponent implements OnInit {
             .subscribe(
             (data) => {
                 this.alertService.success('New activity created successfully', true);
-                this.router.navigate(['/teachers/current']);
+                this.router.navigate(['/login']);
             },
             (error) => {
                 this.alertService.error(error);
