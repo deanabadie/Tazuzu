@@ -77,7 +77,7 @@ public class ActivityInstanceService {
 
             if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
                 //Send notification
-//                notificationService.sendActivityNotification(s, activityInstance);
+                notificationService.sendActivityNotification(s, activityInstance);
             }
         }
 
