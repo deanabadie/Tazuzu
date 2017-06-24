@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../_models/index';
-import { AlertService, UserService, ActivityService } from '../_services/index';
+import { StudentService } from '../_services/index';
 import * as moment from 'moment';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'student-activities.component.html'
+    templateUrl: 'student-activities-list.component.html'
 })
-export class StudentActivities implements OnInit {
+export class StudentActivitiesList implements OnInit {
 
     model: any = {};
 
@@ -22,9 +22,7 @@ export class StudentActivities implements OnInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private studentService: UserService,
-        private alertService: AlertService,
-        private ActivityService: ActivityService
+        private studentService: StudentService,
     ) { }
 
     goToActivityPage(activity) {
@@ -54,10 +52,12 @@ export class StudentActivities implements OnInit {
         };
 
         this.currentUser = this.route.snapshot.data['user'];
-        this.ActivityService.getStudentActivities(this.currentUser.id)
+
+        this.studentService.getActivities(this.currentUser.id)
             .subscribe(activities => {
                 this.activities.past = activities.past.map(activityMapper);
                 this.activities.pending = activities.pending.map(activityMapper);
             });
     }
+
 }

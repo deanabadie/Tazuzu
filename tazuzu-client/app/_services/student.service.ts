@@ -3,10 +3,11 @@ import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { Student, Activity } from '../_models/index';
 import { HttpService } from './http.service';
+import { IUserService } from './index';
 
 @Injectable()
-export class StudentService {
-    constructor(private http: HttpService) { }
+export class StudentService implements IUserService {
+    constructor(private http: HttpService) {}
 
     getCurrent() {
         return this.http.get('/api/students/current')
@@ -16,6 +17,11 @@ export class StudentService {
     create(student: Student) {
         return this.http.post('/api/students', student)
             .map((response: Response) => response.json());
+    }
+
+    getActivities(id: number) {
+        return this.http.get(`/api/activities/students/${id}`)
+            .map(response => response.json());
     }
 
     suggest(value: string) {

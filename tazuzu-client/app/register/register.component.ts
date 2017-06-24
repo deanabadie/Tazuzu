@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User, IPayload, School } from '../_models/index';
-import { AlertService, UserService } from '../_services/index';
+import { AlertService, StudentService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private userService: UserService,
+        private studentService: StudentService,
         private alertService: AlertService,
         private route: ActivatedRoute) {
     }
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
         const studentValue = { ...this.student };
         studentValue.teacherId = this.currentUser.id;
 
-        this.userService.create(studentValue)
+        this.studentService.create(studentValue)
             .subscribe(
             (data) => {
                 this.alertService.success('Registration successful', true);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { User } from '../_models/index';
-import { UserService, ActivityService } from '../_services/index';
+import { ActivityService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -43,7 +43,6 @@ export class ActivityComponent implements OnInit {
     public barChartData: Array<any>;
 
     constructor(
-        private userService: UserService,
         private route: ActivatedRoute,
         private activityService: ActivityService
     ) { }

@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../_models/index';
-import { UserService, TeacherService } from '../_services/index';
+import { TeacherService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -11,7 +11,7 @@ export class HomeTeacherComponent implements OnInit {
     currentUser: { school: { id: number; name: string; } };
 
     constructor(
-        private teacherService: UserService,
+        private teacherService: TeacherService,
         private route: ActivatedRoute) { }
 
     ngOnInit() {

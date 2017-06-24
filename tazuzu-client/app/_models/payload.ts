@@ -4,5 +4,5 @@ export interface School { id: number; name: string; city: string; }
 export interface IPayload {
     activityTypes: Array <ActivityType>,
     schools: Array<School>
-    classes: Map < number, Array<SchoolClass>>,
+    classes: Map<number, Array<SchoolClass>>,
 };

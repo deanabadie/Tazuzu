@@ -9,11 +9,17 @@ export class UserResolve implements Resolve<{}> {
 
   resolve(route: ActivatedRouteSnapshot) {
     const decoded = jwt(localStorage.getItem('Authorization'));
-    
-    if ( decoded.user.userType === 'Student' ) {
-      return this.studentService.getCurrent();
+
+    if (decoded.user.userType === 'Student') {
+      return this.studentService.getCurrent()
+        .map((value) => {
+          return {...value, userType: 'Student'};
+        });
     } else {
-      return this.teacherService.getCurrent();
+      return this.teacherService.getCurrent()
+        .map((value) => {
+          return {...value, userType: 'Teacher'};
+        });
     }
   }
 }

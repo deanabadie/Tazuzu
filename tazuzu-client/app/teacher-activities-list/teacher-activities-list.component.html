@@ -1,5 +1,5 @@
 <div id="container" class="col-md-12">
-  <div class="student-activities-page">
+  <div class="activities-page">
 
     <h3>My activities</h3>
 
@@ -15,9 +15,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let activity of activities.pending" (click)="goToActivityPage(activity)" class="pointer">
-            <td>{{ activity.activityInstance.activityType.name }}</td>
-            <td>{{ activity.activityInstance.formattedDate }}</td>
-            <td>{{ activity.activityInstance.activityType.measurementTypeId }}</td>
+            <td>{{ activity.activityType.name }}</td>
+            <td>{{ activity.formattedDate }}</td>
+            <td>{{ activity.activityType.measurementTypeId }}</td>
           </tr>
         </tbody>
       </table>
@@ -31,17 +31,13 @@
             <th>Activity type</th>
             <th>Date</th>
             <th>Measurement type</th>
-            <th>Result (Distance|Quantity|Time)</th>
-            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let activity of activities.past" (click)="goToActivityPage(activity)" class="pointer">
-            <td>{{ activity.activityInstance.activityType.name }}</td>
-            <td>{{ activity.activityInstance.formattedDate }}</td>
-            <td>{{ activity.activityInstance.activityType.measurementTypeId }}</td>
-            <td>{{ activity.measurement }}</td>
-            <td>{{ activity.grade }}</td>
+            <td>{{ activity.activityType.name }}</td>
+            <td>{{ activity.formattedDate }}</td>
+            <td>{{ activity.activityType.measurementTypeId }}</td>
           </tr>
         </tbody>
       </table>

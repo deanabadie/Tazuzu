@@ -49,7 +49,7 @@ public class PayloadController {
         //Classes
         Map<Long, List<Class>> classes = new HashMap<>();
         for(School s : schools) {
-            List<Class> schoolClasses = classRepository.findById(s.getId());
+            List<Class> schoolClasses = classRepository.findBySchoolId(s.getId());
             classes.put(s.getId(), schoolClasses);
         }
         payloadResponse.setClasses(classes);

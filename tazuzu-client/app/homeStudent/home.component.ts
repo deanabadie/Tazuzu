@@ -2,7 +2,7 @@
 import { ActivatedRoute } from '@angular/router';
 
 import { User } from '../_models/index';
-import { UserService, TeacherService, AuthenticationService } from '../_services/index';
+import { StudentService } from '../_services/index';
 
 @Component({
     moduleId: module.id,
@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
     users: User[] = [];
 
     constructor(
-        private userService: UserService, 
-        private authenticationService: AuthenticationService, 
+        private userService: StudentService, 
         private route: ActivatedRoute) {}
 
     ngOnInit() {
