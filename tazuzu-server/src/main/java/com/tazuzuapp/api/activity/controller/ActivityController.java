@@ -10,10 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
 import javax.persistence.EntityNotFoundException;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +46,17 @@ public class ActivityController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ActivityInstance> getEntity(@PathVariable Long id) {
+        ActivityInstance activityInstance = service.getActivityInstance(id);
+
+        if ( activityInstance == null ) {
+            throw new EntityNotFoundException("Could not find activity with the given id (" + id + ")");
+        }
+
+        return new ResponseEntity<>(activityInstance, HttpStatus.OK);
     }
 
     @GetMapping(value = "/students/{studentId}")
