@@ -51,22 +51,6 @@ public class ActivityController {
         }
     }
 
-    @GetMapping
-    public List<ActivityInstance> getActivityInstance() {
-        return service.getAllActivityInstance();
-    }
-
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<ActivityInstance> getEntity(@PathVariable Long id) {
-        ActivityInstance activityInstance = service.getActivityInstance(id);
-
-        if ( activityInstance == null ) {
-            throw new EntityNotFoundException("Could not find activity with the given id (" + id + ")");
-        }
-
-        return new ResponseEntity<>(activityInstance, HttpStatus.OK);
-    }
-
     @GetMapping(value = "/students/{studentId}")
     public ResponseEntity<Map<String, List<ActivityInstanceMeasurement>>> getStudentActivities(@RequestAttribute("user") User requestUser, @PathVariable Long studentId) {
         if ( !requestUser.getId().equals(studentId) ) {
@@ -124,7 +108,7 @@ public class ActivityController {
             measurement.setParticipationApprovalToken(null);
             activityInstanceMeasurementRepository.save(measurement);
         }
-        
+
         String sb = "redirect:" +
                 this.applicationProperties.getApplicationUrl() +
                 "/students/activities/list?confirmation=ok";
