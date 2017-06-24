@@ -14,6 +14,7 @@ import { PayloadResolve, UserResolve } from './_resolvers/index';
 import { StudentLayout } from './studentLayout/index';
 import { TeacherLayout } from './teacherLayout/index';
 import { StudentService, TeacherService } from './_services/index';
+import { ActivityResults } from './activity-results/index';
 
 const appRoutes: Routes = [
     {
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
                     { path: 'students/registration', component: RegisterComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
                     { path: 'activities/create', component: CreateActivityComponent, resolve: { user: UserResolve, payload: PayloadResolve } },
                     { path: 'activities/list', component: TeacherActivitiesList, resolve: { user: UserResolve } },
-                    { path: 'activities/list/:id', component: ActivityComponent, resolve: { user: UserResolve } }
+                    { path: 'activities/list/:id', component: ActivityComponent, resolve: { user: UserResolve } },
+                    { path: 'activities/list/:id/results', component: ActivityResults, resolve: { user: UserResolve } }
                 ]
             },
 

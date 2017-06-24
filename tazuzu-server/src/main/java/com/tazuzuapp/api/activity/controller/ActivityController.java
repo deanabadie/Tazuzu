@@ -23,7 +23,7 @@ public class ActivityController {
 
     private final ActivityInstanceService service;
 
-    private final ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository;
+    private final ActivityInstanceMeasurementRepository measurementRepository;
 
     private final ApplicationProperties applicationProperties;
 
@@ -35,7 +35,7 @@ public class ActivityController {
     ) {
         this.service = activityInstanceService;
         this.applicationProperties = applicationProperties;
-        this.activityInstanceMeasurementRepository = activityInstanceMeasurementRepository;
+        this.measurementRepository = activityInstanceMeasurementRepository;
     }
 
     @PostMapping(value = "")
@@ -90,31 +90,67 @@ public class ActivityController {
         return new ResponseEntity<>(service.getMeasurementsByInstanceId(instanceId), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/measurements/{id}")
-    public ResponseEntity<ActivityInstanceMeasurement> updateActivityInstanceMeasurement(@PathVariable Long id, @RequestBody ActivityInstanceMeasurementRequest activityInstanceMeasurementRequest) {
-        if ( !service.exists(id) ) {
+    private static class UpdateValueRequest {
+        private Double value;
+
+        public Double getValue() {
+            return value;
+        }
+
+        public UpdateValueRequest setValue(Double value) {
+            this.value = value;
+            return this;
+        }
+    }
+
+    @PatchMapping(value = "/measurements/{id}/result")
+    public ResponseEntity<ActivityInstanceMeasurement> updateMeasurementResult(@PathVariable Long id, @RequestBody UpdateValueRequest request) {
+        ActivityInstanceMeasurement measurement = measurementRepository.findOne(id);
+
+        if ( measurement == null) {
             throw new EntityNotFoundException("Could not find measurement with given id: " + id);
         }
 
-        ActivityInstanceMeasurement activityInstanceMeasurement = null;
-        try {
-            activityInstanceMeasurement = service.updateActivityInstanceMeasurement(id, activityInstanceMeasurementRequest);
-        } catch (Exception e) {
-            e.printStackTrace();
+        switch(measurement.getActivityInstance().getActivityType().getMeasurementTypeId()) {
+            case DISTANCE:
+                    measurement.setResultDistance(request.getValue());
+                break;
+            case TIME:
+                    measurement.setResultTimeSeconds(request.getValue().longValue());
+                break;
+            case QUANTITY:
+                    measurement.setResultQuantity(request.getValue().intValue());
+                break;
         }
-        return new ResponseEntity<>(activityInstanceMeasurement, HttpStatus.OK);
+
+        measurementRepository.save(measurement);
+
+        return new ResponseEntity<>(measurement, HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/measurements/{id}/grade")
+    public ResponseEntity<ActivityInstanceMeasurement> updateMeasurementGrade(@PathVariable Long id, @RequestBody() UpdateValueRequest request) {
+        ActivityInstanceMeasurement measurement = measurementRepository.findOne(id);
+
+        if ( measurement == null) {
+            throw new EntityNotFoundException("Could not find measurement with given id: " + id);
+        }
+        measurement.setGrade(request.getValue());
+        measurementRepository.save(measurement);
+
+        return new ResponseEntity<>(measurement, HttpStatus.OK);
     }
 
     @GetMapping(value = "/participation-approval")
     public ModelAndView updateActivityParticipationApproval(@RequestParam("token") String participationToken) {
 
-        ActivityInstanceMeasurement measurement = activityInstanceMeasurementRepository
+        ActivityInstanceMeasurement measurement = measurementRepository
                 .findOneByParticipationApprovalToken(participationToken);
 
         if ( measurement != null ) {
             measurement.setParticipationApproval(true);
             measurement.setParticipationApprovalToken(null);
-            activityInstanceMeasurementRepository.save(measurement);
+            measurementRepository.save(measurement);
         }
 
         String sb = "redirect:" +

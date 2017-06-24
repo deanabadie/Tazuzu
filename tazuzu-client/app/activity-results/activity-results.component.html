@@ -1,0 +1,42 @@
+<div id="container" class="row" *ngIf="activity!=null && measurements!=null">
+    <div class="activities-page row">
+        <div class="col-md-12 activity-general-information">
+            <div class="panel panel-info">
+                <div class="panel-heading">Activity information</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">Name: {{activity.activityType.name}} </li>
+                        <li class="list-group-item">Type: {{activity.activityType.measurementTypeId}} </li>
+                        <li class="list-group-item">Date: {{activity.formattedDate}}</li>
+                        <li class="list-group-item">Number of participans: {{measurements.length}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 activity-general-information">
+            <h3>Enter results</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Student name</th>
+                        <th>Result</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let measurement of measurements">
+                        <td>{{measurement.student.firstName + ' ' + measurement.student.lastName}}</td>
+                        <td>
+                            <input type="text" value="{{measurement.measure}}" (blur)="updateResult($event, measurement)" />
+                        </td>
+                        <td>
+                            <input type="text" value="{{measurement.grade}}" (blur)="updateGrade($event, measurement)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

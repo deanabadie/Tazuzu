@@ -25,6 +25,8 @@ import { MdAutocompleteModule, MdSelectionModule, MdCardModule, MdInputModule } 
 import { ChartsModule } from 'ng2-charts';
 import { StudentLayout } from './studentLayout/index';
 import { TeacherLayout } from './teacherLayout/index';
+import { ActivityResults } from './activity-results/index';
+
 import * as jwt from 'jwt-decode';
 
 @NgModule({
@@ -53,6 +55,7 @@ import * as jwt from 'jwt-decode';
         ActivityComponent,
         StudentActivitiesList,
         TeacherActivitiesList,
+        ActivityResults,
         StudentLayout,
         TeacherLayout
     ],

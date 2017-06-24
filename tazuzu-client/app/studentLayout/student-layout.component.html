@@ -1,12 +1,25 @@
 <div>
-    <div class="text-center">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default"><a [routerLink]="['/students/current']">Home</a></button>
-            <button type="button" class="btn btn-default"><a [routerLink]="['/students/activities/list']">My activities</a></button>
-            <button type="button" class="btn btn-default"><a [routerLink]="['/students/activities/create']">Create Activity</a></button>
-            <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Tazuzu</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/students/current']">Home</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/students/activities/create']">Create Activity</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/students/activities/list']">My activities</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a (click)="logout()">Logout</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
     <br />
     <alert></alert>
     <router-outlet></router-outlet>

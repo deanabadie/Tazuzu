@@ -29,6 +29,13 @@ export class TeacherActivitiesList implements OnInit {
         this.router.navigate([`/teachers/activities/list/${activity.id}`]);
     }
 
+    setResults(e: Event, activityId: number) {
+        e.stopPropagation(); 
+        console.log(e, activityId);
+        
+        this.router.navigate([`/teachers/activities/list/${activityId}/results`])
+    }
+
     ngOnInit() {
         const activityMapper = (activity) => ({
             ...activity,

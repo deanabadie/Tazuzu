@@ -2,7 +2,6 @@ package com.tazuzuapp.api.activity.service;
 
 import com.tazuzuapp.api.activity.domain.ActivityInstance;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurement;
-import com.tazuzuapp.api.activity.domain.ActivityInstanceMeasurementRequest;
 import com.tazuzuapp.api.activity.domain.ActivityInstanceRequest;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceRepository;
@@ -77,14 +76,6 @@ public class ActivityInstanceService {
         return activityInstance;
     }
 
-    public boolean exists(Long id) {
-        return activityInstanceRepository.exists(id);
-    }
-
-    public List<ActivityInstance> getAllActivityInstance() {
-        return activityInstanceRepository.findAll();
-    }
-
     public ActivityInstance getActivityInstance(Long id) {
         return activityInstanceRepository.findOne(id);
     }
@@ -111,13 +102,4 @@ public class ActivityInstanceService {
         return activityInstanceRepository.findByUserIdAndActivityDateBefore(id, new Date());
     }
 
-    public ActivityInstanceMeasurement updateActivityInstanceMeasurement(Long id, ActivityInstanceMeasurementRequest activityInstanceMeasurementRequest) {
-        ActivityInstanceMeasurement activityInstanceMeasurement = activityInstanceMeasurementRepository.findOne(id);
-        activityInstanceMeasurement.setGrade(activityInstanceMeasurementRequest.getGrade());
-        activityInstanceMeasurement.setResultDistance(activityInstanceMeasurementRequest.getResultDistance());
-        activityInstanceMeasurement.setResultTimeSeconds(activityInstanceMeasurementRequest.getResultTime());
-        activityInstanceMeasurement.setResultQuantity(activityInstanceMeasurementRequest.getResultQuantity());
-        activityInstanceMeasurementRepository.save(activityInstanceMeasurement);
-        return  activityInstanceMeasurement;
-    }
 }

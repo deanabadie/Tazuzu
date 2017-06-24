@@ -9,21 +9,31 @@ export class ActivityService {
 
     get(id: number) {
         return this.http.get(`/api/activities/${id}`)
-            .map( response => response.json());
+            .map(response => response.json());
     }
 
     getStatistics(id: number) {
         return this.http.get(`/api/activities/${id}/statistics`)
-            .map( response => response.json());
+            .map(response => response.json());
     }
 
     create(activity: NewActivity) {
         return this.http.post('/api/activities', activity)
-            .map( response => response.json());
+            .map(response => response.json());
     }
 
     getMeasurementsByActivityInstanceId(instanceId: number) {
         return this.http.get(`/api/activities/instances/${instanceId}/measurements`)
+            .map(response => response.json());
+    }
+
+    updateMeasurementResult(measurementId: number, value: string) {
+        return this.http.patch(`/api/activities/measurements/${measurementId}/result`, { value })
+            .map(response => response.json());
+    }
+
+    updateMeasurementGrade(measurementId: number, value: number) {
+        return this.http.patch(`/api/activities/measurements/${measurementId}/grade`, { value })
             .map(response => response.json());
     }
 

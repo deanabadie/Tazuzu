@@ -1,13 +1,28 @@
-<div>
-    <div class="text-center">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/current']">Home</a></button>
-            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/activities/create']">Create Activity</a></button>
-            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/activities/list']">My activities</a></button>
-            <button type="button" class="btn btn-default"><a [routerLink]="['/teachers/students/registration']">Register Student</a></button>
-            <button type="button" class="btn btn-warning" (click)="logout()">Log Out</button>
+<div class="row">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Tazuzu</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/teachers/current']">Home</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/teachers/activities/create']">Create Activity</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/teachers/activities/list']">My activities</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/teachers/students/registration']">Register student</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a (click)="logout()">Logout</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
     <br />
     <alert></alert>
     <router-outlet></router-outlet>
