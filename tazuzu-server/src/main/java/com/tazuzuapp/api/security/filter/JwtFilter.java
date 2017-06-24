@@ -36,6 +36,7 @@ public class JwtFilter extends GenericFilterBean {
         allowedPaths.put("/api/login", Collections.singletonList(HttpMethod.POST.toString()));
         allowedPaths.put("/api/teachers", Collections.singletonList(HttpMethod.POST.toString()));
         allowedPaths.put("/api/payload", Collections.singletonList(HttpMethod.GET.toString()));
+        allowedPaths.put("/api/activities/participation-approval", Collections.singletonList(HttpMethod.GET.toString()));
 
         // when authenticate do not check for jwt
         if ( allowedPaths.containsKey(httpRequest.getRequestURI()) && allowedPaths.get(httpRequest.getRequestURI()).contains(httpRequest.getMethod()) ) {

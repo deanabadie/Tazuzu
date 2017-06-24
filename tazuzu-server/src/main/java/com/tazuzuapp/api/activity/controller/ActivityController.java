@@ -1,5 +1,6 @@
 package com.tazuzuapp.api.activity.controller;
 
+import com.tazuzuapp.api.ApplicationProperties;
 import com.tazuzuapp.api.activity.domain.*;
 import com.tazuzuapp.api.activity.repository.ActivityInstanceMeasurementRepository;
 import com.tazuzuapp.api.activity.service.ActivityInstanceService;
@@ -8,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.DayOfWeek;
-import java.time.Duration;
-import java.time.temporal.TemporalUnit;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,12 +28,16 @@ public class ActivityController {
 
     private final ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository;
 
+    private final ApplicationProperties applicationProperties;
+
     @Autowired
     public ActivityController(
             ActivityInstanceService activityInstanceService,
+            ApplicationProperties applicationProperties,
             ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository
     ) {
         this.service = activityInstanceService;
+        this.applicationProperties = applicationProperties;
         this.activityInstanceMeasurementRepository = activityInstanceMeasurementRepository;
     }
 
@@ -106,5 +111,24 @@ public class ActivityController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(activityInstanceMeasurement, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/participation-approval")
+    public ModelAndView updateActivityParticipationApproval(@RequestParam("token") String participationToken) {
+
+        ActivityInstanceMeasurement measurement = activityInstanceMeasurementRepository
+                .findOneByParticipationApprovalToken(participationToken);
+
+        if ( measurement != null ) {
+            measurement.setParticipationApproval(true);
+            measurement.setParticipationApprovalToken(null);
+            activityInstanceMeasurementRepository.save(measurement);
+        }
+        
+        String sb = "redirect:" +
+                this.applicationProperties.getApplicationUrl() +
+                "/students/activities/list?confirmation=ok";
+
+        return new ModelAndView(sb);
     }
 }

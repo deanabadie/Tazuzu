@@ -17,4 +17,6 @@ public interface ActivityInstanceMeasurementRepository extends JpaRepository<Act
     List<ActivityInstanceMeasurement> findByStudentAndActivityInstanceActivityDateAfter(Student s, Date now);
 
     List<ActivityInstanceMeasurement> findByActivityInstanceId(Long id);
+
+    ActivityInstanceMeasurement findOneByParticipationApprovalToken(String token);
 }

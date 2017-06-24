@@ -10,14 +10,8 @@ import com.tazuzuapp.api.activity.repository.ActivityTypeRepository;
 import com.tazuzuapp.api.user.domain.Student;
 import com.tazuzuapp.api.user.domain.User;
 import com.tazuzuapp.api.user.repository.StudentRepository;
-import com.tazuzuapp.api.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +29,6 @@ public class ActivityInstanceService {
     public ActivityInstanceService(
         ActivityTypeRepository activityTypeRepository,
         ActivityInstanceRepository activityInstanceRepository,
-        UserRepository userRepository,
         StudentRepository studentRepository,
         ActivityInstanceMeasurementRepository activityInstanceMeasurementRepository,
         NotificationService notificationService
@@ -77,7 +70,7 @@ public class ActivityInstanceService {
 
             if ( s.getEmail() != null && !s.getEmail().isEmpty() ) {
                 //Send notification
-                notificationService.sendActivityNotification(s, activityInstance);
+                notificationService.sendActivityNotification(s, activityInstanceMeasurement);
             }
         }
 

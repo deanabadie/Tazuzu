@@ -11,8 +11,7 @@
         Hi <span th:text="${firstName}"></span>,
         <br />
         A new activity was created for your, it's taking place at: <span th:text="${activityDate}"></span>.<br />
-        Please log in into the system using the following link:<br />
-        <a href="http://localhost:3000">Login</a><br />
+        <a th:href="${participationApprovalUrl}">Click here to approve participation in the activity</a><br />
     </div>
 
 </body>

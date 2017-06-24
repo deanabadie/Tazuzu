@@ -19,6 +19,7 @@ public class ActivityInstance {
     private ActivityType activityType;
 
     @NotNull
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isMandatory;
 
     @NotNull

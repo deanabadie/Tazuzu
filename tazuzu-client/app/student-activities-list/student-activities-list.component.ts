@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../_models/index';
-import { StudentService } from '../_services/index';
+import { StudentService, AlertService } from '../_services/index';
 import * as moment from 'moment';
 
 @Component({
@@ -22,6 +22,7 @@ export class StudentActivitiesList implements OnInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
+        private alertService: AlertService,
         private studentService: StudentService,
     ) { }
 
@@ -52,6 +53,12 @@ export class StudentActivitiesList implements OnInit {
         };
 
         this.currentUser = this.route.snapshot.data['user'];
+
+        this.route.queryParams.subscribe(params => {
+            if ( params.confirmation && params.confirmation === 'ok' ) {
+                this.alertService.success('Participation approved, thank you');
+            }
+        });
 
         this.studentService.getActivities(this.currentUser.id)
             .subscribe(activities => {
