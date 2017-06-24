@@ -10,9 +10,22 @@ import { AlertService } from '../_services/index';
 export class AlertComponent {
     message: any;
 
+    private timeout: NodeJS.Timer;
+
     constructor(private alertService: AlertService) { }
 
     ngOnInit() {
-        this.alertService.getMessage().subscribe(message => { this.message = message; });
+        this.alertService.getMessage()
+            .subscribe(message => {
+                if (this.timeout) {
+                    clearTimeout(this.timeout);
+                }
+
+                this.message = message;
+
+                this.timeout = setTimeout(() => {
+                    this.message = null;
+                }, 3000);
+            });
     }
 }

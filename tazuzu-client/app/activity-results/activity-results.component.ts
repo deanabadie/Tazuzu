@@ -39,19 +39,19 @@ export class ActivityResults implements OnInit {
         };
     }
 
-    updateResult(event, measurement: { id: number }) {
+    updateResult(event, measurement: { id: number; student: {firstName: string; lastName: string;} }) {
         const value = event.target.value;
         this.activityService.updateMeasurementResult(measurement.id, value)
             .subscribe(result => {
-                this.alertService.success('Updated');
+                this.alertService.success(`Result for ${measurement.student.firstName} has been updated!`);
             });
     }
 
-    updateGrade(event, measurement: { id: number }) {
+    updateGrade(event, measurement: { id: number; student: {firstName: string; lastName: string;} }) {
         const value = event.target.value;
         this.activityService.updateMeasurementGrade(measurement.id, value)
             .subscribe(result => {
-                this.alertService.success('Updated');
+                this.alertService.success(`Grade for ${measurement.student.firstName} has been updated!`);
             });
     }
 
