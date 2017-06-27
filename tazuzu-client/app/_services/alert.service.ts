@@ -7,15 +7,7 @@ import { Subject } from 'rxjs/Subject';
 export class AlertService {
     private subject = new Subject<any>();
 
-    constructor(private router: Router) {
-        // clear alert message on route change
-        router.events.subscribe(event => {
-            if (event instanceof NavigationStart) {
-                // clear alert
-                this.subject.next();
-            }
-        });
-    }
+    constructor(private router: Router) {}
 
     success(message: string) {
         this.subject.next({ type: 'success', text: message });

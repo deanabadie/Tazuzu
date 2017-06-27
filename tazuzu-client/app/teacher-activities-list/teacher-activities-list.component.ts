@@ -31,8 +31,6 @@ export class TeacherActivitiesList implements OnInit {
 
     setResults(e: Event, activityId: number) {
         e.stopPropagation(); 
-        console.log(e, activityId);
-        
         this.router.navigate([`/teachers/activities/list/${activityId}/results`])
     }
 
