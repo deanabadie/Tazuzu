@@ -13,5 +13,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAll();
     List<Student> findBySchoolClass(Class cls);
     List<Student> findBySchoolClassId(Long id);
-    List<Student> findAllBySchoolIdAndFirstNameContainingOrLastNameContaining(Long schoolId, String search1, String search2);
+
+    @Query("select s from Student s where s.school.id=:schoolId and (s.firstName like :search or s.lastName like :search)")
+    List<Student> findAllBySchoolIdAndFirstNameContainingOrLastNameContaining(@Param("schoolId") Long schoolId, @Param("search") String search);
 }
