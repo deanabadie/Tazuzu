@@ -25,7 +25,7 @@ export class AlertComponent {
 
                 this.timeout = setTimeout(() => {
                     this.message = null;
-                }, 3000);
+                }, 5000);
             });
     }
 }
