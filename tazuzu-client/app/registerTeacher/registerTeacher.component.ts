@@ -22,7 +22,7 @@ export class RegisterTeacherComponent implements OnInit {
         this.teacherService.create(this.teacher)
             .subscribe(
             data => {
-                this.alertService.success('Registration successful', true);
+                this.alertService.success('Registration successful');
                 this.router.navigate(['/login']);
             },
             error => {
