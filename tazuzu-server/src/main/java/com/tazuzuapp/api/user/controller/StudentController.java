@@ -75,7 +75,7 @@ public class StudentController {
     @GetMapping(path = "suggestions", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Student>> studentsAutoComplete(@RequestParam("search") String search) {
         List<Student> students = this.studentRepository
-                .findAllBySchoolIdAndFirstNameContainingOrLastNameContaining((long) 1, search, search);
+                .findAllBySchoolIdAndFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase((long) 1, search, search);
 
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
