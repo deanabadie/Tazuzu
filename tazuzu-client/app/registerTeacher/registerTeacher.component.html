@@ -75,7 +75,7 @@
                     <label for="schoolId">School</label><br />
                     <select class="form-control" [(ngModel)]="teacher.schoolId" #schoolId="ngModel" name="schoolId" required>
                 <option value="" disabled selected>Select</option>
-                <option *ngFor="let school of payload.schools" [ngValue]="school.id">{{school.name}}</option>
+                <option *ngFor="let school of payload.schools" [ngValue]="school.id">{{school.name}} - {{school.city}}</option>
             </select>
                     <div *ngIf="schoolId.errors">
                         <div [hidden]="!schoolId.errors.required" class="help-block">School is required</div>
