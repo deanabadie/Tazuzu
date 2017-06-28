@@ -9,7 +9,6 @@ import { AlertService, AuthenticationService } from '../_services/index';
 export class LoginComponent implements OnInit {
 
     model: any = {};
-    loading = false;
     returnUrl: string;
 
     constructor(
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.loading = true;
         this.authenticationService.login(this.model.idNumber, this.model.password)
             .subscribe(
             (user) => {
@@ -50,7 +48,6 @@ export class LoginComponent implements OnInit {
             },
             (error) => {
                 this.alertService.error(error);
-                this.loading = false;
             });
     }
 }

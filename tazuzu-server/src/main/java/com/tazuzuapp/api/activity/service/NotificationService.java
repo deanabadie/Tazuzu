@@ -39,6 +39,7 @@ public class NotificationService {
     }
 
     private String generateParticipationToken(ActivityInstanceMeasurement measurement) {
+        //Universal unique identifier
         String token = UUID.randomUUID().toString();
 
         measurement.setParticipationApprovalToken(token);

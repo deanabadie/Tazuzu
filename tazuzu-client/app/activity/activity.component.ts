@@ -84,6 +84,7 @@ export class ActivityComponent implements OnInit {
                     this.barChartOptions.title.text = this.titles[activityInstance.activityType.measurementTypeId];
                 });
 
+          
             //Fetch activity measurements/participants
             this.activityService.getMeasurementsByActivityInstanceId(+params.id)
                 .subscribe(measurements => {

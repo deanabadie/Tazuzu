@@ -1,4 +1,4 @@
-import { Component, NgModule, Input } from '@angular/core';
+import { Component, NgModule, Input, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StopWatchService } from './stopwatch.service';
 
@@ -9,12 +9,12 @@ import { StopWatchService } from './stopwatch.service';
         <div class="container">
           <h1>{{ formatTime(time) }}</h1>
           <div class="btn-group">
-            <button (click)="toggle()">
+            <button class="btn btn-primary" (click)="toggle()">
               <span *ngIf="!started">Start</span>
               <span *ngIf="started">Pause</span>
             </button>
-            <button (click)="reset()">Reset</button>
-            <button (click)="lap()">Split</button>
+            <button class="btn btn-primary" (click)="reset()">Reset</button>
+            <button class="btn btn-primary" (click)="lap()">Split</button>
           </div>
             <div class="laps"
                 *ngIf="stopwatchService.laps.length > 1">
@@ -29,9 +29,8 @@ import { StopWatchService } from './stopwatch.service';
             </div>
         </div>
         `,
-    styleUrls: ['./src/stopwatch/stopwatch.css']
+    styleUrls: ['./app/stopwatch/stopwatch.css']
 })
-
 export class StopWatchComponent {
     public started: boolean;
     //public stopwatchService: StopWatchService;

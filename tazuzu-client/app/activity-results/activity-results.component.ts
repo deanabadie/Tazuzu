@@ -9,6 +9,8 @@ import * as moment from 'moment';
 })
 export class ActivityResults implements OnInit {
 
+    private numApproved: number;
+
     private measurements: Array<{ id: number; activityInstance: { activityType: any }; }>;
 
     private activity: { activityDate: any };
@@ -60,6 +62,7 @@ export class ActivityResults implements OnInit {
             this.activityService.getMeasurementsByActivityInstanceId(+params.id)
                 .map(measurements => measurements.map(this.activityMapper))
                 .subscribe(measurements => {
+                    this.numApproved = measurements.filter(m => m.participationApproval === true).length;
                     this.measurements = measurements;
                 });
 

@@ -30,7 +30,7 @@ export class TeacherActivitiesList implements OnInit {
     }
 
     setResults(e: Event, activityId: number) {
-        e.stopPropagation(); 
+        e.stopPropagation();
         this.router.navigate([`/teachers/activities/list/${activityId}/results`])
     }
 
@@ -39,7 +39,7 @@ export class TeacherActivitiesList implements OnInit {
             ...activity,
             formattedDate: moment(activity.activityDate).format("DD-MM-YYYY HH:mm:ss")
         });
-
+        
         this.currentUser = this.route.snapshot.data['user'];
 
         this.teacherService.getActivities(this.currentUser.id)

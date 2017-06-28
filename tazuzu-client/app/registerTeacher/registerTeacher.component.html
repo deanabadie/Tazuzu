@@ -44,7 +44,7 @@
                     <select class="form-control" name="gender" [(ngModel)]="teacher.gender" #gender="ngModel" required>
                 <option value="" disabled selected>Select</option>
                 <option value="M">M</option>
-                <option value="M">F</option>
+                <option value="F">F</option>
             </select>
                     <div *ngIf="gender.errors">
                         <div [hidden]="gender.valid" class="help-block">Please select gender</div>

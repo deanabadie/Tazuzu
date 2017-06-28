@@ -26,7 +26,8 @@ import { ChartsModule } from 'ng2-charts';
 import { StudentLayout } from './studentLayout/index';
 import { TeacherLayout } from './teacherLayout/index';
 import { ActivityResults } from './activity-results/index';
-
+import { StopWatchModule } from './stopwatch/stopwatch';
+import { StopWatchService } from './stopwatch/stopwatch.service';
 import * as jwt from 'jwt-decode';
 
 @NgModule({
@@ -42,6 +43,7 @@ import * as jwt from 'jwt-decode';
         MdSelectionModule,
         ChartsModule,
         routing,
+        StopWatchModule
     ],
     declarations: [
         AppComponent,
@@ -64,6 +66,7 @@ import * as jwt from 'jwt-decode';
         AlertService,
         AuthenticationService,
         PayloadService,
+        StopWatchService,
         ActivityService,
         TeacherService,
         StudentService,

@@ -15,7 +15,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let activity of activities.pending" (click)="goToActivityPage(activity)" class="pointer">
+          <tr *ngFor="let activity of activities.pending" 
+            (click)="goToActivityPage(activity)" class="pointer">
             <td>{{ activity.activityType.name }}</td>
             <td>{{ activity.formattedDate }}</td>
             <td>{{ activity.activityType.measurementTypeId }}</td>

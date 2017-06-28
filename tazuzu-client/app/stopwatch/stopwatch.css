@@ -1,3 +1,4 @@
+
 .container {
     background-color: #ecf0f1;
     font-family: 'Roboto', sans-serif;
@@ -35,7 +36,7 @@
   }
 
   .container h1 {
-    font-size: 200px;
+    font-size: 50px;
   }
 }
 
@@ -46,44 +47,16 @@
 }
 
 .btn-group {
-    font-size: 0;
-    line-height: 1;
-    white-space: nowrap;
-    display: inline;
+    display: block;
+    width: 800px;
+    margin:0 auto;
+    text-align:center;
+    margin-bottom: 65px;
 }
 
-.btn-group button {
+.btn-group .btn {
     width: 33%;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 40px;
-    background: #34495e;
-    color: #fff;
-    border: 1px solid #bdc3c7;
-    border-left-width: 0;
-    display: inline-block;
-    padding: 0.25em 1.25em;
-    outline: 0;
-}
-
-.btn-group button:last-child {
-    border-right-width: 0;
-    width: 34%;
-}
-
-.btn-group button:first-child {
-    border-radius: 0 0 0 8px;
-}
-
-.btn-group button:last-child {
-    border-radius: 0 0 8px 0;
-}
-
-.btn-group button:active {
-    background: transparent;
-    color: #4d4d4d;
+    padding: 10px;
 }
 
 .laps {

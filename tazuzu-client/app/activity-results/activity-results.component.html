@@ -9,20 +9,24 @@
                         <li class="list-group-item">Type: {{activity.activityType.measurementTypeId}} </li>
                         <li class="list-group-item">Date: {{activity.formattedDate}}</li>
                         <li class="list-group-item">Number of participans: {{measurements.length}}</li>
+                        <li class="list-group-item">Number of approved participans: {{numApproved}}</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="col-md-12 activity-general-information">
-            <h3>Enter results</h3>
 
+            <stopwatch></stopwatch>
+
+            <h3>Enter results</h3>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Student name</th>
                         <th>Result</th>
                         <th>Grade</th>
+                        <th>Approval status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +37,9 @@
                         </td>
                         <td>
                             <input type="text" value="{{measurement.grade}}" (blur)="updateGrade($event, measurement)" />
+                        </td>
+                        <td>
+                            {{measurement.participationApproval ? 'Approved' : 'Unapproved'}}
                         </td>
                     </tr>
                 </tbody>
