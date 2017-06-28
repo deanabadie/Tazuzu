@@ -1,4 +1,4 @@
-﻿import { Observable } from 'rxjs/RX';
+﻿import { Observable } from 'rxjs';
 
 export interface IUserService {
     getActivities: (id: number) => Observable<any>;
