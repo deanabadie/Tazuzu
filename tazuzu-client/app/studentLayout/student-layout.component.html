@@ -6,16 +6,16 @@
             </div>
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/students/current']">Home</a>
+                    <a [routerLink]="['/students/current']" id="menu_home">Home</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/students/activities/create']">Create Activity</a>
+                    <a [routerLink]="['/students/activities/create']" id="menu_create_activity">Create Activity</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/students/activities/list']">My activities</a>
+                    <a [routerLink]="['/students/activities/list']" id="menu_my_activities">My activities</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a (click)="logout()">Logout</a>
+                    <a (click)="logout()" id="menu_logout">Logout</a>
                 </li>
             </ul>
         </div>
