@@ -25,7 +25,7 @@ export class ActivityResults implements OnInit {
         let measure;
         switch (measurement.activityInstance.activityType.measurementTypeId) {
             case 'TIME':
-                measure = measurement.resultTimeSeconds / 60;
+                measure = measurement.resultTimeSeconds;
                 break;
             case 'QUANTITY':
                 measure = measurement.resultQuantity;

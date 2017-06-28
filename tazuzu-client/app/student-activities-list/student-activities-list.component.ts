@@ -35,7 +35,7 @@ export class StudentActivitiesList implements OnInit {
             switch (activity.activityInstance.activityType.measurementTypeId) {
                 case 'TIME':
                     //Minutes
-                    activity.measurement = activity.resultTimeSeconds / 60;
+                    activity.measurement = activity.resultTimeSeconds;
                     break;
                 case 'QUANTITY':
                     //Scalar
